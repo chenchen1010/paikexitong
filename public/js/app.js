@@ -700,17 +700,17 @@ async function generateAttendanceSheet(course) {
     const classroom = classrooms.find(c => c.id === course.classroomId);
     const teacher = teachers.find(t => t.id === course.teacherId);
     
-    // 格式化日期（年月日和星期几）
+    // 获取课程日期对应的星期几
+    const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
     const courseDate = new Date(course.date);
-    const dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' };
-    const formattedDate = courseDate.toLocaleDateString('zh-CN', dateOptions);
+    const weekday = weekdays[courseDate.getDay()];
     
     // 创建签到表HTML
     const html = `
       <div class="attendance-header">
         <h1>${course.name}-新青年夜校上课签到表</h1>
         <div class="attendance-info">上课地点: ${store ? store.name : ''}${classroom ? ' ' + classroom.name : ''}</div>
-        <div class="attendance-info">上课时间: 每周一19:00-20:30</div>
+        <div class="attendance-info">上课时间: 每周${weekday}19:00-20:30</div>
         <div class="attendance-info">上课须知: 第一节课（前45分钟）为试听时间，同学不满意可自行离开，从原购买渠道申请退学费即可，45分钟后视为对此课程满意，满意的话后续将不再退换补课</div>
       </div>
       
@@ -718,8 +718,8 @@ async function generateAttendanceSheet(course) {
         <thead>
           <tr>
             <th>姓名</th>
-            <th>${formattedDate}</th>
-            ${generateDateHeaders(courseDate)}
+            <th>电话</th>
+            ${generateDateHeaders(course.date)}
           </tr>
         </thead>
         <tbody>
@@ -743,16 +743,28 @@ async function generateAttendanceSheet(course) {
   }
 }
 
-// 生成日期表头（未来几周）
-function generateDateHeaders(startDate) {
-  // 生成未来4周的日期
+// 生成日期表头（当前周和未来几周）
+function generateDateHeaders(dateStr) {
+  // 生成当前周和未来4周的日期
   let headers = '';
-  const date = new Date(startDate);
+  const weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  const date = new Date(dateStr);
   
+  // 获取当前课程的星期几
+  const currentDay = date.getDay() || 7; // 将周日的0转换为7
+  const weekdayName = weekdays[currentDay - 1];
+  
+  // 添加当前日期
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  headers += `<th>${weekdayName}(${month}.${day})</th>`;
+  
+  // 添加未来四周的日期
   for (let i = 0; i < 4; i++) {
     date.setDate(date.getDate() + 7); // 下一周的同一天
-    const dateStr = formatDate(date);
-    headers += `<th>${dateStr}</th>`;
+    const nextMonth = date.getMonth() + 1;
+    const nextDay = date.getDate();
+    headers += `<th>${weekdayName}(${nextMonth}.${nextDay})</th>`;
   }
   
   return headers;
@@ -761,12 +773,13 @@ function generateDateHeaders(startDate) {
 // 生成学生行
 function generateStudentRows(course) {
   if (!course.studentsList || course.studentsList.length === 0) {
-    return `<tr><td colspan="6" style="text-align: center;">暂无学员</td></tr>`;
+    return `<tr><td colspan="7" style="text-align: center;">暂无学员</td></tr>`;
   }
   
   return course.studentsList.map(student => `
     <tr>
-      <td>${student.name}</td>
+      <td style="white-space: nowrap;">${student.name}</td>
+      <td style="white-space: nowrap;"></td>
       <td></td>
       <td></td>
       <td></td>

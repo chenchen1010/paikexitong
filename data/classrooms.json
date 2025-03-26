@@ -25,7 +25,37 @@
   },
   {
     "id": "c5",
-    "name": "教室1",
+    "name": "大静态教室",
+    "storeId": "s2",
+    "capacity": 48
+  },
+  {
+    "id": "c6",
+    "name": "小静态教室",
+    "storeId": "s2",
+    "capacity": 40
+  },
+  {
+    "id": "c7",
+    "name": "茶道教室",
+    "storeId": "s2",
+    "capacity": 24
+  },
+  {
+    "id": "c8",
+    "name": "古筝教室",
+    "storeId": "s2",
+    "capacity": 20
+  },
+  {
+    "id": "c9",
+    "name": "动态教室1",
+    "storeId": "s2",
+    "capacity": 30
+  },
+  {
+    "id": "c10",
+    "name": "动态教室2",
     "storeId": "s2",
     "capacity": 20
   },

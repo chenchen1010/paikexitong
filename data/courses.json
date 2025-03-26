@@ -1,65 +1,70 @@
 [
   {
+    "id": "course1743028076959-0",
     "name": "书法",
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "id": "course1743026609180",
-    "students": []
-  },
-  {
-    "name": "英语2版",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t1",
     "date": "2025-03-26",
-    "id": "course1743026843092",
-    "students": []
+    "students": [],
+    "studentsList": [
+      {
+        "id": "stu1743028793375-v7465",
+        "name": "陈钟琦",
+        "courses": [
+          "course1743028076959-0"
+        ]
+      },
+      {
+        "id": "stu1743028793375-zk8k8",
+        "name": "田思佳",
+        "courses": [
+          "course1743028076959-0"
+        ]
+      },
+      {
+        "id": "stu1743028793375-4y9z6",
+        "name": "李玟原",
+        "courses": [
+          "course1743028076959-0"
+        ]
+      }
+    ]
   },
   {
-    "id": "course1743027217248-0",
+    "id": "course1743028076959-1",
     "name": "化妆1班",
     "storeId": "s1",
     "classroomId": "c2",
     "teacherId": "t2",
-    "date": "2024-03-26",
+    "date": "2025-03-26",
     "students": []
   },
   {
-    "id": "course1743027217248-1",
+    "id": "course1743028076959-2",
     "name": "化妆2班",
     "storeId": "s1",
     "classroomId": "c3",
     "teacherId": "t2",
-    "date": "2024-03-27",
+    "date": "2025-03-27",
     "students": []
   },
   {
-    "id": "course1743027217248-2",
+    "id": "course1743028076960-3",
     "name": "化妆3班",
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "date": "2024-03-28",
+    "date": "2025-03-28",
     "students": []
   },
   {
-    "id": "course1743027217248-3",
+    "id": "course1743028076960-4",
     "name": "形体",
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "date": "2024-03-27",
-    "students": []
-  },
-  {
-    "id": "course1743027251169-0",
-    "name": "化妆1班",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t2",
-    "date": "2024-03-26",
+    "date": "2025-03-27",
     "students": []
   }
 ]

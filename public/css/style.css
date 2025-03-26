@@ -296,42 +296,60 @@ textarea {
     top: 0;
     width: 100%;
     background: white;
+    padding: 20px;
   }
   
   .attendance-header {
-    text-align: center;
     margin-bottom: 20px;
   }
   
   .attendance-header h1 {
     font-size: 24px;
     margin-bottom: 10px;
+    text-align: center;
   }
   
   .attendance-info {
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    text-align: left;
   }
   
   .attendance-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    table-layout: fixed;
   }
   
   .attendance-table th, .attendance-table td {
     border: 1px solid #000;
     padding: 8px;
     text-align: center;
+    height: 35px;
   }
   
   .attendance-table th {
     background-color: #f2f2f2;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  
+  .attendance-table td:first-child {
+    width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .attendance-table td:nth-child(2) {
+    width: 100px; /* 电话列宽度 */
   }
   
   .attendance-note {
     font-size: 12px;
     margin-top: 20px;
+    text-align: left;
   }
 }
 
