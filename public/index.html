@@ -74,16 +74,8 @@
         </div>
         
         <div class="form-group">
-          <label for="day-select">星期</label>
-          <select id="day-select" required>
-            <option value="1">周一</option>
-            <option value="2">周二</option>
-            <option value="3">周三</option>
-            <option value="4">周四</option>
-            <option value="5">周五</option>
-            <option value="6">周六</option>
-            <option value="7">周日</option>
-          </select>
+          <label for="date-select">日期</label>
+          <input type="date" id="date-select" required>
         </div>
         
         <div class="form-actions">
@@ -114,8 +106,8 @@
       <h2>批量添加课程</h2>
       
       <div class="batch-format-info">
-        <p>格式: 课程名称 门店 教室 教师 星期(1-7)</p>
-        <p>示例: 书法 师大口店 教室1 张老师 3</p>
+        <p>格式: 课程名称 门店 教室 教师 日期</p>
+        <p>示例: 书法 师大口店 教室1 张老师 2024-03-26</p>
       </div>
       
       <textarea id="courses-batch" placeholder="每行输入一个课程信息"></textarea>

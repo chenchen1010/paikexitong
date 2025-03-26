@@ -5,7 +5,7 @@
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "dayOfWeek": 3,
+    "date": "2024-03-26",
     "students": []
   },
   {
@@ -14,7 +14,7 @@
     "storeId": "s1",
     "classroomId": "c2",
     "teacherId": "t2",
-    "dayOfWeek": 3,
+    "date": "2024-03-26",
     "students": []
   },
   {
@@ -23,7 +23,7 @@
     "storeId": "s1",
     "classroomId": "c3",
     "teacherId": "t2",
-    "dayOfWeek": 4,
+    "date": "2024-03-27",
     "students": []
   },
   {
@@ -32,7 +32,7 @@
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "dayOfWeek": 5,
+    "date": "2024-03-28",
     "students": []
   },
   {
@@ -41,7 +41,43 @@
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "dayOfWeek": 4,
+    "date": "2024-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743026310457-0",
+    "name": "书法",
+    "storeId": "s1743026310457-0",
+    "classroomId": "c1743026310457-0",
+    "teacherId": "t1",
+    "date": "2024-03-26",
+    "students": []
+  },
+  {
+    "id": "course1743026586753-0",
+    "name": "书法",
+    "storeId": "s1743026310457-0",
+    "classroomId": "c1743026310457-0",
+    "teacherId": "t1",
+    "date": "2024-03-26",
+    "students": []
+  },
+  {
+    "name": "书法",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-03-25",
+    "id": "course1743026609180",
+    "students": []
+  },
+  {
+    "name": "英语2版",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t1",
+    "date": "2025-03-26",
+    "id": "course1743026843092",
     "students": []
   }
 ]

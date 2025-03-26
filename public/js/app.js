@@ -22,7 +22,7 @@ const courseNameInput = document.getElementById('course-name');
 const storeSelect = document.getElementById('store-select');
 const classroomSelect = document.getElementById('classroom-select');
 const teacherSelect = document.getElementById('teacher-select');
-const daySelect = document.getElementById('day-select');
+const dateSelect = document.getElementById('date-select');
 const saveCourseBtn = document.getElementById('save-course-btn');
 const deleteCourseBtn = document.getElementById('delete-course-btn');
 const modalTitle = document.getElementById('modal-title');
@@ -75,26 +75,68 @@ submitBatchCoursesBtn.addEventListener('click', async () => {
     return;
   }
   
+  console.log('准备发送批量添加课程请求...');
+  console.log('批量文本内容:', batchText);
+  
   try {
+    // 显示请求等待提示
+    submitBatchCoursesBtn.disabled = true;
+    submitBatchCoursesBtn.textContent = '提交中...';
+    
+    console.log('开始发送请求...');
     const response = await fetch('/api/courses/batch', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify({ batchText })
     });
     
-    const result = await response.json();
+    console.log('收到响应:', response.status, response.statusText);
+    
+    // 尝试获取响应文本
+    let responseText = '';
+    try {
+      responseText = await response.text();
+      console.log('响应文本:', responseText);
+    } catch (textError) {
+      console.error('读取响应文本失败:', textError);
+    }
+    
+    let result;
+    try {
+      // 尝试解析JSON
+      result = responseText ? JSON.parse(responseText) : {};
+      console.log('解析后的响应:', result);
+    } catch (parseError) {
+      console.error('解析JSON失败:', parseError);
+      alert(`解析响应失败: ${responseText}`);
+      submitBatchCoursesBtn.disabled = false;
+      submitBatchCoursesBtn.textContent = '提交';
+      return;
+    }
     
     if (response.ok) {
+      console.log('批量添加成功，添加了', result.length, '个课程');
       alert('批量添加课程成功');
       batchCoursesModal.style.display = 'none';
       coursesBatchText.value = '';
       fetchData();
     } else {
-      alert(`批量添加失败: ${result.errors ? result.errors.join('\n') : result.error}`);
+      const errorMsg = result.errors 
+        ? result.errors.join('\n') 
+        : (result.error || response.statusText || '未知错误');
+      console.error('批量添加失败:', errorMsg);
+      alert(`批量添加失败: ${errorMsg}`);
     }
   } catch (error) {
-    console.error('批量添加课程错误:', error);
-    alert('批量添加课程失败，请查看控制台获取详情');
+    console.error('批量添加课程发生错误:', error);
+    alert(`批量添加课程失败: ${error.message}\n请查看控制台获取详情`);
+  } finally {
+    // 恢复按钮状态
+    submitBatchCoursesBtn.disabled = false;
+    submitBatchCoursesBtn.textContent = '提交';
   }
 });
 
@@ -107,7 +149,7 @@ courseForm.addEventListener('submit', async (e) => {
     storeId: storeSelect.value,
     classroomId: classroomSelect.value,
     teacherId: teacherSelect.value,
-    dayOfWeek: parseInt(daySelect.value)
+    date: dateSelect.value
   };
   
   try {
@@ -220,28 +262,82 @@ storeSelect.addEventListener('change', updateClassroomOptions);
 
 // 初始化函数
 async function init() {
-  await fetchData();
-  updateWeekDisplay();
-  updateStoreOptions();
-  updateTeacherOptions();
+  console.log('初始化应用程序...');
+  try {
+    // 确保当前周的日期设置正确
+    currentWeekStart = getWeekStart(new Date());
+    console.log('当前周开始日期:', formatDate(currentWeekStart));
+    
+    await fetchData();
+    console.log('数据获取完成，更新周显示...');
+    updateWeekDisplay();
+    console.log('更新门店选项...');
+    updateStoreOptions();
+    console.log('更新教师选项...');
+    updateTeacherOptions();
+    console.log('初始化完成！');
+  } catch (error) {
+    console.error('初始化失败:', error);
+    alert('初始化应用程序失败，请刷新页面重试');
+  }
 }
 
 // 获取数据
 async function fetchData() {
   try {
+    console.log('开始获取所有数据...');
+    
     // 并行请求所有数据
-    const [storesRes, classroomsRes, teachersRes, coursesRes] = await Promise.all([
-      fetch('/api/stores'),
-      fetch('/api/classrooms'),
-      fetch('/api/teachers'),
-      fetch('/api/courses')
-    ]);
+    console.log('发送请求到 /api/stores');
+    const storesRes = await fetch('/api/stores');
+    console.log('收到门店响应:', storesRes.status, storesRes.statusText);
     
-    stores = await storesRes.json();
-    classrooms = await classroomsRes.json();
-    teachers = await teachersRes.json();
-    courses = await coursesRes.json();
+    console.log('发送请求到 /api/classrooms');
+    const classroomsRes = await fetch('/api/classrooms');
+    console.log('收到教室响应:', classroomsRes.status, classroomsRes.statusText);
     
+    console.log('发送请求到 /api/teachers');
+    const teachersRes = await fetch('/api/teachers');
+    console.log('收到教师响应:', teachersRes.status, teachersRes.statusText);
+    
+    console.log('发送请求到 /api/courses');
+    const coursesRes = await fetch('/api/courses');
+    console.log('收到课程响应:', coursesRes.status, coursesRes.statusText);
+    
+    // 解析响应数据
+    try {
+      stores = await storesRes.json();
+      console.log('门店数据:', stores);
+    } catch (e) {
+      console.error('解析门店数据失败:', e);
+      stores = [];
+    }
+    
+    try {
+      classrooms = await classroomsRes.json();
+      console.log('教室数据:', classrooms);
+    } catch (e) {
+      console.error('解析教室数据失败:', e);
+      classrooms = [];
+    }
+    
+    try {
+      teachers = await teachersRes.json();
+      console.log('教师数据:', teachers);
+    } catch (e) {
+      console.error('解析教师数据失败:', e);
+      teachers = [];
+    }
+    
+    try {
+      courses = await coursesRes.json();
+      console.log('课程数据:', courses);
+    } catch (e) {
+      console.error('解析课程数据失败:', e);
+      courses = [];
+    }
+    
+    console.log('所有数据获取完成，更新课程表...');
     updateSchedule();
   } catch (error) {
     console.error('获取数据错误:', error);
@@ -251,14 +347,25 @@ async function fetchData() {
 
 // 更新课程表
 function updateSchedule() {
+  console.log('更新课程表...');
   updateWeekDisplay();
   
   // 清空课程表
   scheduleGrid.innerHTML = '';
   
+  console.log('当前周开始日期:', formatDate(currentWeekStart));
+  const weekEndDate = new Date(currentWeekStart);
+  weekEndDate.setDate(weekEndDate.getDate() + 6);
+  console.log('当前周结束日期:', formatDate(weekEndDate));
+  
+  console.log('当前门店数量:', stores.length);
+  console.log('当前教室数量:', classrooms.length);
+  console.log('当前课程数量:', courses.length);
+  
   // 为每个门店创建行
   stores.forEach(store => {
     const storeClassrooms = classrooms.filter(c => c.storeId === store.id);
+    console.log(`处理门店: ${store.name}, 教室数量: ${storeClassrooms.length}`);
     
     // 为该门店的每个教室创建行
     storeClassrooms.forEach((classroom, index) => {
@@ -279,7 +386,7 @@ function updateSchedule() {
       // 教室单元格
       const classroomCell = document.createElement('div');
       classroomCell.className = 'classroom-cell';
-      classroomCell.textContent = `${classroom.name}（${classroom.capacity}人）`;
+      classroomCell.textContent = `${classroom.name}（${classroom.capacity || '-'}人）`;
       row.appendChild(classroomCell);
       
       // 星期单元格
@@ -287,12 +394,22 @@ function updateSchedule() {
         const dayCell = document.createElement('div');
         dayCell.className = 'day-cell';
         
-        // 过滤出该门店、教室、星期的所有课程
+        // 计算当前星期几对应的日期
+        const currentDate = new Date(currentWeekStart);
+        currentDate.setDate(currentDate.getDate() + day - 1);
+        const dateStr = formatDate(currentDate);
+        
+        // 给单元格添加日期标识，方便调试
+        dayCell.dataset.date = dateStr;
+        
+        // 过滤出该门店、教室、日期的所有课程
         const dayCourses = courses.filter(course => 
           course.storeId === store.id && 
           course.classroomId === classroom.id && 
-          course.dayOfWeek === day
+          course.date === dateStr
         );
+        
+        console.log(`检查 ${store.name} ${classroom.name} ${dateStr} 的课程: 找到 ${dayCourses.length} 个`);
         
         // 添加课程项
         dayCourses.forEach(course => {
@@ -322,6 +439,7 @@ function updateSchedule() {
           courseItem.appendChild(courseName);
           courseItem.appendChild(studentCount);
           courseItem.dataset.courseId = course.id;
+          courseItem.dataset.date = course.date;
           
           // 双击课程查看详情
           courseItem.addEventListener('dblclick', () => {
@@ -334,10 +452,14 @@ function updateSchedule() {
         // 双击空白区域添加课程
         dayCell.addEventListener('dblclick', (e) => {
           if (e.target === dayCell) {
+            const currentDate = new Date(currentWeekStart);
+            currentDate.setDate(currentDate.getDate() + day - 1);
+            const formattedDate = formatDate(currentDate);
+            console.log(`添加课程在 ${store.name} ${classroom.name} ${formattedDate}`);
             openCourseModal(null, {
               storeId: store.id,
               classroomId: classroom.id,
-              dayOfWeek: day
+              date: formattedDate
             });
           }
         });
@@ -353,6 +475,13 @@ function updateSchedule() {
 // 打开课程模态框
 async function openCourseModal(course = null, defaults = {}) {
   currentCourse = course;
+  
+  console.log('打开课程模态框', course ? '编辑课程' : '添加课程');
+  if (course) {
+    console.log('课程数据:', course);
+  } else if (defaults) {
+    console.log('默认数据:', defaults);
+  }
   
   // 清空学生列表
   studentsList.innerHTML = '';
@@ -370,7 +499,12 @@ async function openCourseModal(course = null, defaults = {}) {
     updateClassroomOptions();
     classroomSelect.value = course.classroomId;
     teacherSelect.value = course.teacherId;
-    daySelect.value = course.dayOfWeek;
+    
+    // 设置日期
+    if (course.date) {
+      dateSelect.value = course.date;
+      console.log('设置课程日期:', course.date);
+    }
     
     // 获取并显示课程的学生
     await fetchCourseStudents(course.id);
@@ -387,8 +521,15 @@ async function openCourseModal(course = null, defaults = {}) {
       }
     }
     
-    if (defaults.dayOfWeek) {
-      daySelect.value = defaults.dayOfWeek;
+    // 设置默认日期
+    if (defaults.date) {
+      dateSelect.value = defaults.date;
+      console.log('设置默认日期:', defaults.date);
+    } else {
+      // 如果没有默认日期，设置为今天
+      const today = new Date();
+      dateSelect.value = formatDate(today);
+      console.log('设置今天日期:', formatDate(today));
     }
   }
   
@@ -466,6 +607,7 @@ function updateWeekDisplay() {
   const startStr = formatDate(currentWeekStart);
   const endStr = formatDate(endDate);
   
+  console.log(`更新周显示: ${startStr} - ${endStr}`);
   currentWeekEl.textContent = `${startStr} - ${endStr}`;
 }
 
