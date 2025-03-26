@@ -1,68 +1,5 @@
 [
   {
-    "id": "course1",
-    "name": "书法",
-    "storeId": "s1",
-    "classroomId": "c1",
-    "teacherId": "t1",
-    "date": "2024-03-26",
-    "students": []
-  },
-  {
-    "id": "course1742973968030-1",
-    "name": "化妆1班",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t2",
-    "date": "2024-03-26",
-    "students": []
-  },
-  {
-    "id": "course1742973968030-2",
-    "name": "化妆2班",
-    "storeId": "s1",
-    "classroomId": "c3",
-    "teacherId": "t2",
-    "date": "2024-03-27",
-    "students": []
-  },
-  {
-    "id": "course1742973968030-3",
-    "name": "化妆3班",
-    "storeId": "s1",
-    "classroomId": "c1",
-    "teacherId": "t1",
-    "date": "2024-03-28",
-    "students": []
-  },
-  {
-    "id": "course1742973968030-4",
-    "name": "形体",
-    "storeId": "s1",
-    "classroomId": "c4",
-    "teacherId": "t1",
-    "date": "2024-03-27",
-    "students": []
-  },
-  {
-    "id": "course1743026310457-0",
-    "name": "书法",
-    "storeId": "s1743026310457-0",
-    "classroomId": "c1743026310457-0",
-    "teacherId": "t1",
-    "date": "2024-03-26",
-    "students": []
-  },
-  {
-    "id": "course1743026586753-0",
-    "name": "书法",
-    "storeId": "s1743026310457-0",
-    "classroomId": "c1743026310457-0",
-    "teacherId": "t1",
-    "date": "2024-03-26",
-    "students": []
-  },
-  {
     "name": "书法",
     "storeId": "s1",
     "classroomId": "c1",
@@ -78,6 +15,51 @@
     "teacherId": "t1",
     "date": "2025-03-26",
     "id": "course1743026843092",
+    "students": []
+  },
+  {
+    "id": "course1743027217248-0",
+    "name": "化妆1班",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t2",
+    "date": "2024-03-26",
+    "students": []
+  },
+  {
+    "id": "course1743027217248-1",
+    "name": "化妆2班",
+    "storeId": "s1",
+    "classroomId": "c3",
+    "teacherId": "t2",
+    "date": "2024-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743027217248-2",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2024-03-28",
+    "students": []
+  },
+  {
+    "id": "course1743027217248-3",
+    "name": "形体",
+    "storeId": "s1",
+    "classroomId": "c4",
+    "teacherId": "t1",
+    "date": "2024-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743027251169-0",
+    "name": "化妆1班",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t2",
+    "date": "2024-03-26",
     "students": []
   }
 ]

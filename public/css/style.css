@@ -87,6 +87,13 @@ button:hover {
   border-right: 1px solid #e0e0e0;
 }
 
+/* 为日期标题设置合适的样式 */
+.day-header {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .schedule-grid {
   display: grid;
   max-height: 70vh;
@@ -257,6 +264,75 @@ textarea {
   padding: 10px;
   border-radius: 6px;
   margin-bottom: 15px;
+}
+
+/* 打印签到表样式 */
+#print-attendance-btn {
+  background-color: #34c759;
+}
+
+#print-attendance-btn:hover {
+  background-color: #28a745;
+}
+
+.attendance-print {
+  display: none;
+}
+
+/* 打印模式下的样式 */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .attendance-print, .attendance-print * {
+    visibility: visible;
+  }
+  
+  .attendance-print {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+  }
+  
+  .attendance-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .attendance-header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .attendance-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .attendance-table th, .attendance-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .attendance-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .attendance-note {
+    font-size: 12px;
+    margin-top: 20px;
+  }
 }
 
 /* 响应式设计 */

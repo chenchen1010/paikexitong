@@ -81,6 +81,7 @@
         <div class="form-actions">
           <button type="submit" id="save-course-btn">保存</button>
           <button type="button" id="delete-course-btn">删除</button>
+          <button type="button" id="print-attendance-btn">打印签到表</button>
         </div>
       </form>
       
@@ -116,6 +117,11 @@
         <button id="submit-batch-courses">提交</button>
       </div>
     </div>
+  </div>
+
+  <!-- 签到表打印区域 -->
+  <div id="attendance-print" class="attendance-print">
+    <!-- 签到表内容将通过JS动态生成 -->
   </div>
 
   <script src="js/app.js"></script>

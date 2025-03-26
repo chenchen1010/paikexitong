@@ -29,6 +29,8 @@ const modalTitle = document.getElementById('modal-title');
 const studentsList = document.getElementById('students-list');
 const studentsBatchText = document.getElementById('students-batch');
 const addStudentsBtn = document.getElementById('add-students-btn');
+const printAttendanceBtn = document.getElementById('print-attendance-btn');
+const attendancePrint = document.getElementById('attendance-print');
 
 // 批量添加课程模态框元素
 const batchCoursesModal = document.getElementById('batch-courses-modal');
@@ -47,6 +49,7 @@ prevWeekBtn.addEventListener('click', () => {
   prevWeek.setDate(prevWeek.getDate() - 7);
   currentWeekStart = getWeekStart(prevWeek);
   updateSchedule();
+  updateHeaderDates();
 });
 
 nextWeekBtn.addEventListener('click', () => {
@@ -54,11 +57,19 @@ nextWeekBtn.addEventListener('click', () => {
   nextWeek.setDate(nextWeek.getDate() + 7);
   currentWeekStart = getWeekStart(nextWeek);
   updateSchedule();
+  updateHeaderDates();
 });
 
 // 添加课程按钮
 addCourseBtn.addEventListener('click', () => {
   openCourseModal();
+});
+
+// 打印签到表按钮
+printAttendanceBtn.addEventListener('click', () => {
+  if (currentCourse) {
+    generateAttendanceSheet(currentCourse);
+  }
 });
 
 // 批量添加课程按钮
@@ -275,6 +286,10 @@ async function init() {
     updateStoreOptions();
     console.log('更新教师选项...');
     updateTeacherOptions();
+    
+    // 更新表头的日期显示
+    updateHeaderDates();
+    
     console.log('初始化完成！');
   } catch (error) {
     console.error('初始化失败:', error);
@@ -574,6 +589,11 @@ async function fetchCourseStudents(courseId) {
         studentsList.appendChild(studentItem);
       });
     }
+    
+    // 保存学生列表用于打印签到表
+    if (currentCourse) {
+      currentCourse.studentsList = students;
+    }
   } catch (error) {
     console.error('获取学员错误:', error);
     studentsList.innerHTML = '<div class="error-message">获取学员失败</div>';
@@ -670,4 +690,104 @@ function formatDate(date) {
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const day = date.getDate().toString().padStart(2, '0');
   return `${year}-${month}-${day}`;
+}
+
+// 生成并打印签到表
+async function generateAttendanceSheet(course) {
+  try {
+    // 获取门店、教室、教师信息
+    const store = stores.find(s => s.id === course.storeId);
+    const classroom = classrooms.find(c => c.id === course.classroomId);
+    const teacher = teachers.find(t => t.id === course.teacherId);
+    
+    // 格式化日期（年月日和星期几）
+    const courseDate = new Date(course.date);
+    const dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'long' };
+    const formattedDate = courseDate.toLocaleDateString('zh-CN', dateOptions);
+    
+    // 创建签到表HTML
+    const html = `
+      <div class="attendance-header">
+        <h1>${course.name}-新青年夜校上课签到表</h1>
+        <div class="attendance-info">上课地点: ${store ? store.name : ''}${classroom ? ' ' + classroom.name : ''}</div>
+        <div class="attendance-info">上课时间: 每周一19:00-20:30</div>
+        <div class="attendance-info">上课须知: 第一节课（前45分钟）为试听时间，同学不满意可自行离开，从原购买渠道申请退学费即可，45分钟后视为对此课程满意，满意的话后续将不再退换补课</div>
+      </div>
+      
+      <table class="attendance-table">
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>${formattedDate}</th>
+            ${generateDateHeaders(courseDate)}
+          </tr>
+        </thead>
+        <tbody>
+          ${generateStudentRows(course)}
+        </tbody>
+      </table>
+      
+      <div class="attendance-note">
+        注：请每节课上课前签到
+      </div>
+    `;
+    
+    // 更新打印区域内容
+    attendancePrint.innerHTML = html;
+    
+    // 打印
+    window.print();
+  } catch (error) {
+    console.error('生成签到表错误:', error);
+    alert('生成签到表失败，请查看控制台获取详情');
+  }
+}
+
+// 生成日期表头（未来几周）
+function generateDateHeaders(startDate) {
+  // 生成未来4周的日期
+  let headers = '';
+  const date = new Date(startDate);
+  
+  for (let i = 0; i < 4; i++) {
+    date.setDate(date.getDate() + 7); // 下一周的同一天
+    const dateStr = formatDate(date);
+    headers += `<th>${dateStr}</th>`;
+  }
+  
+  return headers;
+}
+
+// 生成学生行
+function generateStudentRows(course) {
+  if (!course.studentsList || course.studentsList.length === 0) {
+    return `<tr><td colspan="6" style="text-align: center;">暂无学员</td></tr>`;
+  }
+  
+  return course.studentsList.map(student => `
+    <tr>
+      <td>${student.name}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  `).join('');
+}
+
+// 更新表头日期显示
+function updateHeaderDates() {
+  const dayHeaders = document.querySelectorAll('.day-header');
+  const weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+  
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(currentWeekStart);
+    date.setDate(date.getDate() + i);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    
+    // 格式化为"周几（月.日）"，比如"周一（3.24）"
+    dayHeaders[i].textContent = `${weekdays[i]}（${month}.${day}）`;
+  }
 } 
