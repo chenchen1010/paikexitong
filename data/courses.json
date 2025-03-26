@@ -59,12 +59,225 @@
     "students": []
   },
   {
-    "id": "course1743028076960-4",
+    "id": "course1743030668271-0",
+    "name": "国画",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668271-1",
+    "name": "化妆2班",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668272-2",
     "name": "形体",
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
     "date": "2025-03-27",
+    "students": [],
+    "studentsList": [
+      {
+        "id": "stu1743031139195-t3p9z",
+        "name": "章倩琳",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-yqsz7",
+        "name": "李爱琴",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-xoojs",
+        "name": "彭舒然",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-kod46",
+        "name": "郑水倩",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-mt70j",
+        "name": "梁孟婷",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-jyoro",
+        "name": "宣翡",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-vmxfy",
+        "name": "徐黎媛",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-9sxbb",
+        "name": "蒋尚宏",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-9n6za",
+        "name": "吴宁",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-c8j50",
+        "name": "付瑶",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-n3gzx",
+        "name": "王欣鑫",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-zbo38",
+        "name": "涂祎薇",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-bw3jk",
+        "name": "汪乐～",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-wz9yj",
+        "name": "黄滟媚",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-bk9zv",
+        "name": "祁晓怡",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-54az4",
+        "name": "刘嫱",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      },
+      {
+        "id": "stu1743031139195-x3l8w",
+        "name": "小白",
+        "courses": [
+          "course1743030668272-2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "course1743030668272-3",
+    "name": "八段锦",
+    "storeId": "s2",
+    "classroomId": "c9",
+    "teacherId": "t1",
+    "date": "2025-03-27",
     "students": []
+  },
+  {
+    "id": "course1743030668272-4",
+    "name": "茶艺",
+    "storeId": "s2",
+    "classroomId": "c7",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668272-5",
+    "name": "国画",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668279-6",
+    "name": "形体",
+    "storeId": "s3",
+    "classroomId": "c20",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": [],
+    "studentsList": []
+  },
+  {
+    "id": "course1743030668279-7",
+    "name": "声乐",
+    "storeId": "s3",
+    "classroomId": "c19",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668279-8",
+    "name": "钢琴",
+    "storeId": "s3",
+    "classroomId": "c17",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668279-9",
+    "name": "英语口语",
+    "storeId": "s4",
+    "classroomId": "c11",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": []
+  },
+  {
+    "id": "course1743030668279-10",
+    "name": "Deepseek应用与变现",
+    "storeId": "s4",
+    "classroomId": "c12",
+    "teacherId": "t1",
+    "date": "2025-03-27",
+    "students": [],
+    "studentsList": []
   }
 ]

@@ -63,5 +63,71 @@
     "id": "c1743026310457-0",
     "name": "教室1",
     "storeId": "s1743026310457-0"
+  },
+  {
+    "id": "c11",
+    "name": "b302-1",
+    "storeId": "s4",
+    "capacity": 14
+  },
+  {
+    "id": "c12",
+    "name": "会议室",
+    "storeId": "s4",
+    "capacity": 12
+  },
+  {
+    "id": "c13",
+    "name": "英语教室",
+    "storeId": "s4",
+    "capacity": 15
+  },
+  {
+    "id": "c14",
+    "name": "静态教室1",
+    "storeId": "s3",
+    "capacity": 20
+  },
+  {
+    "id": "c15",
+    "name": "静态教室2",
+    "storeId": "s3",
+    "capacity": 40
+  },
+  {
+    "id": "c16",
+    "name": "静态教室3",
+    "storeId": "s3",
+    "capacity": 15
+  },
+  {
+    "id": "c17",
+    "name": "钢琴教室1",
+    "storeId": "s3",
+    "capacity": 4
+  },
+  {
+    "id": "c18",
+    "name": "钢琴教室2",
+    "storeId": "s3",
+    "capacity": 4
+  },
+  {
+    "id": "c19",
+    "name": "动态教室1",
+    "storeId": "s3",
+    "capacity": 20
+  },
+  {
+    "id": "c20",
+    "name": "动态教室2",
+    "storeId": "s3",
+    "capacity": 12
+  },
+  {
+    "id": "c21",
+    "name": "动态教室3",
+    "storeId": "s3",
+    "capacity": 12
   }
 ]

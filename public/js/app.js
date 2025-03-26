@@ -387,15 +387,10 @@ function updateSchedule() {
       const row = document.createElement('div');
       row.className = 'store-row';
       
-      // 门店单元格（只在第一个教室行显示）
+      // 门店单元格（每行都显示）
       const storeCell = document.createElement('div');
       storeCell.className = 'store-cell';
-      if (index === 0) {
-        storeCell.textContent = store.name;
-        storeCell.style.gridRow = `span ${storeClassrooms.length}`;
-      } else {
-        storeCell.style.display = 'none';
-      }
+      storeCell.textContent = store.name;
       row.appendChild(storeCell);
       
       // 教室单元格
