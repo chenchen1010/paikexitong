@@ -1,0 +1,272 @@
+/* 全局样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #333;
+  font-size: 28px;
+}
+
+button {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0062cc;
+}
+
+/* 周导航 */
+.week-navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#current-week {
+  font-weight: bold;
+  min-width: 120px;
+  text-align: center;
+}
+
+/* 操作按钮区 */
+.actions {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* 排课表格 */
+.schedule-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.schedule-header {
+  display: grid;
+  grid-template-columns: 100px 100px repeat(7, 1fr);
+  background-color: #f2f2f7;
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.store-header, .classroom-header, .day-header {
+  padding: 12px;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
+}
+
+.schedule-grid {
+  display: grid;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.store-row {
+  display: grid;
+  grid-template-columns: 100px 100px repeat(7, 1fr);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.store-cell, .classroom-cell, .day-cell {
+  padding: 10px;
+  border-right: 1px solid #e0e0e0;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-item {
+  background-color: #e3f2fd;
+  border-radius: 6px;
+  padding: 8px;
+  margin: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.course-item:hover {
+  background-color: #bbdefb;
+}
+
+.course-name {
+  font-weight: 500;
+}
+
+.student-count {
+  font-size: 12px;
+  color: #666;
+}
+
+/* 模态框样式 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+/* 表单样式 */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#delete-course-btn {
+  background-color: #ff3b30;
+}
+
+#delete-course-btn:hover {
+  background-color: #d63031;
+}
+
+/* 学员部分 */
+.students-section {
+  margin-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 20px;
+}
+
+.students-list {
+  margin: 15px 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.student-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.student-item:last-child {
+  border-bottom: none;
+}
+
+.remove-student {
+  color: #ff3b30;
+  cursor: pointer;
+}
+
+.add-students {
+  margin-top: 15px;
+}
+
+/* 批量添加信息 */
+.batch-format-info {
+  background-color: #f2f2f7;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .schedule-header, .store-row {
+    grid-template-columns: 80px 80px repeat(7, 1fr);
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+  }
+} 

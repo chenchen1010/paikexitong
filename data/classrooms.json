@@ -1,0 +1,32 @@
+[
+  {
+    "id": "c1",
+    "name": "静态教室1",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c2",
+    "name": "静态教室2",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c3",
+    "name": "静态教室3",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c4",
+    "name": "动态教室1",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c5",
+    "name": "教室1",
+    "storeId": "s2",
+    "capacity": 20
+  }
+] 

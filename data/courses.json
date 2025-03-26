@@ -1,0 +1,47 @@
+[
+  {
+    "id": "course1",
+    "name": "书法",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "dayOfWeek": 3,
+    "students": []
+  },
+  {
+    "id": "course1742973968030-1",
+    "name": "化妆1班",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t2",
+    "dayOfWeek": 3,
+    "students": []
+  },
+  {
+    "id": "course1742973968030-2",
+    "name": "化妆2班",
+    "storeId": "s1",
+    "classroomId": "c3",
+    "teacherId": "t2",
+    "dayOfWeek": 4,
+    "students": []
+  },
+  {
+    "id": "course1742973968030-3",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "dayOfWeek": 5,
+    "students": []
+  },
+  {
+    "id": "course1742973968030-4",
+    "name": "形体",
+    "storeId": "s1",
+    "classroomId": "c4",
+    "teacherId": "t1",
+    "dayOfWeek": 4,
+    "students": []
+  }
+]

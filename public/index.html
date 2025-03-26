@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排课系统</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>排课系统</h1>
+      <div class="week-navigation">
+        <button id="prev-week">上一周</button>
+        <span id="current-week">当前周</span>
+        <button id="next-week">下一周</button>
+      </div>
+    </header>
+
+    <div class="actions">
+      <button id="add-course-btn">添加课程</button>
+      <button id="batch-add-courses-btn">批量添加课程</button>
+    </div>
+
+    <div class="schedule-container">
+      <div class="schedule-header">
+        <div class="store-header">门店</div>
+        <div class="classroom-header">教室</div>
+        <div class="day-header">周一</div>
+        <div class="day-header">周二</div>
+        <div class="day-header">周三</div>
+        <div class="day-header">周四</div>
+        <div class="day-header">周五</div>
+        <div class="day-header">周六</div>
+        <div class="day-header">周日</div>
+      </div>
+      <div id="schedule-grid" class="schedule-grid">
+        <!-- 排课表格将通过JS动态生成 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 课程详情模态框 -->
+  <div id="course-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title">课程详情</h2>
+      
+      <form id="course-form">
+        <div class="form-group">
+          <label for="course-name">课程名称</label>
+          <input type="text" id="course-name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="store-select">门店</label>
+          <select id="store-select" required>
+            <option value="">请选择门店</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="classroom-select">教室</label>
+          <select id="classroom-select" required>
+            <option value="">请选择教室</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="teacher-select">教师</label>
+          <select id="teacher-select" required>
+            <option value="">请选择教师</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="day-select">星期</label>
+          <select id="day-select" required>
+            <option value="1">周一</option>
+            <option value="2">周二</option>
+            <option value="3">周三</option>
+            <option value="4">周四</option>
+            <option value="5">周五</option>
+            <option value="6">周六</option>
+            <option value="7">周日</option>
+          </select>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" id="save-course-btn">保存</button>
+          <button type="button" id="delete-course-btn">删除</button>
+        </div>
+      </form>
+      
+      <div class="students-section">
+        <h3>报名学员</h3>
+        <div class="students-list" id="students-list">
+          <!-- 学员列表将通过JS动态生成 -->
+        </div>
+        
+        <div class="add-students">
+          <h4>添加学员</h4>
+          <textarea id="students-batch" placeholder="每行输入一个学员姓名"></textarea>
+          <button id="add-students-btn">添加</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 批量添加课程模态框 -->
+  <div id="batch-courses-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>批量添加课程</h2>
+      
+      <div class="batch-format-info">
+        <p>格式: 课程名称 门店 教室 教师 星期(1-7)</p>
+        <p>示例: 书法 师大口店 教室1 张老师 3</p>
+      </div>
+      
+      <textarea id="courses-batch" placeholder="每行输入一个课程信息"></textarea>
+      
+      <div class="form-actions">
+        <button id="submit-batch-courses">提交</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html> 
