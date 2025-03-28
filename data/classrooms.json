@@ -129,5 +129,29 @@
     "name": "动态教室3",
     "storeId": "s3",
     "capacity": 12
+  },
+  {
+    "id": "c22",
+    "name": "动态教室4",
+    "storeId": "s3",
+    "capacity": 60
+  },
+  {
+    "id": "c23",
+    "name": "静态教室4",
+    "storeId": "s3",
+    "capacity": 20
+  },
+  {
+    "id": "c24",
+    "name": "静态教室5",
+    "storeId": "s3",
+    "capacity": 10
+  },
+  {
+    "id": "c25",
+    "name": "静态教室6",
+    "storeId": "s3",
+    "capacity": 10
   }
 ]

@@ -1,0 +1,170 @@
+[
+  {
+    "id": "c1",
+    "name": "静态教室1",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c2",
+    "name": "静态教室2",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c3",
+    "name": "静态教室3",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c4",
+    "name": "动态教室1",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
+    "id": "c5",
+    "name": "大静态教室",
+    "storeId": "s2",
+    "capacity": 48
+  },
+  {
+    "id": "c6",
+    "name": "小静态教室",
+    "storeId": "s2",
+    "capacity": 40
+  },
+  {
+    "id": "c7",
+    "name": "茶道教室",
+    "storeId": "s2",
+    "capacity": 24
+  },
+  {
+    "id": "c8",
+    "name": "古筝教室",
+    "storeId": "s2",
+    "capacity": 20
+  },
+  {
+    "id": "c9",
+    "name": "动态教室1",
+    "storeId": "s2",
+    "capacity": 30
+  },
+  {
+    "id": "c10",
+    "name": "动态教室2",
+    "storeId": "s2",
+    "capacity": 20
+  },
+  {
+    "id": "c1743026310457-0",
+    "name": "教室1",
+    "storeId": "s1743026310457-0"
+  },
+  {
+    "id": "c11",
+    "name": "b302-1",
+    "storeId": "s4",
+    "capacity": 14
+  },
+  {
+    "id": "c12",
+    "name": "会议室",
+    "storeId": "s4",
+    "capacity": 12
+  },
+  {
+    "id": "c13",
+    "name": "英语教室",
+    "storeId": "s4",
+    "capacity": 15
+  },
+  {
+    "id": "c14",
+    "name": "静态教室1",
+    "storeId": "s3",
+    "capacity": 20
+  },
+  {
+    "id": "c15",
+    "name": "静态教室2",
+    "storeId": "s3",
+    "capacity": 40
+  },
+  {
+    "id": "c16",
+    "name": "静态教室3",
+    "storeId": "s3",
+    "capacity": 15
+  },
+  {
+    "id": "c17",
+    "name": "钢琴教室1",
+    "storeId": "s3",
+    "capacity": 4
+  },
+  {
+    "id": "c18",
+    "name": "钢琴教室2",
+    "storeId": "s3",
+    "capacity": 4
+  },
+  {
+    "id": "c19",
+    "name": "动态教室1",
+    "storeId": "s3",
+    "capacity": 20
+  },
+  {
+    "id": "c20",
+    "name": "动态教室2",
+    "storeId": "s3",
+    "capacity": 12
+  },
+  {
+    "id": "c21",
+    "name": "动态教室3",
+    "storeId": "s3",
+    "capacity": 12
+  },
+  {
+    "id": "c22",
+    "name": "动态教室1",
+    "storeId": "s5",
+    "capacity": 60
+  },
+  {
+    "id": "c23",
+    "name": "静态教室1",
+    "storeId": "s5",
+    "capacity": 10
+  },
+  {
+    "id": "c24",
+    "name": "静态教室2",
+    "storeId": "s5",
+    "capacity": 10
+  },
+  {
+    "id": "c25",
+    "name": "静态教室1",
+    "storeId": "s6",
+    "capacity": 100
+  },
+  {
+    "id": "c26",
+    "name": "大静态教室",
+    "storeId": "s7",
+    "capacity": 40
+  },
+  {
+    "id": "c27",
+    "name": "小静态教室",
+    "storeId": "s7",
+    "capacity": 10
+  }
+  
+]
