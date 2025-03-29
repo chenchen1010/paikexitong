@@ -574,9 +574,7 @@ async function fetchCourseStudents(courseId) {
         
         // 点击移除学生
         removeBtn.addEventListener('click', async () => {
-          if (confirm(`确定要移除学员 ${student.name} 吗？`)) {
-            await removeStudentFromCourse(courseId, student.id);
-          }
+          await removeStudentFromCourse(courseId, student.id);
         });
         
         studentItem.appendChild(studentName);
@@ -721,10 +719,6 @@ async function generateAttendanceSheet(course) {
           ${generateStudentRows(course)}
         </tbody>
       </table>
-      
-      <div class="attendance-note">
-        注：请每节课上课前签到
-      </div>
     `;
     
     // 更新打印区域内容
@@ -767,21 +761,40 @@ function generateDateHeaders(dateStr) {
 
 // 生成学生行
 function generateStudentRows(course) {
+  let rows = '';
+  
   if (!course.studentsList || course.studentsList.length === 0) {
-    return `<tr><td colspan="7" style="text-align: center;">暂无学员</td></tr>`;
+    rows = `<tr><td colspan="7" style="text-align: center;">暂无学员</td></tr>`;
+  } else {
+    rows = course.studentsList.map(student => `
+      <tr style="height: 35px;">
+        <td style="white-space: nowrap; height: 35px;">${student.name}</td>
+        <td style="white-space: nowrap; height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+      </tr>
+    `).join('');
   }
   
-  return course.studentsList.map(student => `
-    <tr>
-      <td style="white-space: nowrap;">${student.name}</td>
-      <td style="white-space: nowrap;"></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  `).join('');
+  // 固定添加10行空白行
+  for (let i = 0; i < 10; i++) {
+    rows += `
+      <tr style="height: 35px;">
+        <td style="white-space: nowrap; height: 35px;"></td>
+        <td style="white-space: nowrap; height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+        <td style="height: 35px;"></td>
+      </tr>
+    `;
+  }
+  
+  return rows;
 }
 
 // 更新表头日期显示
