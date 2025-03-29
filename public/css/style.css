@@ -63,6 +63,47 @@ button:hover {
   margin-bottom: 20px;
   display: flex;
   gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.filter-container select, 
+.filter-container input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  min-width: 150px;
+  height: auto;
+}
+
+.filter-container input#course-search {
+  min-width: 200px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#search-btn {
+  padding: 8px 15px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#search-btn:hover {
+  background-color: #0062cc;
 }
 
 /* 排课表格 */
@@ -141,6 +182,23 @@ button:hover {
 .student-count {
   font-size: 12px;
   color: #666;
+}
+
+.search-highlight {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-highlight:hover {
+  background-color: #c8e6c9;
+}
+
+.highlight-text {
+  background-color: #ffeb3b;
+  font-weight: bold;
+  padding: 0 2px;
+  border-radius: 2px;
 }
 
 /* 模态框样式 */

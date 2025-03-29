@@ -14,6 +14,9 @@ const prevWeekBtn = document.getElementById('prev-week');
 const nextWeekBtn = document.getElementById('next-week');
 const addCourseBtn = document.getElementById('add-course-btn');
 const batchAddCoursesBtn = document.getElementById('batch-add-courses-btn');
+const storeFilterSelect = document.getElementById('store-filter');
+const courseSearchInput = document.getElementById('course-search');
+const searchBtn = document.getElementById('search-btn');
 
 // 课程模态框元素
 const courseModal = document.getElementById('course-modal');
@@ -39,6 +42,10 @@ const submitBatchCoursesBtn = document.getElementById('submit-batch-courses');
 
 // 模态框关闭按钮
 const closeButtons = document.querySelectorAll('.close');
+
+// 筛选相关变量
+let selectedStoreIds = ['all']; // 默认选中"全部门店"
+let courseSearchText = ''; // 课程搜索文本
 
 // 初始化应用
 document.addEventListener('DOMContentLoaded', init);
@@ -271,6 +278,42 @@ window.addEventListener('click', (e) => {
 // 门店选择变化时更新教室选项
 storeSelect.addEventListener('change', updateClassroomOptions);
 
+// 门店筛选变化时更新课程表格
+storeFilterSelect.addEventListener('change', function() {
+  // 获取选中的选项值
+  const selectedValue = this.value;
+  
+  // 更新选中的门店ID数组
+  selectedStoreIds = [selectedValue];
+  
+  console.log('选中的门店ID:', selectedValue);
+  updateSchedule();
+});
+
+// 搜索按钮点击事件
+searchBtn.addEventListener('click', function() {
+  courseSearchText = courseSearchInput.value.trim();
+  console.log('搜索课程:', courseSearchText);
+  updateSchedule();
+});
+
+// 搜索框回车事件
+courseSearchInput.addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') {
+    courseSearchText = this.value.trim();
+    console.log('搜索课程:', courseSearchText);
+    updateSchedule();
+  }
+});
+
+// 清除搜索
+courseSearchInput.addEventListener('input', function() {
+  if (this.value.trim() === '' && courseSearchText !== '') {
+    courseSearchText = '';
+    updateSchedule();
+  }
+});
+
 // 初始化函数
 async function init() {
   console.log('初始化应用程序...');
@@ -377,13 +420,67 @@ function updateSchedule() {
   console.log('当前教室数量:', classrooms.length);
   console.log('当前课程数量:', courses.length);
   
+  // 根据搜索文本筛选课程
+  let searchMatchingCourses = [];
+  if (courseSearchText) {
+    searchMatchingCourses = courses.filter(course => {
+      const courseName = course.name ? course.name.toLowerCase() : '';
+      const searchText = courseSearchText.toLowerCase();
+      const isMatch = courseName.includes(searchText);
+      console.log(`检查课程 "${course.name}" 是否匹配 "${courseSearchText}": ${isMatch}`);
+      return isMatch;
+    });
+    console.log(`根据搜索文本 "${courseSearchText}" 筛选课程，匹配 ${searchMatchingCourses.length} 个课程`);
+  }
+  
+  // 筛选要显示的门店
+  let storesToDisplay = stores;
+  if (!selectedStoreIds.includes('all')) {
+    storesToDisplay = stores.filter(store => selectedStoreIds.includes(store.id));
+    console.log(`已筛选门店，显示 ${storesToDisplay.length} 个门店`);
+  }
+  
   // 为每个门店创建行
-  stores.forEach(store => {
+  storesToDisplay.forEach(store => {
     const storeClassrooms = classrooms.filter(c => c.storeId === store.id);
     console.log(`处理门店: ${store.name}, 教室数量: ${storeClassrooms.length}`);
     
+    // 检查是否有匹配的课程在这个门店
+    if (courseSearchText) {
+      const matchingStoreCoursesCount = searchMatchingCourses.filter(course => course.storeId === store.id).length;
+      if (matchingStoreCoursesCount === 0) {
+        console.log(`门店 ${store.name} 没有匹配的课程，跳过`);
+        return; // 跳过没有匹配课程的门店
+      } else {
+        console.log(`门店 ${store.name} 有 ${matchingStoreCoursesCount} 个匹配的课程`);
+      }
+    }
+    
     // 为该门店的每个教室创建行
-    storeClassrooms.forEach((classroom, index) => {
+    storeClassrooms.forEach(classroom => {
+      // 如果有搜索文本，检查该教室是否有匹配的课程
+      if (courseSearchText) {
+        // 查找该教室一周内的所有课程中，是否有匹配搜索文本的课程
+        const classroomCourses = courses.filter(course => 
+          course.storeId === store.id && 
+          course.classroomId === classroom.id
+        );
+        
+        // 检查该教室是否有匹配课程
+        const hasMatchingCourse = classroomCourses.some(course => 
+          course.name && 
+          course.name.toLowerCase().includes(courseSearchText.toLowerCase())
+        );
+        
+        // 如果该教室没有匹配的课程，跳过这个教室
+        if (!hasMatchingCourse) {
+          console.log(`教室 ${classroom.name} 没有匹配的课程，跳过`);
+          return; // 跳过这个教室
+        } else {
+          console.log(`教室 ${classroom.name} 有匹配的课程，显示`);
+        }
+      }
+      
       const row = document.createElement('div');
       row.className = 'store-row';
       
@@ -412,8 +509,8 @@ function updateSchedule() {
         // 给单元格添加日期标识，方便调试
         dayCell.dataset.date = dateStr;
         
-        // 过滤出该门店、教室、日期的所有课程
-        const dayCourses = courses.filter(course => 
+        // 获取该单元格对应的所有课程（不进行搜索过滤）
+        let dayCourses = courses.filter(course => 
           course.storeId === store.id && 
           course.classroomId === classroom.id && 
           course.date === dateStr
@@ -426,10 +523,33 @@ function updateSchedule() {
           const courseItem = document.createElement('div');
           courseItem.className = 'course-item';
           
+          // 如果匹配搜索文本，添加高亮样式
+          const isMatching = courseSearchText && course.name && 
+            course.name.toLowerCase().includes(courseSearchText.toLowerCase());
+          
+          if (isMatching) {
+            courseItem.classList.add('search-highlight');
+          }
+          
           // 创建课程名称元素
           const courseName = document.createElement('div');
           courseName.className = 'course-name';
-          courseName.textContent = course.name;
+          
+          // 如果存在搜索文本且课程名称匹配，高亮显示匹配的部分
+          if (isMatching) {
+            try {
+              // 使用正则表达式转义特殊字符
+              const escapedSearchText = courseSearchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              const regex = new RegExp(`(${escapedSearchText})`, 'gi');
+              courseName.innerHTML = course.name.replace(regex, '<span class="highlight-text">$1</span>');
+              console.log(`高亮显示课程 "${course.name}" 中的 "${courseSearchText}"`);
+            } catch (e) {
+              console.error(`高亮显示错误:`, e);
+              courseName.textContent = course.name;
+            }
+          } else {
+            courseName.textContent = course.name || '';
+          }
           
           // 创建学员人数元素
           const studentCount = document.createElement('div');
@@ -633,6 +753,22 @@ function updateStoreOptions() {
     option.value = store.id;
     option.textContent = store.name;
     storeSelect.appendChild(option);
+  });
+  
+  // 更新筛选门店的下拉框
+  updateStoreFilterOptions();
+}
+
+// 更新门店筛选选项
+function updateStoreFilterOptions() {
+  // 保留"全部门店"选项
+  storeFilterSelect.innerHTML = '<option value="all">全部门店</option>';
+  
+  stores.forEach(store => {
+    const option = document.createElement('option');
+    option.value = store.id;
+    option.textContent = store.name;
+    storeFilterSelect.appendChild(option);
   });
 }
 
