@@ -239,6 +239,22 @@ button:hover {
   border-top: 1px solid #eee;
 }
 
+/* 原始课程链接 */
+.original-course-link {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.view-original-course {
+  color: #007aff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.view-original-course:hover {
+  color: #0062cc;
+}
+
 /* 模态框样式 */
 .modal {
   display: none;

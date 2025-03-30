@@ -690,22 +690,47 @@ async function openCourseModal(course = null, defaults = {}) {
   // 确认开课按钮的显示状态
   confirmCourseBtn.style.display = 'block';
   
-  // 如果是占位课程，则隐藏确认开课按钮，并加载原始课程数据
+  // 处理占位课程
   if (course && course.isPlaceholder && course.parentCourseId) {
+    // 占位课程不能确认开课
     confirmCourseBtn.style.display = 'none';
     
-    try {
-      const response = await fetch(`/api/courses/${course.parentCourseId}`);
-      if (response.ok) {
-        const parentCourse = await response.json();
-        // 使用原始课程的数据，但保留当前的日期
-        const courseDate = course.date;
-        course = { ...parentCourse, date: courseDate };
-        currentCourse = course;
-      }
-    } catch (error) {
-      console.error('获取原始课程数据错误:', error);
+    // 添加一个查看原始课程的链接
+    const dateGroup = dateSelect.closest('.form-group');
+    
+    // 移除已有的原始课程链接（如果有）
+    const existingLink = document.querySelector('.original-course-link');
+    if (existingLink) {
+      existingLink.remove();
     }
+    
+    // 创建原始课程链接
+    const originalCourseLink = document.createElement('div');
+    originalCourseLink.className = 'original-course-link';
+    originalCourseLink.innerHTML = `<a href="#" class="view-original-course">查看原始课程</a>`;
+    
+    // 点击链接时打开原始课程
+    originalCourseLink.querySelector('.view-original-course').addEventListener('click', async (e) => {
+      e.preventDefault();
+      
+      try {
+        const response = await fetch(`/api/courses/${course.parentCourseId}`);
+        if (response.ok) {
+          const parentCourse = await response.json();
+          // 关闭当前模态框
+          courseModal.style.display = 'none';
+          // 打开原始课程的模态框
+          setTimeout(() => openCourseModal(parentCourse), 100);
+        } else {
+          alert('获取原始课程失败');
+        }
+      } catch (error) {
+        console.error('获取原始课程数据错误:', error);
+        alert('获取原始课程失败，请查看控制台获取详情');
+      }
+    });
+    
+    dateGroup.appendChild(originalCourseLink);
   }
   
   // 填充表单
