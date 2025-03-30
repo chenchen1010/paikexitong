@@ -1284,6 +1284,18 @@ async function fetchCourseAttendanceRecords(courseId) {
     const response = await fetch(`/api/courses/${courseId}/attendance`);
     const records = await response.json();
     
+    // 获取当前课程信息，确保有正确的课程名称
+    let courseName = '';
+    try {
+      const courseResponse = await fetch(`/api/courses/${courseId}`);
+      if (courseResponse.ok) {
+        const courseData = await courseResponse.json();
+        courseName = courseData.name || '';
+      }
+    } catch (courseError) {
+      console.error('获取课程信息错误:', courseError);
+    }
+    
     // 清空记录列表
     recordsList.innerHTML = '';
     
@@ -1313,10 +1325,10 @@ async function fetchCourseAttendanceRecords(courseId) {
         // 格式化文件名和日期
         const fileExt = record.fileName.split('.').pop().toLowerCase();
         const iconType = fileExt === 'pdf' ? 'pdf' : 'image';
-        const fileIcon = iconType === 'pdf' 
-          ? '<i class="file-icon pdf-icon">📄</i>' 
-          : '<i class="file-icon image-icon">📷</i>';
-          
+        const fileIcon = iconType === 'pdf' ? '<i class="file-icon pdf-icon">📄</i>' : 
+                          iconType === 'image' ? '<i class="file-icon image-icon">📷</i>' : 
+                          '<i class="file-icon">📎</i>';
+        
         // 格式化上传日期
         const uploadDate = new Date(record.uploadDate);
         const formattedDate = uploadDate.toLocaleString('zh-CN', {
@@ -1329,21 +1341,12 @@ async function fetchCourseAttendanceRecords(courseId) {
         
         // 处理长文件名
         let displayFileName = record.fileName;
-        
-        // 如果有课程名和进度信息，使用更友好的显示方式
-        if (record.courseName && record.currentWeek && record.totalWeeks) {
-          displayFileName = `${record.courseName} (第${record.currentWeek}/${record.totalWeeks}周)`;
-        } else {
-          // 否则截断过长的文件名
-          const maxFileNameLength = 25;
-          
-          if (displayFileName.length > maxFileNameLength) {
-            const nameParts = displayFileName.split('.');
-            const extension = nameParts.pop();
-            const baseName = nameParts.join('.');
-            displayFileName = baseName.substring(0, maxFileNameLength - extension.length - 3) + '...' + '.' + extension;
-          }
-        }
+        const courseDate = new Date(record.recordDate);
+        const courseDateStr = formatDate(courseDate);
+
+        // 使用课程名和日期显示
+        const displayCourseName = record.courseName || courseName || '课程';
+        displayFileName = `${displayCourseName} (${courseDateStr})`;
         
         // 创建表格行
         const row = document.createElement('tr');

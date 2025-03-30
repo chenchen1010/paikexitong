@@ -657,15 +657,18 @@ app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) 
       return res.status(404).json({ error: '课程未找到' });
     }
     
-    // 生成规范的文件名：课程名+进度（当前周/总周）
+    // 确保课程名称存在且有效
+    const courseName = course.name || '未命名课程';
+    
+    // 生成规范的文件名：课程名+课程日期+签到表
     const ext = path.extname(req.file.originalname);
-    const currentWeek = course.currentWeek || 1; 
-    const totalWeeks = course.totalWeeks || 1;
-    const courseDate = new Date(course.date);
+    
+    // 使用课程日期或提供的日期
+    const courseDate = date ? new Date(date) : new Date(course.date);
     const formattedDate = formatDate(courseDate).replace(/-/g, '');
     
-    // 新的文件名格式：课程名_进度(第X周共Y周)_日期
-    const newFileName = `${course.name}_第${currentWeek}周共${totalWeeks}周_${formattedDate}${ext}`;
+    // 新的文件名格式：课程名称_日期_签到表.扩展名
+    const newFileName = `${courseName}_${formattedDate}_签到表${ext}`;
     const newFilePath = path.join(path.dirname(req.file.path), newFileName);
     
     // 重命名文件
@@ -693,9 +696,9 @@ app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) 
       uploadDate: new Date().toISOString(),
       recordDate: date || course.date, // 使用提供的日期或默认使用课程日期
       comment: comment || '',
-      courseName: course.name,
-      currentWeek: currentWeek,
-      totalWeeks: totalWeeks
+      courseName: courseName, // 确保存储有效的课程名称
+      currentWeek: course.currentWeek || 1,
+      totalWeeks: course.totalWeeks || 1
     };
     
     // 添加到签到记录
