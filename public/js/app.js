@@ -1401,9 +1401,7 @@ async function fetchCourseAttendanceRecords(courseId) {
         deleteBtn.className = 'action-btn delete-btn';
         deleteBtn.innerHTML = '<span class="btn-icon">🗑️</span> 删除';
         deleteBtn.addEventListener('click', async () => {
-          if (confirm('确定要删除此签到记录吗？')) {
-            await deleteAttendanceRecord(courseId, record.id);
-          }
+          await deleteAttendanceRecord(courseId, record.id);
         });
         
         actionsCell.appendChild(viewBtn);
@@ -1741,8 +1739,6 @@ async function uploadAttendanceFile(courseId, file) {
       
       // 重新获取签到记录
       fetchCourseAttendanceRecords(courseId);
-      
-      alert('签到表上传成功');
     } else {
       let errorMsg = '上传失败';
       try {

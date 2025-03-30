@@ -65,20 +65,5 @@
     "courseName": "手机摄影",
     "currentWeek": 1,
     "totalWeeks": 1
-  },
-  {
-    "id": "attendance-1743342974501",
-    "courseId": "course1743055930943-2",
-    "filePath": "/Users/burning/排课最简单/uploads/英语口语_20250328_签到表_1743342974501.jpeg",
-    "fileName": "英语口语_20250328_签到表_1743342974501.jpeg",
-    "originalFileName": "ç¬¬8é¢_æ @å¾®ä¿¡_20250120_7590662373723_3.jpeg",
-    "mimeType": "image/jpeg",
-    "fileSize": 277669,
-    "uploadDate": "2025-03-30T13:56:14.502Z",
-    "recordDate": "2025-03-28",
-    "comment": "",
-    "courseName": "英语口语",
-    "currentWeek": 1,
-    "totalWeeks": 1
   }
 ]
