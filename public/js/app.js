@@ -1326,8 +1326,8 @@ async function fetchCourseAttendanceRecords(courseId) {
         const fileExt = record.fileName.split('.').pop().toLowerCase();
         const iconType = fileExt === 'pdf' ? 'pdf' : 'image';
         const fileIcon = iconType === 'pdf' ? '<i class="file-icon pdf-icon">📄</i>' : 
-                          iconType === 'image' ? '<i class="file-icon image-icon">📷</i>' : 
-                          '<i class="file-icon">📎</i>';
+                           iconType === 'image' ? '<i class="file-icon image-icon">📷</i>' : 
+                           '<i class="file-icon">📎</i>';
         
         // 格式化上传日期
         const uploadDate = new Date(record.uploadDate);
@@ -1340,13 +1340,12 @@ async function fetchCourseAttendanceRecords(courseId) {
         });
         
         // 处理长文件名
-        let displayFileName = record.fileName;
         const courseDate = new Date(record.recordDate);
         const courseDateStr = formatDate(courseDate);
 
-        // 使用课程名和日期显示
+        // 使用课程名和日期显示，保持界面简洁不显示时间戳
         const displayCourseName = record.courseName || courseName || '课程';
-        displayFileName = `${displayCourseName} (${courseDateStr})`;
+        const displayFileName = `${displayCourseName} (${courseDateStr})`;
         
         // 创建表格行
         const row = document.createElement('tr');
@@ -1357,14 +1356,17 @@ async function fetchCourseAttendanceRecords(courseId) {
         previewCell.className = 'preview-cell';
         
         const thumbnail = document.createElement('img');
+        thumbnail.className = 'record-thumbnail';
+        
         if (record.mimeType.startsWith('image/')) {
+          // 使用完整文件路径，不再需要添加额外的时间戳，因为文件名已经唯一
           thumbnail.src = record.filePath;
           thumbnail.setAttribute('data-fullsize', record.filePath);
           thumbnail.onclick = () => window.open(record.filePath, '_blank');
         } else {
           thumbnail.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path fill="%23999" d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" /></svg>';
         }
-        thumbnail.className = 'record-thumbnail';
+        
         previewCell.appendChild(thumbnail);
         
         // 信息列

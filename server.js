@@ -667,8 +667,11 @@ app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) 
     const courseDate = date ? new Date(date) : new Date(course.date);
     const formattedDate = formatDate(courseDate).replace(/-/g, '');
     
-    // 新的文件名格式：课程名称_日期_签到表.扩展名
-    const newFileName = `${courseName}_${formattedDate}_签到表${ext}`;
+    // 添加时间戳防止文件名重复导致覆盖
+    const timestamp = Date.now();
+    
+    // 新的文件名格式：课程名称_日期_签到表_时间戳.扩展名
+    const newFileName = `${courseName}_${formattedDate}_签到表_${timestamp}${ext}`;
     const newFilePath = path.join(path.dirname(req.file.path), newFileName);
     
     // 重命名文件
@@ -686,7 +689,7 @@ app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) 
     
     // 创建新的签到记录
     const newRecord = {
-      id: `attendance-${Date.now()}`,
+      id: `attendance-${timestamp}`,
       courseId,
       filePath: req.file.path.replace(/\\/g, '/'), // 统一路径分隔符
       fileName: newFileName, // 使用新的规范文件名
