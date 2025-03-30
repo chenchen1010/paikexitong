@@ -700,6 +700,18 @@ async function openCourseModal(course = null, defaults = {}) {
   // 确认开课按钮的显示状态
   confirmCourseBtn.style.display = 'block';
   
+  // 移除已有的原始课程链接（如果有）
+  const existingLink = document.querySelector('.original-course-link');
+  if (existingLink) {
+    existingLink.remove();
+  }
+  
+  // 移除已有的周次信息（如果有）
+  const existingWeekInfo = document.querySelector('.week-info');
+  if (existingWeekInfo) {
+    existingWeekInfo.remove();
+  }
+  
   // 处理占位课程
   if (course && course.isPlaceholder && course.parentCourseId) {
     // 占位课程不能确认开课
@@ -707,12 +719,6 @@ async function openCourseModal(course = null, defaults = {}) {
     
     // 添加一个查看原始课程的链接
     const dateGroup = dateSelect.closest('.form-group');
-    
-    // 移除已有的原始课程链接（如果有）
-    const existingLink = document.querySelector('.original-course-link');
-    if (existingLink) {
-      existingLink.remove();
-    }
     
     // 创建原始课程链接
     const originalCourseLink = document.createElement('div');
@@ -741,6 +747,15 @@ async function openCourseModal(course = null, defaults = {}) {
     });
     
     dateGroup.appendChild(originalCourseLink);
+    
+    // 显示周次信息
+    if (course.totalWeeks && course.currentWeek) {
+      const weekInfo = document.createElement('div');
+      weekInfo.className = 'week-info';
+      weekInfo.innerHTML = `<strong>课程进度: </strong>第${course.currentWeek}周 / 共${course.totalWeeks}周`;
+      
+      dateGroup.appendChild(weekInfo);
+    }
   }
   
   // 填充表单
@@ -755,19 +770,6 @@ async function openCourseModal(course = null, defaults = {}) {
     if (course.date) {
       dateSelect.value = course.date;
       console.log('设置课程日期:', course.date);
-    }
-    
-    // 如果课程已确认开课，显示周次信息
-    if (course.totalWeeks && course.currentWeek) {
-      const weekInfo = document.createElement('div');
-      weekInfo.className = 'week-info';
-      weekInfo.innerHTML = `<strong>课程进度: </strong>第${course.currentWeek}周 / 共${course.totalWeeks}周`;
-      
-      const dateGroup = dateSelect.closest('.form-group');
-      if (dateGroup.querySelector('.week-info')) {
-        dateGroup.querySelector('.week-info').remove();
-      }
-      dateGroup.appendChild(weekInfo);
     }
     
     // 获取并显示课程的学生

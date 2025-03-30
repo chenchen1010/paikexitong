@@ -222,7 +222,7 @@
     "name": "化妆2班",
     "storeId": "s1",
     "classroomId": "c3",
-    "teacherId": "t2",
+    "teacherId": "t1",
     "date": "2025-03-27",
     "studentsList": [
       {
@@ -941,7 +941,7 @@
     "name": "Deepseek应用与变现",
     "storeId": "s4",
     "classroomId": "c12",
-    "teacherId": "t1",
+    "teacherId": "teacher1743300545312",
     "date": "2025-03-27",
     "studentsList": [
       {
@@ -976,7 +976,8 @@
         "id": "stu1743032289690-63d71",
         "name": "杨易",
         "courses": [
-          "course1743030668279-10"
+          "course1743030668279-10",
+          "course1743062779833-1"
         ]
       },
       {
@@ -1848,9 +1849,10 @@
     "name": "Deepseek应用与变现",
     "storeId": "s2",
     "classroomId": "c5",
-    "teacherId": "t1",
+    "teacherId": "teacher1743300545312",
     "date": "2025-03-28",
-    "students": []
+    "students": [],
+    "studentsList": []
   },
   {
     "id": "course1743062779832-0",
@@ -2411,9 +2413,10 @@
     "name": "Deepseek应用与变现1班",
     "storeId": "s3",
     "classroomId": "c16",
-    "teacherId": "t1",
+    "teacherId": "teacher1743300545312",
     "date": "2025-03-25",
-    "students": []
+    "students": [],
+    "studentsList": []
   },
   {
     "id": "course1743062801234-3",
@@ -2529,9 +2532,10 @@
     "name": "Deepseek应用与变现",
     "storeId": "s2",
     "classroomId": "c5",
-    "teacherId": "t1",
+    "teacherId": "teacher1743300545312",
     "date": "2025-03-26",
-    "students": []
+    "students": [],
+    "studentsList": []
   },
   {
     "id": "course1743062801235-5",
@@ -2953,6 +2957,54 @@
     "date": "2025-04-25",
     "isPlaceholder": true,
     "parentCourseId": "course1743297844082",
+    "currentWeek": 5,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743300811865-placeholder-1-zwzxk",
+    "name": "声乐",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t1",
+    "date": "2025-03-31",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779833-1",
+    "currentWeek": 2,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743300811866-placeholder-2-mcjga",
+    "name": "声乐",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t1",
+    "date": "2025-04-07",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779833-1",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743300811866-placeholder-3-6hsb7",
+    "name": "声乐",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t1",
+    "date": "2025-04-14",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779833-1",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743300811866-placeholder-4-9kz8g",
+    "name": "声乐",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "t1",
+    "date": "2025-04-21",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779833-1",
     "currentWeek": 5,
     "totalWeeks": 5
   }
