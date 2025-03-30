@@ -17,9 +17,10 @@ const storage = multer.diskStorage({
     cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
-    // 生成唯一文件名
+    // 先使用临时文件名
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     const ext = path.extname(file.originalname);
+    // 课程ID通过req.params.courseId获取，稍后在API处理中重命名
     cb(null, 'attendance-' + uniqueSuffix + ext);
   }
 });
@@ -656,6 +657,27 @@ app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) 
       return res.status(404).json({ error: '课程未找到' });
     }
     
+    // 生成规范的文件名：课程名+进度（当前周/总周）
+    const ext = path.extname(req.file.originalname);
+    const currentWeek = course.currentWeek || 1; 
+    const totalWeeks = course.totalWeeks || 1;
+    const courseDate = new Date(course.date);
+    const formattedDate = formatDate(courseDate).replace(/-/g, '');
+    
+    // 新的文件名格式：课程名_进度(第X周共Y周)_日期
+    const newFileName = `${course.name}_第${currentWeek}周共${totalWeeks}周_${formattedDate}${ext}`;
+    const newFilePath = path.join(path.dirname(req.file.path), newFileName);
+    
+    // 重命名文件
+    try {
+      fs.renameSync(req.file.path, newFilePath);
+      req.file.path = newFilePath;
+      req.file.filename = newFileName;
+    } catch (renameError) {
+      console.error('重命名文件失败:', renameError);
+      // 继续使用原文件名
+    }
+    
     // 获取签到记录
     let attendanceRecords = readJSONFile(attendanceRecordsFile);
     
@@ -664,12 +686,16 @@ app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) 
       id: `attendance-${Date.now()}`,
       courseId,
       filePath: req.file.path.replace(/\\/g, '/'), // 统一路径分隔符
-      fileName: req.file.originalname,
+      fileName: newFileName, // 使用新的规范文件名
+      originalFileName: req.file.originalname, // 保留原始文件名
       mimeType: req.file.mimetype,
       fileSize: req.file.size,
       uploadDate: new Date().toISOString(),
       recordDate: date || course.date, // 使用提供的日期或默认使用课程日期
       comment: comment || '',
+      courseName: course.name,
+      currentWeek: currentWeek,
+      totalWeeks: totalWeeks
     };
     
     // 添加到签到记录

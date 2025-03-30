@@ -797,53 +797,182 @@ textarea {
   padding: 10px;
 }
 
-.record-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
+/* 签到记录表格样式 */
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.records-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+}
+
+.record-row {
   border-bottom: 1px solid #eee;
   transition: background-color 0.2s;
 }
 
-.record-item:last-child {
+.record-row:last-child {
   border-bottom: none;
 }
 
-.record-item:hover {
-  background-color: #f5f5f5;
+.record-row:hover {
+  background-color: #f9f9f9;
+}
+
+.preview-cell {
+  padding: 8px;
+  width: 70px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.info-cell {
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.actions-cell {
+  padding: 8px;
+  width: 120px;
+  text-align: right;
+  vertical-align: middle;
 }
 
 .record-thumbnail {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 4px;
   object-fit: cover;
   border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.record-info {
-  flex: 1;
+.record-thumbnail:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .record-name {
   font-weight: 500;
   margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.file-icon {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.pdf-icon {
+  color: #e74c3c;
+}
+
+.image-icon {
+  color: #3498db;
 }
 
 .record-date {
   font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.record-size {
+  font-size: 12px;
   color: #999;
 }
 
-.record-actions {
-  display: flex;
-  gap: 5px;
+.action-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
 }
 
-.record-actions button {
-  padding: 5px 8px;
-  font-size: 12px;
+.btn-icon {
+  margin-right: 3px;
+  font-size: 11px;
+}
+
+.view-btn:hover {
+  background-color: #e3f2fd;
+  border-color: #90caf9;
+}
+
+.copy-btn:hover {
+  background-color: #e8f5e9;
+  border-color: #a5d6a7;
+}
+
+.delete-btn {
+  color: #e53935;
+}
+
+.delete-btn:hover {
+  background-color: #ffebee;
+  border-color: #ef9a9a;
+}
+
+/* 提示消息样式 */
+.toast {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.loading-toast {
+  background-color: #2196f3;
+}
+
+.success-toast {
+  background-color: #4caf50;
+}
+
+.error-toast {
+  background-color: #f44336;
+}
+
+.info-toast {
+  background-color: #607d8b;
 }
 
 .empty-records {
@@ -852,8 +981,52 @@ textarea {
   padding: 20px;
 }
 
-/* 响应式签到表上传 */
+/* 响应式签到记录 */
 @media (max-width: 768px) {
+  .records-table {
+    display: block;
+  }
+  
+  .records-table thead {
+    display: none;
+  }
+  
+  .records-table tbody {
+    display: block;
+  }
+  
+  .record-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .preview-cell {
+    width: 60px;
+    padding: 0;
+    margin-right: 10px;
+  }
+  
+  .info-cell {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+  }
+  
+  .actions-cell {
+    width: 100%;
+    text-align: left;
+    padding: 8px 0 0 0;
+    margin-top: 8px;
+    border-top: 1px dashed #eee;
+  }
+  
+  .action-btn {
+    margin-right: 8px;
+  }
+  
+  /* 响应式签到表上传 */
   .upload-methods {
     flex-direction: column;
   }

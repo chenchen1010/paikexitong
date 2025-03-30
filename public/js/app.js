@@ -1291,68 +1291,261 @@ async function fetchCourseAttendanceRecords(courseId) {
     if (records.length === 0) {
       recordsList.innerHTML = '<div class="empty-records">暂无签到记录</div>';
     } else {
+      // 创建表格布局容器
+      const recordsTable = document.createElement('table');
+      recordsTable.className = 'records-table';
+      
+      // 表头
+      const tableHeader = document.createElement('thead');
+      tableHeader.innerHTML = `
+        <tr>
+          <th width="70">预览</th>
+          <th>文件信息</th>
+          <th width="120">操作</th>
+        </tr>
+      `;
+      recordsTable.appendChild(tableHeader);
+      
+      // 表格内容
+      const tableBody = document.createElement('tbody');
+      
       records.forEach(record => {
-        const recordItem = document.createElement('div');
-        recordItem.className = 'record-item';
+        // 格式化文件名和日期
+        const fileExt = record.fileName.split('.').pop().toLowerCase();
+        const iconType = fileExt === 'pdf' ? 'pdf' : 'image';
+        const fileIcon = iconType === 'pdf' 
+          ? '<i class="file-icon pdf-icon">📄</i>' 
+          : '<i class="file-icon image-icon">📷</i>';
+          
+        // 格式化上传日期
+        const uploadDate = new Date(record.uploadDate);
+        const formattedDate = uploadDate.toLocaleString('zh-CN', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
         
-        // 缩略图或文件图标
+        // 处理长文件名
+        let displayFileName = record.fileName;
+        
+        // 如果有课程名和进度信息，使用更友好的显示方式
+        if (record.courseName && record.currentWeek && record.totalWeeks) {
+          displayFileName = `${record.courseName} (第${record.currentWeek}/${record.totalWeeks}周)`;
+        } else {
+          // 否则截断过长的文件名
+          const maxFileNameLength = 25;
+          
+          if (displayFileName.length > maxFileNameLength) {
+            const nameParts = displayFileName.split('.');
+            const extension = nameParts.pop();
+            const baseName = nameParts.join('.');
+            displayFileName = baseName.substring(0, maxFileNameLength - extension.length - 3) + '...' + '.' + extension;
+          }
+        }
+        
+        // 创建表格行
+        const row = document.createElement('tr');
+        row.className = 'record-row';
+        
+        // 预览列
+        const previewCell = document.createElement('td');
+        previewCell.className = 'preview-cell';
+        
         const thumbnail = document.createElement('img');
         if (record.mimeType.startsWith('image/')) {
           thumbnail.src = record.filePath;
+          thumbnail.setAttribute('data-fullsize', record.filePath);
+          thumbnail.onclick = () => window.open(record.filePath, '_blank');
         } else {
           thumbnail.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path fill="%23999" d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" /></svg>';
         }
         thumbnail.className = 'record-thumbnail';
+        previewCell.appendChild(thumbnail);
         
-        // 记录信息
-        const recordInfo = document.createElement('div');
-        recordInfo.className = 'record-info';
+        // 信息列
+        const infoCell = document.createElement('td');
+        infoCell.className = 'info-cell';
         
-        const recordName = document.createElement('div');
-        recordName.className = 'record-name';
-        recordName.textContent = record.fileName;
+        // 构建文件信息HTML，包含原始文件名作为title提示
+        let titleText = record.fileName;
+        // 如果有原始文件名，显示在提示中
+        if (record.originalFileName && record.originalFileName !== record.fileName) {
+          titleText += `\n原始文件名: ${record.originalFileName}`;
+        }
         
-        const recordDate = document.createElement('div');
-        recordDate.className = 'record-date';
-        const uploadDate = new Date(record.uploadDate);
-        recordDate.textContent = `上传于 ${uploadDate.toLocaleString('zh-CN')}`;
+        infoCell.innerHTML = `
+          <div class="record-name" title="${titleText}">${fileIcon} ${displayFileName}</div>
+          <div class="record-date">上传于 ${formattedDate}</div>
+          <div class="record-size">${formatFileSize(record.fileSize)}</div>
+        `;
         
-        recordInfo.appendChild(recordName);
-        recordInfo.appendChild(recordDate);
-        
-        // 记录操作按钮
-        const recordActions = document.createElement('div');
-        recordActions.className = 'record-actions';
+        // 操作列
+        const actionsCell = document.createElement('td');
+        actionsCell.className = 'actions-cell';
         
         const viewBtn = document.createElement('button');
-        viewBtn.textContent = '查看';
+        viewBtn.className = 'action-btn view-btn';
+        viewBtn.innerHTML = '<span class="btn-icon">👁️</span> 查看';
         viewBtn.addEventListener('click', () => {
           window.open(record.filePath, '_blank');
         });
         
         const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = '删除';
-        deleteBtn.style.backgroundColor = '#ff3b30';
+        deleteBtn.className = 'action-btn delete-btn';
+        deleteBtn.innerHTML = '<span class="btn-icon">🗑️</span> 删除';
         deleteBtn.addEventListener('click', async () => {
           if (confirm('确定要删除此签到记录吗？')) {
             await deleteAttendanceRecord(courseId, record.id);
           }
         });
         
-        recordActions.appendChild(viewBtn);
-        recordActions.appendChild(deleteBtn);
+        actionsCell.appendChild(viewBtn);
         
-        // 组装记录项
-        recordItem.appendChild(thumbnail);
-        recordItem.appendChild(recordInfo);
-        recordItem.appendChild(recordActions);
+        // 如果是图片，添加复制按钮
+        if (record.mimeType.startsWith('image/')) {
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'action-btn copy-btn';
+          copyBtn.innerHTML = '<span class="btn-icon">📋</span> 复制';
+          copyBtn.addEventListener('click', () => {
+            copyImageToClipboard(record.filePath);
+          });
+          actionsCell.appendChild(copyBtn);
+        }
         
-        recordsList.appendChild(recordItem);
+        actionsCell.appendChild(deleteBtn);
+        
+        // 添加所有单元格到行
+        row.appendChild(previewCell);
+        row.appendChild(infoCell);
+        row.appendChild(actionsCell);
+        
+        // 添加行到表格
+        tableBody.appendChild(row);
       });
+      
+      recordsTable.appendChild(tableBody);
+      recordsList.appendChild(recordsTable);
     }
   } catch (error) {
     console.error('获取签到记录错误:', error);
     recordsList.innerHTML = '<div class="error-message">获取签到记录失败</div>';
+  }
+}
+
+// 格式化文件大小
+function formatFileSize(bytes) {
+  if (bytes < 1024) {
+    return bytes + ' B';
+  } else if (bytes < 1024 * 1024) {
+    return (bytes / 1024).toFixed(1) + ' KB';
+  } else {
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+}
+
+// 复制图片到剪贴板
+async function copyImageToClipboard(imageSrc) {
+  // 显示加载中的提示
+  showToast('正在准备复制图片...', 'loading-toast');
+  
+  try {
+    // 创建一个临时canvas元素
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 加载图片并返回一个Promise
+    const loadImage = () => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous'; // 尝试处理跨域问题
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error('图片加载失败'));
+        img.src = imageSrc;
+        
+        // 如果图片已经在缓存中直接加载完成，onload可能不会触发
+        if (img.complete) {
+          resolve(img);
+        }
+      });
+    };
+    
+    // 等待图片加载
+    const img = await loadImage();
+    
+    // 设置canvas尺寸为图片尺寸
+    canvas.width = img.width;
+    canvas.height = img.height;
+    
+    // 在canvas上绘制图片
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    
+    // 方法1: 使用canvas.toBlob和ClipboardItem API (现代浏览器)
+    try {
+      const blob = await new Promise(resolve => {
+        canvas.toBlob(resolve, 'image/png');
+      });
+      
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]);
+      
+      showToast('图片已复制到剪贴板', 'success-toast');
+      return; // 成功退出函数
+    } catch (clipboardError) {
+      console.warn('方法1复制图片失败:', clipboardError);
+      // 继续尝试方法2
+    }
+    
+    // 方法2: 创建一个临时DOM元素并尝试复制
+    try {
+      // 创建一个临时的图片显示区域
+      const tempImgContainer = document.createElement('div');
+      tempImgContainer.style.position = 'fixed';
+      tempImgContainer.style.left = '0';
+      tempImgContainer.style.top = '0';
+      tempImgContainer.style.opacity = '0';
+      tempImgContainer.style.pointerEvents = 'none';
+      tempImgContainer.style.zIndex = '-1';
+      
+      const tempImg = document.createElement('img');
+      tempImg.src = canvas.toDataURL('image/png');
+      tempImgContainer.appendChild(tempImg);
+      document.body.appendChild(tempImgContainer);
+      
+      // 创建一个range并选择图片
+      const range = document.createRange();
+      range.selectNode(tempImg);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      
+      // 尝试复制
+      const success = document.execCommand('copy');
+      
+      // 清理临时元素
+      window.getSelection().removeAllRanges();
+      document.body.removeChild(tempImgContainer);
+      
+      if (success) {
+        showToast('图片已复制到剪贴板', 'success-toast');
+        return; // 成功退出函数
+      }
+    } catch (execCommandError) {
+      console.warn('方法2复制图片失败:', execCommandError);
+      // 继续尝试方法3
+    }
+    
+    // 方法3: 如果上述方法都失败，提供在新窗口中打开图片的选项
+    showToast('无法直接复制图片，正在打开图片...', 'info-toast');
+    setTimeout(() => {
+      window.open(imageSrc, '_blank');
+      showToast('请在新窗口中右键选择"复制图片"', 'info-toast');
+    }, 1500);
+    
+  } catch (error) {
+    console.error('复制图片失败:', error);
+    showToast('复制图片失败: ' + error.message, 'error-toast');
   }
 }
 
@@ -1581,4 +1774,28 @@ function createUploadQRCode(courseId) {
     colorLight: '#fff',
     correctLevel: QRCode.CorrectLevel.H
   });
+}
+
+// 显示Toast通知
+function showToast(message, className, duration = 3000) {
+  // 移除可能存在的旧Toast
+  const existingToasts = document.querySelectorAll('.toast');
+  existingToasts.forEach(toast => {
+    document.body.removeChild(toast);
+  });
+  
+  // 创建新Toast
+  const toast = document.createElement('div');
+  toast.className = `toast ${className}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  
+  // 设置自动消失
+  setTimeout(() => {
+    if (document.body.contains(toast)) {
+      document.body.removeChild(toast);
+    }
+  }, duration);
+  
+  return toast;
 } 

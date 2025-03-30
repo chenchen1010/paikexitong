@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>排课系统</title>
-  <link rel="stylesheet" href="css/style.css?v=20250405">
+  <title>简易排课系统</title>
+  <link rel="stylesheet" href="css/style.css?v=20250406">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
@@ -134,15 +135,13 @@
           <div class="upload-method paste-area" id="paste-area">
             <div class="upload-placeholder">
               <i class="upload-icon">📋</i>
-              <p>点击这里粘贴图片<br>(Ctrl+V)</p>
+              <p>粘贴图片<br>(Ctrl/Command+V)</p>
               <p class="upload-hint">从剪贴板粘贴图片</p>
             </div>
           </div>
           
           <div class="upload-method qrcode" id="qrcode-upload">
             <div class="upload-placeholder">
-              <i class="upload-icon">📱</i>
-              <p>手机扫码上传</p>
               <div id="upload-qrcode"></div>
               <p class="upload-hint">用手机扫描二维码上传</p>
             </div>
@@ -177,7 +176,7 @@
       
       <div class="batch-format-info">
         <p>格式: 课程名称 门店 教室 教师 日期</p>
-        <p>示例: 书法 师大口店 教室1 张老师 2025-03-26</p>
+        <p>示例: 书法 闸弄口店 教室1 张老师 2025-03-26</p>
       </div>
       
       <textarea id="courses-batch" placeholder="每行输入一个课程信息"></textarea>
@@ -193,6 +192,6 @@
     <!-- 签到表内容将通过JS动态生成 -->
   </div>
 
-  <script src="js/app.js?v=20250405"></script>
+  <script src="js/app.js?v=20250406"></script>
 </body>
 </html> 
