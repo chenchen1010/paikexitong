@@ -65,5 +65,35 @@
     "courseName": "手机摄影",
     "currentWeek": 1,
     "totalWeeks": 1
+  },
+  {
+    "id": "attendance-1743346716683",
+    "courseId": "course1743297844082",
+    "filePath": "/Users/burning/排课最简单/uploads/化妆3班_20250328_签到表_1743346716683.png",
+    "fileName": "化妆3班_20250328_签到表_1743346716683.png",
+    "originalFileName": "Google Chrome 2025-03-30 22.52.25.png",
+    "mimeType": "image/png",
+    "fileSize": 1295158,
+    "uploadDate": "2025-03-30T14:58:36.683Z",
+    "recordDate": "2025-03-28",
+    "comment": "",
+    "courseName": "化妆3班",
+    "currentWeek": 1,
+    "totalWeeks": 5
+  },
+  {
+    "id": "attendance-1743346722406",
+    "courseId": "course1743297844082",
+    "filePath": "/Users/burning/排课最简单/uploads/化妆3班_20250328_签到表_1743346722406.png",
+    "fileName": "化妆3班_20250328_签到表_1743346722406.png",
+    "originalFileName": "å¾®ä¿¡ 2025-03-30 22.34.22.png",
+    "mimeType": "image/png",
+    "fileSize": 478997,
+    "uploadDate": "2025-03-30T14:58:42.407Z",
+    "recordDate": "2025-03-28",
+    "comment": "",
+    "courseName": "化妆3班",
+    "currentWeek": 1,
+    "totalWeeks": 5
   }
 ]
