@@ -1759,21 +1759,16 @@ async function uploadAttendanceFile(courseId, file) {
 
 // 创建上传二维码
 function createUploadQRCode(courseId) {
-  if (!QRCode || !uploadQrcode || !courseId) return;
+  const qrcodeElement = document.getElementById('upload-qrcode');
+  qrcodeElement.innerHTML = '';
   
-  uploadQrcode.innerHTML = '';
+  // 使用公网IP地址替代localhost
+  const uploadUrl = `http://121.196.200.253:3000/mobile-upload.html?courseId=${courseId}`;
   
-  // 创建用于上传的URL
-  const uploadUrl = `${window.location.origin}/qr_upload.html?courseId=${courseId}`;
-  
-  // 生成二维码
-  new QRCode(uploadQrcode, {
+  new QRCode(qrcodeElement, {
     text: uploadUrl,
-    width: 80,
-    height: 80,
-    colorDark: '#000',
-    colorLight: '#fff',
-    correctLevel: QRCode.CorrectLevel.H
+    width: 120,
+    height: 120
   });
 }
 
