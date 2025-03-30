@@ -492,4 +492,170 @@ textarea {
     width: 95%;
     margin: 5% auto;
   }
+  
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+    gap: 15px;
+  }
+  
+  .filter-container label {
+    margin-bottom: 5px;
+  }
+  
+  .multiselect-dropdown {
+    width: 100%;
+    min-width: 100%;
+  }
+  
+  .multiselect-options {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .multiselect-option {
+    padding: 10px 12px;
+  }
+  
+  .multiselect-option label {
+    font-size: 16px;
+  }
+  
+  .multiselect-option input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+  }
+  
+  .filter-container input#course-search {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+/* 多选下拉框样式 */
+.multiselect-dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 180px;
+  width: 180px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.multiselect-selected {
+  padding: 8px 25px 8px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  font-size: 14px;
+  color: #333;
+}
+
+.multiselect-selected:after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 4px 0 4px;
+  border-style: solid;
+  border-color: #777 transparent transparent transparent;
+}
+
+.multiselect-options {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 240px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 100;
+  margin-top: 1px;
+  padding: 5px 0;
+}
+
+.multiselect-dropdown.open .multiselect-options {
+  display: block;
+}
+
+.multiselect-option {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.multiselect-option:last-child {
+  border-bottom: none;
+}
+
+.multiselect-option:hover {
+  background-color: #f5f5f5;
+}
+
+.multiselect-option label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  width: 100%;
+}
+
+.multiselect-option input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  margin-right: 8px;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: #fff;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.multiselect-option input[type="checkbox"]:checked {
+  background-color: #007aff;
+  border-color: #007aff;
+}
+
+.multiselect-option input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.multiselect-option span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100% - 26px);
 } 

@@ -14,7 +14,9 @@ const prevWeekBtn = document.getElementById('prev-week');
 const nextWeekBtn = document.getElementById('next-week');
 const addCourseBtn = document.getElementById('add-course-btn');
 const batchAddCoursesBtn = document.getElementById('batch-add-courses-btn');
-const storeFilterSelect = document.getElementById('store-filter');
+const storeFilterContainer = document.getElementById('store-filter-container');
+const storeFilterSelected = document.getElementById('store-filter-selected');
+const storeFilterOptions = document.getElementById('store-filter-options');
 const courseSearchInput = document.getElementById('course-search');
 const searchBtn = document.getElementById('search-btn');
 
@@ -318,16 +320,77 @@ window.addEventListener('click', (e) => {
 storeSelect.addEventListener('change', updateClassroomOptions);
 
 // 门店筛选变化时更新课程表格
-storeFilterSelect.addEventListener('change', function() {
-  // 获取选中的选项值
-  const selectedValue = this.value;
-  
-  // 更新选中的门店ID数组
-  selectedStoreIds = [selectedValue];
-  
-  console.log('选中的门店ID:', selectedValue);
-  updateSchedule();
+storeFilterContainer.addEventListener('click', function(e) {
+  this.classList.toggle('open');
+  e.stopPropagation();
 });
+
+// 点击页面其他地方关闭下拉框
+document.addEventListener('click', function() {
+  storeFilterContainer.classList.remove('open');
+});
+
+// 阻止下拉选项点击事件冒泡
+storeFilterOptions.addEventListener('click', function(e) {
+  e.stopPropagation();
+});
+
+// 处理多选框选择变化
+storeFilterOptions.addEventListener('change', function(e) {
+  if (e.target.matches('[data-store-option]')) {
+    // 如果点击的是"全部门店"选项
+    if (e.target.value === 'all') {
+      // 如果选中"全部门店"，取消其他所有选项
+      if (e.target.checked) {
+        const checkboxes = storeFilterOptions.querySelectorAll('input[data-store-option]:not([value="all"])');
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = false;
+        });
+        selectedStoreIds = ['all'];
+      } else {
+        // 不允许取消选择"全部门店"，除非选择了其他选项
+        e.target.checked = true;
+      }
+    } else {
+      // 如果点击的是其他选项
+      const allOption = storeFilterOptions.querySelector('input[data-store-option][value="all"]');
+      
+      // 获取所有选中的非"全部"选项
+      const selectedOptions = Array.from(
+        storeFilterOptions.querySelectorAll('input[data-store-option]:checked:not([value="all"])')
+      );
+      
+      if (selectedOptions.length > 0) {
+        // 如果有其他选项被选中，取消"全部门店"
+        allOption.checked = false;
+        // 更新选中的门店ID数组
+        selectedStoreIds = selectedOptions.map(option => option.value);
+      } else {
+        // 如果没有其他选项被选中，默认选中"全部门店"
+        allOption.checked = true;
+        selectedStoreIds = ['all'];
+      }
+    }
+    
+    // 更新显示的选中文本
+    updateSelectedStoresText();
+    
+    // 更新课程表
+    updateSchedule();
+  }
+});
+
+// 更新选中门店的显示文本
+function updateSelectedStoresText() {
+  if (selectedStoreIds.includes('all')) {
+    storeFilterSelected.textContent = '全部门店';
+  } else if (selectedStoreIds.length === 1) {
+    const store = stores.find(s => s.id === selectedStoreIds[0]);
+    storeFilterSelected.textContent = store ? store.name : '选择门店';
+  } else {
+    storeFilterSelected.textContent = `已选择 ${selectedStoreIds.length} 个门店`;
+  }
+}
 
 // 搜索按钮点击事件
 searchBtn.addEventListener('click', function() {
@@ -366,6 +429,8 @@ async function init() {
     updateWeekDisplay();
     console.log('更新门店选项...');
     updateStoreOptions();
+    console.log('更新门店筛选选项...');
+    updateStoreFilterOptions();
     console.log('更新教师选项...');
     updateTeacherOptions();
     
@@ -897,15 +962,55 @@ function updateStoreOptions() {
 
 // 更新门店筛选选项
 function updateStoreFilterOptions() {
-  // 保留"全部门店"选项
-  storeFilterSelect.innerHTML = '<option value="all">全部门店</option>';
+  // 清空现有选项，保留第一个"全部门店"选项
+  const allOption = storeFilterOptions.querySelector('.multiselect-option');
+  if (allOption) {
+    storeFilterOptions.innerHTML = '';
+    storeFilterOptions.appendChild(allOption);
+  } else {
+    // 如果没有"全部门店"选项，创建一个
+    storeFilterOptions.innerHTML = `
+      <div class="multiselect-option">
+        <label>
+          <input type="checkbox" value="all" checked data-store-option>
+          <span>全部门店</span>
+        </label>
+      </div>
+    `;
+  }
   
+  // 添加其他门店选项
   stores.forEach(store => {
-    const option = document.createElement('option');
-    option.value = store.id;
-    option.textContent = store.name;
-    storeFilterSelect.appendChild(option);
+    // 对店铺名称进行压缩处理，如果太长则显示...
+    let displayName = store.name;
+    if (displayName.length > 15) {
+      displayName = displayName.substring(0, 15) + '...';
+    }
+    
+    const optionDiv = document.createElement('div');
+    optionDiv.className = 'multiselect-option';
+    
+    const label = document.createElement('label');
+    
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = store.id;
+    checkbox.setAttribute('data-store-option', '');
+    checkbox.checked = selectedStoreIds.includes(store.id); // 根据选中状态设置勾选
+    
+    const span = document.createElement('span');
+    span.textContent = displayName; // 使用处理后的文本作为显示文本
+    span.title = store.name; // 添加title属性，鼠标悬停时显示完整文本
+    
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    optionDiv.appendChild(label);
+    
+    storeFilterOptions.appendChild(optionDiv);
   });
+  
+  // 更新显示的选中文本
+  updateSelectedStoresText();
 }
 
 // 更新教室选择项

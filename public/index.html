@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>排课系统</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20250403">
 </head>
 <body>
   <div class="container">
@@ -22,9 +22,18 @@
       <button id="batch-add-courses-btn">批量添加课程</button>
       <div class="filter-container">
         <label for="store-filter">筛选门店:</label>
-        <select id="store-filter">
-          <option value="all" selected>全部门店</option>
-        </select>
+        <div class="multiselect-dropdown" id="store-filter-container">
+          <div class="multiselect-selected" id="store-filter-selected">全部门店</div>
+          <div class="multiselect-options" id="store-filter-options">
+            <div class="multiselect-option">
+              <label>
+                <input type="checkbox" value="all" checked data-store-option>
+                <span>全部门店</span>
+              </label>
+            </div>
+            <!-- 其他门店选项将通过JS动态生成 -->
+          </div>
+        </div>
         <label for="course-search">搜索课程:</label>
         <input type="text" id="course-search" placeholder="输入课程名称">
         <button id="search-btn">搜索</button>
@@ -134,6 +143,6 @@
     <!-- 签到表内容将通过JS动态生成 -->
   </div>
 
-  <script src="js/app.js?v=20250330"></script>
+  <script src="js/app.js?v=20250403"></script>
 </body>
 </html> 
