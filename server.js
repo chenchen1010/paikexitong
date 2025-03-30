@@ -564,6 +564,39 @@ app.post('/api/courses/:courseId/confirm', (req, res) => {
   }
 });
 
+// 创建教师
+app.post('/api/teachers', (req, res) => {
+  console.log('创建教师 API 被调用');
+  const teachers = readJSONFile(teachersFile);
+  const { name } = req.body;
+  
+  if (!name || name.trim() === '') {
+    return res.status(400).json({ error: '教师姓名不能为空' });
+  }
+  
+  // 检查是否已存在同名教师
+  const existingTeacher = teachers.find(t => t.name === name.trim());
+  if (existingTeacher) {
+    return res.status(400).json({ error: '已存在同名教师' });
+  }
+  
+  // 创建新教师
+  const newTeacher = {
+    id: `teacher${Date.now()}`,
+    name: name.trim()
+  };
+  
+  teachers.push(newTeacher);
+  
+  if (writeJSONFile(teachersFile, teachers)) {
+    console.log('教师创建成功:', newTeacher);
+    res.status(201).json(newTeacher);
+  } else {
+    console.error('教师创建失败');
+    res.status(500).json({ error: '无法保存教师数据' });
+  }
+});
+
 // 首页路由
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

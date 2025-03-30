@@ -616,23 +616,33 @@ function updateSchedule() {
             }
           }
           
-          // 创建学员人数元素
-          const studentCount = document.createElement('div');
-          studentCount.className = 'student-count';
+          // 创建学员人数和教师元素
+          const infoSection = document.createElement('div');
+          infoSection.className = 'course-info';
           
-          // 获取学员人数
+          // 获取教师姓名
+          const teacher = teachers.find(t => t.id === course.teacherId);
+          const teacherName = teacher ? teacher.name : '';
+          
+          // 创建学员人数元素
           fetch(`/api/courses/${course.id}/students`)
             .then(response => response.json())
             .then(students => {
-              studentCount.textContent = `${students.length}人`;
+              infoSection.innerHTML = `
+                <span class="student-count">${students.length}人</span>
+                ${teacherName ? `<span class="teacher-name">${teacherName}</span>` : ''}
+              `;
             })
             .catch(error => {
               console.error('获取学员人数错误:', error);
-              studentCount.textContent = '0人';
+              infoSection.innerHTML = `
+                <span class="student-count">0人</span>
+                ${teacherName ? `<span class="teacher-name">${teacherName}</span>` : ''}
+              `;
             });
           
           courseItem.appendChild(courseName);
-          courseItem.appendChild(studentCount);
+          courseItem.appendChild(infoSection);
           courseItem.dataset.courseId = course.id;
           courseItem.dataset.date = course.date;
           
@@ -924,6 +934,71 @@ function updateTeacherOptions() {
     option.textContent = teacher.name;
     teacherSelect.appendChild(option);
   });
+  
+  // 添加"新建教师"选项
+  const newOption = document.createElement('option');
+  newOption.value = "new";
+  newOption.textContent = "➕ 新建教师";
+  newOption.style.fontWeight = "bold";
+  newOption.style.color = "#007aff";
+  teacherSelect.appendChild(newOption);
+}
+
+// 监听教师选择变化
+teacherSelect.addEventListener('change', function() {
+  if (this.value === 'new') {
+    const teacherName = prompt('请输入新教师姓名:');
+    if (teacherName && teacherName.trim()) {
+      createNewTeacher(teacherName.trim());
+    } else {
+      // 如果用户取消或输入为空，重置选择
+      this.value = '';
+    }
+  }
+});
+
+// 创建新教师
+async function createNewTeacher(teacherName) {
+  try {
+    // 添加日志以便调试
+    console.log('开始创建新教师:', teacherName);
+    
+    const response = await fetch('/api/teachers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: teacherName })
+    });
+    
+    console.log('收到创建教师响应:', response.status, response.statusText);
+    
+    // 如果响应不成功，尝试读取错误消息
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('创建教师失败响应内容:', errorText);
+      try {
+        const error = JSON.parse(errorText);
+        alert(`创建教师失败: ${error.error}`);
+      } catch (e) {
+        alert(`创建教师失败: ${errorText || response.statusText}`);
+      }
+      teacherSelect.value = '';
+      return;
+    }
+    
+    const newTeacher = await response.json();
+    // 添加到教师列表
+    teachers.push(newTeacher);
+    // 更新下拉选项
+    updateTeacherOptions();
+    // 选中新创建的教师
+    teacherSelect.value = newTeacher.id;
+    
+    console.log('成功创建新教师:', newTeacher);
+  } catch (error) {
+    console.error('创建教师错误:', error);
+    alert('创建教师失败，请查看控制台获取详情');
+    teacherSelect.value = '';
+  }
 }
 
 // 获取一周的开始日期（周一）

@@ -119,8 +119,103 @@
     "name": "化妆1班",
     "storeId": "s1",
     "classroomId": "c2",
-    "teacherId": "t2",
-    "date": "2025-03-26"
+    "teacherId": "t1",
+    "date": "2025-03-26",
+    "studentsList": [
+      {
+        "id": "stu1743031837933-ew1w2",
+        "name": "顾国芳",
+        "courses": [
+          "course1743030668272-3",
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-75huo",
+        "name": "李香玉",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-ygfb0",
+        "name": "周琳",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-op39o",
+        "name": "王娅楠",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-dwjvp",
+        "name": "许灵娟",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-t8ssi",
+        "name": "常瑞",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-gggys",
+        "name": "方艳",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-rk17d",
+        "name": "裘伟月",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-cygv8",
+        "name": "吴君",
+        "courses": [
+          "course1743028076959-1",
+          "course1743055930943-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-bu7f5",
+        "name": "崔慧乐",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072712839-cxaw0",
+        "name": "王娅妮",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072721554-607tt",
+        "name": "胡华英",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      },
+      {
+        "id": "stu1743072721554-uviy1",
+        "name": "廖欢欢",
+        "courses": [
+          "course1743028076959-1"
+        ]
+      }
+    ]
   },
   {
     "id": "course1743028076959-2",
@@ -2805,12 +2900,13 @@
     "name": "化妆3班",
     "storeId": "s1",
     "classroomId": "c1",
-    "teacherId": "t1",
+    "teacherId": "teacher1743300363196",
     "date": "2025-03-28",
     "id": "course1743297844082",
     "students": [],
     "currentWeek": 1,
-    "totalWeeks": 5
+    "totalWeeks": 5,
+    "studentsList": []
   },
   {
     "id": "course1743297892964-placeholder-1-4p3ik",
@@ -2857,55 +2953,6 @@
     "date": "2025-04-25",
     "isPlaceholder": true,
     "parentCourseId": "course1743297844082",
-    "currentWeek": 5,
-    "totalWeeks": 5
-  },
-  {
-    "id": "course1743298320878-placeholder-1-zkil8",
-    "name": "声乐",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t1",
-    "date": "2025-03-31",
-    "isPlaceholder": true,
-    "parentCourseId": "course1743062779833-1",
-    "currentWeek": 2,
-    "totalWeeks": 5
-  },
-  {
-    "id": "course1743298320878-placeholder-2-jxfpk",
-    "name": "声乐",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t1",
-    "date": "2025-04-07",
-    "isPlaceholder": true,
-    "parentCourseId": "course1743062779833-1",
-    "currentWeek": 3,
-    "totalWeeks": 5,
-    "studentsList": []
-  },
-  {
-    "id": "course1743298320878-placeholder-3-o4vlf",
-    "name": "声乐",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t1",
-    "date": "2025-04-14",
-    "isPlaceholder": true,
-    "parentCourseId": "course1743062779833-1",
-    "currentWeek": 4,
-    "totalWeeks": 5
-  },
-  {
-    "id": "course1743298320878-placeholder-4-tgdsd",
-    "name": "声乐",
-    "storeId": "s1",
-    "classroomId": "c2",
-    "teacherId": "t1",
-    "date": "2025-04-21",
-    "isPlaceholder": true,
-    "parentCourseId": "course1743062779833-1",
     "currentWeek": 5,
     "totalWeeks": 5
   }
