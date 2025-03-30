@@ -26,6 +26,8 @@ const storeSelect = document.getElementById('store-select');
 const classroomSelect = document.getElementById('classroom-select');
 const teacherSelect = document.getElementById('teacher-select');
 const dateSelect = document.getElementById('date-select');
+const weeksCountInput = document.getElementById('weeks-count');
+const confirmCourseBtn = document.getElementById('confirm-course-btn');
 const saveCourseBtn = document.getElementById('save-course-btn');
 const deleteCourseBtn = document.getElementById('delete-course-btn');
 const modalTitle = document.getElementById('modal-title');
@@ -82,6 +84,43 @@ printAttendanceBtn.addEventListener('click', () => {
 // 批量添加课程按钮
 batchAddCoursesBtn.addEventListener('click', () => {
   batchCoursesModal.style.display = 'block';
+});
+
+// 确认开课按钮
+confirmCourseBtn.addEventListener('click', async () => {
+  if (!currentCourse) {
+    alert('请先保存课程');
+    return;
+  }
+  
+  const weeksCount = parseInt(prompt('请输入占用后续周数:', '4'), 10);
+  if (isNaN(weeksCount) || weeksCount < 1) {
+    alert('请输入有效的周数');
+    return;
+  }
+  
+  try {
+    const response = await fetch(`/api/courses/${currentCourse.id}/confirm`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        weeksCount,
+        parentCourseId: currentCourse.id
+      })
+    });
+    
+    if (response.ok) {
+      alert('课程已确认开课，已为后续周创建占位');
+      courseModal.style.display = 'none';
+      fetchData();
+    } else {
+      const error = await response.json();
+      alert(`确认开课失败: ${error.error}`);
+    }
+  } catch (error) {
+    console.error('确认开课错误:', error);
+    alert('确认开课失败，请查看控制台获取详情');
+  }
 });
 
 // 提交批量添加课程
@@ -541,14 +580,40 @@ function updateSchedule() {
               // 使用正则表达式转义特殊字符
               const escapedSearchText = courseSearchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
               const regex = new RegExp(`(${escapedSearchText})`, 'gi');
-              courseName.innerHTML = course.name.replace(regex, '<span class="highlight-text">$1</span>');
+              
+              // 分离课程名称和进度信息
+              let displayName = course.name;
+              let progressInfo = '';
+              
+              if (course.isPlaceholder && course.currentWeek && course.totalWeeks) {
+                progressInfo = `(${course.currentWeek}/${course.totalWeeks})`;
+              } else if (course.totalWeeks && course.currentWeek) {
+                progressInfo = `(${course.currentWeek}/${course.totalWeeks})`;
+              }
+              
+              // 只对课程名称部分进行高亮处理
+              courseName.innerHTML = displayName.replace(regex, '<span class="highlight-text">$1</span>');
+              if (progressInfo) {
+                courseName.innerHTML += ' ' + progressInfo;
+              }
+              
               console.log(`高亮显示课程 "${course.name}" 中的 "${courseSearchText}"`);
             } catch (e) {
               console.error(`高亮显示错误:`, e);
               courseName.textContent = course.name;
             }
           } else {
-            courseName.textContent = course.name || '';
+            // 如果是占位课程，显示格式为"课程名(当前周次/总周次)"
+            if (course.isPlaceholder && course.currentWeek && course.totalWeeks) {
+              courseName.textContent = `${course.name}(${course.currentWeek}/${course.totalWeeks})`;
+              courseItem.classList.add('placeholder-course');
+            } else if (course.totalWeeks && course.currentWeek) {
+              // 如果是已确认开课的课程
+              courseName.textContent = `${course.name}(${course.currentWeek}/${course.totalWeeks})`;
+              courseItem.classList.add('confirmed-course');
+            } else {
+              courseName.textContent = course.name || '';
+            }
           }
           
           // 创建学员人数元素
@@ -622,6 +687,27 @@ async function openCourseModal(course = null, defaults = {}) {
   // 更新删除按钮显示状态
   deleteCourseBtn.style.display = course ? 'block' : 'none';
   
+  // 确认开课按钮的显示状态
+  confirmCourseBtn.style.display = 'block';
+  
+  // 如果是占位课程，则隐藏确认开课按钮，并加载原始课程数据
+  if (course && course.isPlaceholder && course.parentCourseId) {
+    confirmCourseBtn.style.display = 'none';
+    
+    try {
+      const response = await fetch(`/api/courses/${course.parentCourseId}`);
+      if (response.ok) {
+        const parentCourse = await response.json();
+        // 使用原始课程的数据，但保留当前的日期
+        const courseDate = course.date;
+        course = { ...parentCourse, date: courseDate };
+        currentCourse = course;
+      }
+    } catch (error) {
+      console.error('获取原始课程数据错误:', error);
+    }
+  }
+  
   // 填充表单
   if (course) {
     courseNameInput.value = course.name;
@@ -634,6 +720,19 @@ async function openCourseModal(course = null, defaults = {}) {
     if (course.date) {
       dateSelect.value = course.date;
       console.log('设置课程日期:', course.date);
+    }
+    
+    // 如果课程已确认开课，显示周次信息
+    if (course.totalWeeks && course.currentWeek) {
+      const weekInfo = document.createElement('div');
+      weekInfo.className = 'week-info';
+      weekInfo.innerHTML = `<strong>课程进度: </strong>第${course.currentWeek}周 / 共${course.totalWeeks}周`;
+      
+      const dateGroup = dateSelect.closest('.form-group');
+      if (dateGroup.querySelector('.week-info')) {
+        dateGroup.querySelector('.week-info').remove();
+      }
+      dateGroup.appendChild(weekInfo);
     }
     
     // 获取并显示课程的学生

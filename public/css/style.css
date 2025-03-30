@@ -180,6 +180,17 @@ button:hover {
   background-color: #bbdefb;
 }
 
+/* 已确认开课的课程样式 */
+.confirmed-course {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirmed-course:hover {
+  background-color: #c8e6c9;
+}
+
 .course-name {
   font-weight: 500;
 }
@@ -189,21 +200,43 @@ button:hover {
   color: #666;
 }
 
+/* 搜索匹配的课程样式 */
 .search-highlight {
-  background-color: #e8f5e9;
-  border: 2px solid #4caf50;
+  background-color: #fff3e0;
+  border: 2px solid #ff9800;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-highlight:hover {
-  background-color: #c8e6c9;
+  background-color: #ffe0b2;
 }
 
 .highlight-text {
   background-color: #ffeb3b;
-  font-weight: bold;
   padding: 0 2px;
   border-radius: 2px;
+  font-weight: bold;
+}
+
+/* 占位课程样式 */
+.placeholder-course {
+  background-color: #f3e5f5;
+  border: 1px dashed #9c27b0;
+  opacity: 0.9;
+}
+
+.placeholder-course:hover {
+  background-color: #e1bee7;
+  opacity: 1;
+}
+
+/* 课程周次信息 */
+.week-info {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #666;
+  padding: 4px 0;
+  border-top: 1px solid #eee;
 }
 
 /* 模态框样式 */

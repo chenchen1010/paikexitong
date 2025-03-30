@@ -1102,87 +1102,6 @@
     ]
   },
   {
-    "id": "course1743055930942-0",
-    "name": "化妆3班",
-    "storeId": "s1",
-    "classroomId": "c1",
-    "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743056128102-deqix",
-        "name": "丁倩男",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-xmuab",
-        "name": "王子琪",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-9q3ij",
-        "name": "斯翌",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-bb7s8",
-        "name": "刘侠",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-m1ddl",
-        "name": "豆俊霞",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-h4ust",
-        "name": "王漪宁",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-tq8bm",
-        "name": "王韵秋",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743056128102-4el65",
-        "name": "许丽丽",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743149321585-kwndp",
-        "name": "榴莲芒果糖",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      },
-      {
-        "id": "stu1743149350324-sooi0",
-        "name": "草莓味er",
-        "courses": [
-          "course1743055930942-0"
-        ]
-      }
-    ]
-  },
-  {
     "id": "course1743055930943-1",
     "name": "瑜伽",
     "storeId": "s1",
@@ -2879,5 +2798,64 @@
         ]
       }
     ]
+  },
+  {
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-03-28",
+    "id": "course1743297844082",
+    "students": [],
+    "currentWeek": 1,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743297892964-placeholder-1-4p3ik",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-04",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743297844082",
+    "currentWeek": 2,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743297892965-placeholder-2-29h07",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-11",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743297844082",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743297892965-placeholder-3-o263m",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-18",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743297844082",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743297892965-placeholder-4-442lr",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-25",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743297844082",
+    "currentWeek": 5,
+    "totalWeeks": 5
   }
 ]

@@ -498,6 +498,72 @@ app.delete('/api/courses/:courseId/students/:studentId', (req, res) => {
   }
 });
 
+// 确认开课，创建后续几周的占位课程
+app.post('/api/courses/:courseId/confirm', (req, res) => {
+  const { courseId } = req.params;
+  const { weeksCount } = req.body;
+  
+  if (!weeksCount || weeksCount < 1) {
+    return res.status(400).json({ error: '请提供有效的周数' });
+  }
+  
+  // 读取课程数据
+  const courses = readJSONFile(coursesFile);
+  const originalCourse = courses.find(c => c.id === courseId);
+  
+  if (!originalCourse) {
+    return res.status(404).json({ error: '课程未找到' });
+  }
+  
+  // 检查原始课程的日期
+  if (!originalCourse.date) {
+    return res.status(400).json({ error: '原始课程没有日期' });
+  }
+  
+  // 计算后续几周的日期
+  const originalDate = new Date(originalCourse.date);
+  const placeholderCourses = [];
+  
+  for (let week = 1; week <= weeksCount; week++) {
+    // 创建新的日期：原始日期加上 week * 7 天
+    const nextDate = new Date(originalDate);
+    nextDate.setDate(originalDate.getDate() + week * 7);
+    const dateStr = formatDate(nextDate);
+    
+    // 创建占位课程
+    const placeholderCourse = {
+      id: `course${Date.now()}-placeholder-${week}-${Math.random().toString(36).substr(2, 5)}`,
+      name: originalCourse.name,
+      storeId: originalCourse.storeId,
+      classroomId: originalCourse.classroomId,
+      teacherId: originalCourse.teacherId,
+      date: dateStr,
+      isPlaceholder: true,
+      parentCourseId: courseId,
+      currentWeek: week + 1, // 当前是第几周（原始课程是第1周）
+      totalWeeks: weeksCount + 1 // 总周数（包括原始课程）
+    };
+    
+    placeholderCourses.push(placeholderCourse);
+  }
+  
+  // 更新原始课程，添加周次信息
+  originalCourse.currentWeek = 1;
+  originalCourse.totalWeeks = weeksCount + 1;
+  
+  // 添加占位课程到课程列表
+  courses.push(...placeholderCourses);
+  
+  if (writeJSONFile(coursesFile, courses)) {
+    res.status(201).json({
+      originalCourse,
+      placeholderCourses
+    });
+  } else {
+    res.status(500).json({ error: '无法保存课程数据' });
+  }
+});
+
 // 首页路由
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
