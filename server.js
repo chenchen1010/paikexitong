@@ -3,9 +3,43 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs-extra');
 const path = require('path');
+const multer = require('multer'); // 用于处理文件上传
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// 配置multer存储
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    // 确保上传目录存在
+    const uploadDir = path.join(__dirname, 'uploads');
+    fs.ensureDirSync(uploadDir);
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    // 生成唯一文件名
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const ext = path.extname(file.originalname);
+    cb(null, 'attendance-' + uniqueSuffix + ext);
+  }
+});
+
+// 配置上传限制
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 10 * 1024 * 1024, // 限制10MB
+  },
+  fileFilter: function (req, file, cb) {
+    // 允许的文件类型
+    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('不支持的文件类型，仅支持JPG、PNG和PDF文件'));
+    }
+  }
+});
 
 // 中间件
 app.use(cors({
@@ -77,9 +111,12 @@ const classroomsFile = path.join(dataPath, 'classrooms.json');
 const teachersFile = path.join(dataPath, 'teachers.json');
 const coursesFile = path.join(dataPath, 'courses.json');
 const studentsFile = path.join(dataPath, 'students.json');
+const attendanceRecordsFile = path.join(dataPath, 'attendance_records.json');
 
 // 确保数据目录存在
 fs.ensureDirSync(dataPath);
+// 确保上传目录存在
+fs.ensureDirSync(path.join(__dirname, 'uploads'));
 
 // 读取数据函数
 const readJSONFile = (filePath) => {
@@ -596,6 +633,139 @@ app.post('/api/teachers', (req, res) => {
     res.status(500).json({ error: '无法保存教师数据' });
   }
 });
+
+// 上传签到表
+app.post('/api/courses/:courseId/attendance', upload.single('file'), (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const { date, comment } = req.body;
+    
+    if (!req.file) {
+      return res.status(400).json({ error: '没有上传文件' });
+    }
+    
+    // 检查课程是否存在
+    const courses = readJSONFile(coursesFile);
+    const course = courses.find(c => c.id === courseId);
+    
+    if (!course) {
+      // 删除已上传的文件
+      if (req.file.path) {
+        fs.removeSync(req.file.path);
+      }
+      return res.status(404).json({ error: '课程未找到' });
+    }
+    
+    // 获取签到记录
+    let attendanceRecords = readJSONFile(attendanceRecordsFile);
+    
+    // 创建新的签到记录
+    const newRecord = {
+      id: `attendance-${Date.now()}`,
+      courseId,
+      filePath: req.file.path.replace(/\\/g, '/'), // 统一路径分隔符
+      fileName: req.file.originalname,
+      mimeType: req.file.mimetype,
+      fileSize: req.file.size,
+      uploadDate: new Date().toISOString(),
+      recordDate: date || course.date, // 使用提供的日期或默认使用课程日期
+      comment: comment || '',
+    };
+    
+    // 添加到签到记录
+    attendanceRecords.push(newRecord);
+    
+    // 保存签到记录
+    if (writeJSONFile(attendanceRecordsFile, attendanceRecords)) {
+      // 返回记录信息，不包含服务器路径
+      const recordToReturn = {
+        ...newRecord,
+        filePath: `/uploads/${path.basename(newRecord.filePath)}` // 仅返回相对路径
+      };
+      res.status(201).json(recordToReturn);
+    } else {
+      // 保存失败，删除已上传的文件
+      if (req.file.path) {
+        fs.removeSync(req.file.path);
+      }
+      res.status(500).json({ error: '无法保存签到记录' });
+    }
+  } catch (error) {
+    console.error('上传签到表错误:', error);
+    // 清理上传的文件
+    if (req.file && req.file.path) {
+      fs.removeSync(req.file.path);
+    }
+    res.status(500).json({ error: '服务器内部错误', message: error.message });
+  }
+});
+
+// 获取课程的签到记录
+app.get('/api/courses/:courseId/attendance', (req, res) => {
+  try {
+    const { courseId } = req.params;
+    
+    // 获取签到记录
+    const attendanceRecords = readJSONFile(attendanceRecordsFile);
+    
+    // 筛选该课程的签到记录
+    const courseRecords = attendanceRecords
+      .filter(record => record.courseId === courseId)
+      .map(record => ({
+        ...record,
+        filePath: `/uploads/${path.basename(record.filePath)}` // 转换为相对路径
+      }));
+    
+    res.json(courseRecords);
+  } catch (error) {
+    console.error('获取签到记录错误:', error);
+    res.status(500).json({ error: '服务器内部错误', message: error.message });
+  }
+});
+
+// 删除签到记录
+app.delete('/api/courses/:courseId/attendance/:recordId', (req, res) => {
+  try {
+    const { recordId } = req.params;
+    
+    // 获取签到记录
+    const attendanceRecords = readJSONFile(attendanceRecordsFile);
+    
+    // 查找要删除的记录
+    const recordIndex = attendanceRecords.findIndex(r => r.id === recordId);
+    
+    if (recordIndex === -1) {
+      return res.status(404).json({ error: '签到记录未找到' });
+    }
+    
+    // 获取文件路径
+    const filePath = attendanceRecords[recordIndex].filePath;
+    
+    // 删除记录
+    attendanceRecords.splice(recordIndex, 1);
+    
+    // 保存更新后的记录
+    if (writeJSONFile(attendanceRecordsFile, attendanceRecords)) {
+      // 尝试删除文件
+      try {
+        fs.removeSync(filePath);
+      } catch (removeError) {
+        console.error('删除文件错误:', removeError);
+        // 继续执行，即使文件删除失败
+      }
+      
+      res.json({ success: true });
+    } else {
+      res.status(500).json({ error: '无法保存签到记录' });
+    }
+  } catch (error) {
+    console.error('删除签到记录错误:', error);
+    res.status(500).json({ error: '服务器内部错误', message: error.message });
+  }
+});
+
+// 提供上传文件的访问
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 首页路由
 app.get('/', (req, res) => {

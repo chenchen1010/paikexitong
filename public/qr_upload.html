@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>移动端签到表上传</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #007aff;
+    }
+    
+    .course-info {
+      padding: 15px;
+      background-color: #f2f2f7;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .course-info p {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .course-info p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .upload-area {
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      cursor: pointer;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .upload-area.active {
+      border-color: #007aff;
+      background-color: rgba(0, 122, 255, 0.05);
+    }
+    
+    .upload-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+    
+    .upload-text {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .upload-hint {
+      font-size: 12px;
+      color: #999;
+    }
+    
+    input[type="file"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+    .preview-container {
+      display: none;
+      margin-bottom: 20px;
+    }
+    
+    .preview-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    .preview {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    
+    .preview img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+    }
+    
+    .preview embed {
+      width: 100%;
+      height: 300px;
+    }
+    
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #007aff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-bottom: 10px;
+    }
+    
+    .btn:hover {
+      background-color: #0062cc;
+    }
+    
+    .btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .btn-cancel {
+      background-color: #ff3b30;
+    }
+    
+    .btn-cancel:hover {
+      background-color: #d63031;
+    }
+    
+    .status {
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: none;
+    }
+    
+    .status.success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      display: block;
+    }
+    
+    .status.error {
+      background-color: #fdecea;
+      color: #d32f2f;
+      display: block;
+    }
+    
+    .error-message {
+      color: #ff3b30;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>课程签到表上传</h1>
+    
+    <div class="course-info" id="course-info">
+      <p>正在加载课程信息...</p>
+    </div>
+    
+    <div class="upload-area" id="upload-area">
+      <div class="upload-icon">📱</div>
+      <div class="upload-text">点击选择文件</div>
+      <div class="upload-hint">支持JPG, PNG, PDF格式</div>
+      <input type="file" id="file-upload" accept="image/jpeg,image/png,application/pdf">
+    </div>
+    
+    <div class="preview-container" id="preview-container">
+      <div class="preview-title">预览</div>
+      <div class="preview" id="preview"></div>
+    </div>
+    
+    <div class="status" id="status-message"></div>
+    
+    <button class="btn" id="upload-btn">上传签到表</button>
+    <button class="btn btn-cancel" id="cancel-btn">取消</button>
+    
+    <div class="error-message" id="error-message"></div>
+  </div>
+  
+  <script>
+    // 获取DOM元素
+    const courseInfoEl = document.getElementById('course-info');
+    const uploadArea = document.getElementById('upload-area');
+    const fileUpload = document.getElementById('file-upload');
+    const previewContainer = document.getElementById('preview-container');
+    const preview = document.getElementById('preview');
+    const uploadBtn = document.getElementById('upload-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const statusMessage = document.getElementById('status-message');
+    const errorMessage = document.getElementById('error-message');
+    
+    // 解析URL参数
+    const params = new URLSearchParams(window.location.search);
+    const courseId = params.get('courseId');
+    
+    // 当前上传文件
+    let currentFile = null;
+    let courseData = null;
+    
+    // 初始化
+    async function init() {
+      if (!courseId) {
+        showError('缺少课程ID参数');
+        return;
+      }
+      
+      try {
+        // 获取课程信息
+        await fetchCourseInfo(courseId);
+        
+        // 设置上传事件
+        setupUploadHandlers();
+      } catch (error) {
+        console.error('初始化错误:', error);
+        showError('初始化失败，请重试');
+      }
+    }
+    
+    // 获取课程信息
+    async function fetchCourseInfo(courseId) {
+      try {
+        const response = await fetch(`/api/courses/${courseId}`);
+        
+        if (!response.ok) {
+          throw new Error('课程不存在');
+        }
+        
+        courseData = await response.json();
+        
+        // 显示课程信息
+        let storeInfo = '';
+        let classroomInfo = '';
+        
+        // 获取门店信息
+        if (courseData.storeId) {
+          const storeResponse = await fetch('/api/stores');
+          if (storeResponse.ok) {
+            const stores = await storeResponse.json();
+            const store = stores.find(s => s.id === courseData.storeId);
+            if (store) {
+              storeInfo = store.name;
+            }
+          }
+        }
+        
+        // 获取教室信息
+        if (courseData.classroomId && courseData.storeId) {
+          const classroomResponse = await fetch(`/api/stores/${courseData.storeId}/classrooms`);
+          if (classroomResponse.ok) {
+            const classrooms = await classroomResponse.json();
+            const classroom = classrooms.find(c => c.id === courseData.classroomId);
+            if (classroom) {
+              classroomInfo = classroom.name;
+            }
+          }
+        }
+        
+        // 格式化日期
+        const dateStr = courseData.date ? new Date(courseData.date).toLocaleDateString('zh-CN') : '未知日期';
+        
+        // 更新课程信息显示
+        courseInfoEl.innerHTML = `
+          <p><strong>课程名称:</strong> ${courseData.name || '未知课程'}</p>
+          <p><strong>门店:</strong> ${storeInfo || '未知门店'}</p>
+          <p><strong>教室:</strong> ${classroomInfo || '未知教室'}</p>
+          <p><strong>日期:</strong> ${dateStr}</p>
+        `;
+      } catch (error) {
+        console.error('获取课程信息错误:', error);
+        showError('获取课程信息失败，请重试');
+      }
+    }
+    
+    // 设置上传处理器
+    function setupUploadHandlers() {
+      // 文件选择处理
+      fileUpload.addEventListener('change', handleFileSelect);
+      
+      // 点击上传按钮
+      uploadBtn.addEventListener('click', uploadFile);
+      
+      // 点击取消按钮
+      cancelBtn.addEventListener('click', () => {
+        window.location.href = '/';
+      });
+      
+      // 拖放处理
+      uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        uploadArea.classList.add('active');
+      });
+      
+      uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        uploadArea.classList.remove('active');
+      });
+      
+      uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        uploadArea.classList.remove('active');
+        
+        if (e.dataTransfer.files.length > 0) {
+          handleFileSelect({ target: { files: e.dataTransfer.files } });
+        }
+      });
+    }
+    
+    // 处理文件选择
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      
+      if (!file) return;
+      
+      // 检查文件类型
+      const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+      if (!validTypes.includes(file.type)) {
+        showError('不支持的文件类型，仅支持JPG、PNG和PDF文件');
+        return;
+      }
+      
+      // 检查文件大小 (10MB限制)
+      if (file.size > 10 * 1024 * 1024) {
+        showError('文件太大，请选择小于10MB的文件');
+        return;
+      }
+      
+      currentFile = file;
+      showPreview(file);
+      
+      // 清除错误信息
+      hideError();
+    }
+    
+    // 显示文件预览
+    function showPreview(file) {
+      preview.innerHTML = '';
+      
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.onload = () => URL.revokeObjectURL(img.src);
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      } else if (file.type === 'application/pdf') {
+        const embed = document.createElement('embed');
+        embed.type = 'application/pdf';
+        embed.src = URL.createObjectURL(file);
+        preview.appendChild(embed);
+      }
+      
+      previewContainer.style.display = 'block';
+    }
+    
+    // 上传文件
+    async function uploadFile() {
+      if (!currentFile || !courseId) {
+        showError('请先选择文件');
+        return;
+      }
+      
+      try {
+        // 创建表单数据
+        const formData = new FormData();
+        formData.append('file', currentFile);
+        
+        // 禁用上传按钮
+        uploadBtn.disabled = true;
+        uploadBtn.textContent = '上传中...';
+        
+        // 隐藏状态消息
+        statusMessage.className = 'status';
+        statusMessage.style.display = 'none';
+        
+        const response = await fetch(`/api/courses/${courseId}/attendance`, {
+          method: 'POST',
+          body: formData
+        });
+        
+        // 恢复上传按钮
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = '上传签到表';
+        
+        if (response.ok) {
+          // 显示成功消息
+          statusMessage.className = 'status success';
+          statusMessage.textContent = '签到表上传成功！';
+          statusMessage.style.display = 'block';
+          
+          // 重置上传
+          currentFile = null;
+          previewContainer.style.display = 'none';
+          fileUpload.value = '';
+        } else {
+          let errorText = '上传失败';
+          try {
+            const errorData = await response.json();
+            errorText = errorData.error || errorText;
+          } catch (e) {}
+          
+          showError(`上传失败: ${errorText}`);
+        }
+      } catch (error) {
+        console.error('上传错误:', error);
+        showError('上传过程中发生错误，请重试');
+        
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = '上传签到表';
+      }
+    }
+    
+    // 显示错误信息
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+    }
+    
+    // 隐藏错误信息
+    function hideError() {
+      errorMessage.style.display = 'none';
+    }
+    
+    // 初始化页面
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html> 

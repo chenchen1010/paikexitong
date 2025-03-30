@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>排课系统</title>
-  <link rel="stylesheet" href="css/style.css?v=20250403">
+  <link rel="stylesheet" href="css/style.css?v=20250405">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -116,6 +117,55 @@
           <button id="add-students-btn">添加</button>
         </div>
       </div>
+      
+      <!-- 签到表上传部分 -->
+      <div class="attendance-upload-section">
+        <h3>签到表上传</h3>
+        <div class="upload-methods">
+          <div class="upload-method dropzone" id="upload-dropzone">
+            <div class="upload-placeholder">
+              <i class="upload-icon">📁</i>
+              <p>拖拽文件到这里上传<br>或点击选择文件</p>
+              <p class="upload-hint">支持JPG, PNG, PDF格式</p>
+            </div>
+            <input type="file" id="file-upload" accept="image/jpeg,image/png,application/pdf" style="display: none;">
+          </div>
+          
+          <div class="upload-method paste-area" id="paste-area">
+            <div class="upload-placeholder">
+              <i class="upload-icon">📋</i>
+              <p>点击这里粘贴图片<br>(Ctrl+V)</p>
+              <p class="upload-hint">从剪贴板粘贴图片</p>
+            </div>
+          </div>
+          
+          <div class="upload-method qrcode" id="qrcode-upload">
+            <div class="upload-placeholder">
+              <i class="upload-icon">📱</i>
+              <p>手机扫码上传</p>
+              <div id="upload-qrcode"></div>
+              <p class="upload-hint">用手机扫描二维码上传</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="upload-preview-container" id="upload-preview-container" style="display: none;">
+          <h4>预览</h4>
+          <div class="upload-preview" id="upload-preview"></div>
+          <div class="upload-actions">
+            <button type="button" id="confirm-upload-btn">确认上传</button>
+            <button type="button" id="cancel-upload-btn">取消</button>
+          </div>
+        </div>
+        
+        <div class="attendance-records" id="attendance-records">
+          <h4>已上传的签到表</h4>
+          <div class="records-list" id="records-list">
+            <!-- 签到记录将通过JS动态生成 -->
+            <div class="empty-records">暂无签到记录</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -143,6 +193,6 @@
     <!-- 签到表内容将通过JS动态生成 -->
   </div>
 
-  <script src="js/app.js?v=20250403"></script>
+  <script src="js/app.js?v=20250405"></script>
 </body>
 </html> 

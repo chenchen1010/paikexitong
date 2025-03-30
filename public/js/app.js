@@ -6,6 +6,7 @@ let courses = [];
 let students = [];
 let currentCourse = null;
 let currentWeekStart = getWeekStart(new Date());
+let currentUploadFile = null; // 当前上传文件
 
 // DOM 元素
 const scheduleGrid = document.getElementById('schedule-grid');
@@ -50,6 +51,18 @@ const closeButtons = document.querySelectorAll('.close');
 // 筛选相关变量
 let selectedStoreIds = ['all']; // 默认选中"全部门店"
 let courseSearchText = ''; // 课程搜索文本
+
+// 签到表上传元素
+const uploadDropzone = document.getElementById('upload-dropzone');
+const fileUploadInput = document.getElementById('file-upload');
+const pasteArea = document.getElementById('paste-area');
+const qrcodeUpload = document.getElementById('qrcode-upload');
+const uploadQrcode = document.getElementById('upload-qrcode');
+const uploadPreviewContainer = document.getElementById('upload-preview-container');
+const uploadPreview = document.getElementById('upload-preview');
+const confirmUploadBtn = document.getElementById('confirm-upload-btn');
+const cancelUploadBtn = document.getElementById('cancel-upload-btn');
+const recordsList = document.getElementById('records-list');
 
 // 初始化应用
 document.addEventListener('DOMContentLoaded', init);
@@ -437,6 +450,9 @@ async function init() {
     // 更新表头的日期显示
     updateHeaderDates();
     
+    // 初始化上传控件
+    initUploadHandlers();
+    
     console.log('初始化完成！');
   } catch (error) {
     console.error('初始化失败:', error);
@@ -753,8 +769,9 @@ async function openCourseModal(course = null, defaults = {}) {
     console.log('默认数据:', defaults);
   }
   
-  // 清空学生列表
+  // 清空学生列表和签到记录列表
   studentsList.innerHTML = '';
+  recordsList.innerHTML = '<div class="empty-records">暂无签到记录</div>';
   
   // 更新标题
   modalTitle.textContent = course ? '编辑课程' : '添加课程';
@@ -839,6 +856,7 @@ async function openCourseModal(course = null, defaults = {}) {
     
     // 获取并显示课程的学生
     await fetchCourseStudents(course.id);
+    await fetchCourseAttendanceRecords(course.id);
   } else {
     courseForm.reset();
     
@@ -862,6 +880,11 @@ async function openCourseModal(course = null, defaults = {}) {
       dateSelect.value = formatDate(today);
       console.log('设置今天日期:', formatDate(today));
     }
+  }
+  
+  // 如果是课程详情，创建上传二维码
+  if (course) {
+    createUploadQRCode(course.id);
   }
   
   // 显示模态框
@@ -1253,4 +1276,309 @@ function updateHeaderDates() {
     // 格式化为"周几（月.日）"，比如"周一（3.24）"
     dayHeaders[i].textContent = `${weekdays[i]}（${month}.${day}）`;
   }
+}
+
+// 获取课程的签到记录
+async function fetchCourseAttendanceRecords(courseId) {
+  try {
+    const response = await fetch(`/api/courses/${courseId}/attendance`);
+    const records = await response.json();
+    
+    // 清空记录列表
+    recordsList.innerHTML = '';
+    
+    // 显示记录
+    if (records.length === 0) {
+      recordsList.innerHTML = '<div class="empty-records">暂无签到记录</div>';
+    } else {
+      records.forEach(record => {
+        const recordItem = document.createElement('div');
+        recordItem.className = 'record-item';
+        
+        // 缩略图或文件图标
+        const thumbnail = document.createElement('img');
+        if (record.mimeType.startsWith('image/')) {
+          thumbnail.src = record.filePath;
+        } else {
+          thumbnail.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path fill="%23999" d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" /></svg>';
+        }
+        thumbnail.className = 'record-thumbnail';
+        
+        // 记录信息
+        const recordInfo = document.createElement('div');
+        recordInfo.className = 'record-info';
+        
+        const recordName = document.createElement('div');
+        recordName.className = 'record-name';
+        recordName.textContent = record.fileName;
+        
+        const recordDate = document.createElement('div');
+        recordDate.className = 'record-date';
+        const uploadDate = new Date(record.uploadDate);
+        recordDate.textContent = `上传于 ${uploadDate.toLocaleString('zh-CN')}`;
+        
+        recordInfo.appendChild(recordName);
+        recordInfo.appendChild(recordDate);
+        
+        // 记录操作按钮
+        const recordActions = document.createElement('div');
+        recordActions.className = 'record-actions';
+        
+        const viewBtn = document.createElement('button');
+        viewBtn.textContent = '查看';
+        viewBtn.addEventListener('click', () => {
+          window.open(record.filePath, '_blank');
+        });
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '删除';
+        deleteBtn.style.backgroundColor = '#ff3b30';
+        deleteBtn.addEventListener('click', async () => {
+          if (confirm('确定要删除此签到记录吗？')) {
+            await deleteAttendanceRecord(courseId, record.id);
+          }
+        });
+        
+        recordActions.appendChild(viewBtn);
+        recordActions.appendChild(deleteBtn);
+        
+        // 组装记录项
+        recordItem.appendChild(thumbnail);
+        recordItem.appendChild(recordInfo);
+        recordItem.appendChild(recordActions);
+        
+        recordsList.appendChild(recordItem);
+      });
+    }
+  } catch (error) {
+    console.error('获取签到记录错误:', error);
+    recordsList.innerHTML = '<div class="error-message">获取签到记录失败</div>';
+  }
+}
+
+// 删除签到记录
+async function deleteAttendanceRecord(courseId, recordId) {
+  try {
+    const response = await fetch(`/api/courses/${courseId}/attendance/${recordId}`, {
+      method: 'DELETE'
+    });
+    
+    if (response.ok) {
+      fetchCourseAttendanceRecords(courseId);
+    } else {
+      const error = await response.json();
+      alert(`删除签到记录失败: ${error.error}`);
+    }
+  } catch (error) {
+    console.error('删除签到记录错误:', error);
+    alert('删除签到记录失败，请查看控制台获取详情');
+  }
+}
+
+// 初始化上传处理函数
+function initUploadHandlers() {
+  // 文件拖放处理
+  uploadDropzone.addEventListener('dragover', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    uploadDropzone.classList.add('active');
+  });
+  
+  uploadDropzone.addEventListener('dragleave', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    uploadDropzone.classList.remove('active');
+  });
+  
+  uploadDropzone.addEventListener('drop', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    uploadDropzone.classList.remove('active');
+    
+    if (e.dataTransfer.files.length > 0) {
+      handleFileSelect(e.dataTransfer.files[0]);
+    }
+  });
+  
+  // 点击上传区域触发文件选择
+  uploadDropzone.addEventListener('click', () => {
+    fileUploadInput.click();
+  });
+  
+  // 文件选择处理
+  fileUploadInput.addEventListener('change', e => {
+    if (e.target.files.length > 0) {
+      handleFileSelect(e.target.files[0]);
+    }
+  });
+  
+  // 粘贴处理
+  pasteArea.addEventListener('click', () => {
+    pasteArea.classList.add('active');
+    alert('请使用键盘快捷键Ctrl+V（Windows）或Command+V（Mac）粘贴图片');
+    
+    // 聚焦以捕获粘贴事件
+    pasteArea.setAttribute('tabindex', '0');
+    pasteArea.focus();
+  });
+  
+  pasteArea.addEventListener('blur', () => {
+    pasteArea.classList.remove('active');
+  });
+  
+  pasteArea.addEventListener('paste', e => {
+    const items = e.clipboardData.items;
+    
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const file = items[i].getAsFile();
+        handleFileSelect(file);
+        break;
+      }
+    }
+    
+    pasteArea.classList.remove('active');
+    pasteArea.blur();
+  });
+  
+  // 监听全局粘贴事件
+  document.addEventListener('paste', e => {
+    if (courseModal.style.display === 'block' && currentCourse) {
+      const items = e.clipboardData.items;
+      
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+          const file = items[i].getAsFile();
+          handleFileSelect(file);
+          break;
+        }
+      }
+    }
+  });
+  
+  // 确认/取消上传
+  confirmUploadBtn.addEventListener('click', () => {
+    if (currentUploadFile && currentCourse) {
+      uploadAttendanceFile(currentCourse.id, currentUploadFile);
+    }
+  });
+  
+  cancelUploadBtn.addEventListener('click', () => {
+    clearFilePreview();
+  });
+}
+
+// 处理文件选择
+function handleFileSelect(file) {
+  if (!file) return;
+  
+  // 检查文件类型
+  const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+  if (!validTypes.includes(file.type)) {
+    alert('不支持的文件类型，仅支持JPG、PNG和PDF文件');
+    return;
+  }
+  
+  // 检查文件大小 (10MB限制)
+  if (file.size > 10 * 1024 * 1024) {
+    alert('文件太大，请选择小于10MB的文件');
+    return;
+  }
+  
+  // 保存文件并显示预览
+  currentUploadFile = file;
+  showFilePreview(file);
+}
+
+// 显示文件预览
+function showFilePreview(file) {
+  uploadPreviewContainer.style.display = 'block';
+  uploadPreview.innerHTML = '';
+  
+  if (file.type.startsWith('image/')) {
+    const img = document.createElement('img');
+    img.onload = () => URL.revokeObjectURL(img.src); // 清理内存
+    img.src = URL.createObjectURL(file);
+    uploadPreview.appendChild(img);
+  } else if (file.type === 'application/pdf') {
+    const embed = document.createElement('embed');
+    embed.type = 'application/pdf';
+    embed.src = URL.createObjectURL(file);
+    uploadPreview.appendChild(embed);
+  }
+}
+
+// 清除文件预览
+function clearFilePreview() {
+  uploadPreviewContainer.style.display = 'none';
+  uploadPreview.innerHTML = '';
+  currentUploadFile = null;
+}
+
+// 上传签到表文件
+async function uploadAttendanceFile(courseId, file) {
+  if (!file || !courseId) return;
+  
+  try {
+    // 创建表单数据
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    // 禁用按钮
+    confirmUploadBtn.disabled = true;
+    confirmUploadBtn.textContent = '上传中...';
+    
+    const response = await fetch(`/api/courses/${courseId}/attendance`, {
+      method: 'POST',
+      body: formData
+    });
+    
+    // 恢复按钮状态
+    confirmUploadBtn.disabled = false;
+    confirmUploadBtn.textContent = '确认上传';
+    
+    if (response.ok) {
+      // 清除预览
+      clearFilePreview();
+      
+      // 重新获取签到记录
+      fetchCourseAttendanceRecords(courseId);
+      
+      alert('签到表上传成功');
+    } else {
+      let errorMsg = '上传失败';
+      try {
+        const error = await response.json();
+        errorMsg = error.error || errorMsg;
+      } catch (e) {}
+      
+      alert(`上传签到表失败: ${errorMsg}`);
+    }
+  } catch (error) {
+    console.error('上传签到表错误:', error);
+    alert('上传签到表失败，请查看控制台获取详情');
+    
+    confirmUploadBtn.disabled = false;
+    confirmUploadBtn.textContent = '确认上传';
+  }
+}
+
+// 创建上传二维码
+function createUploadQRCode(courseId) {
+  if (!QRCode || !uploadQrcode || !courseId) return;
+  
+  uploadQrcode.innerHTML = '';
+  
+  // 创建用于上传的URL
+  const uploadUrl = `${window.location.origin}/qr_upload.html?courseId=${courseId}`;
+  
+  // 生成二维码
+  new QRCode(uploadQrcode, {
+    text: uploadUrl,
+    width: 80,
+    height: 80,
+    colorDark: '#000',
+    colorLight: '#fff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
 } 
