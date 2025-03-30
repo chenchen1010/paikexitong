@@ -221,11 +221,6 @@ app.post('/api/courses', (req, res) => {
   newCourse.id = `course${Date.now()}`;
   console.log('生成的课程ID:', newCourse.id);
   
-  // 确保学生数组存在
-  if (!newCourse.students) {
-    newCourse.students = [];
-  }
-  
   console.log('即将添加新课程:', newCourse);
   courses.push(newCourse);
   
@@ -345,8 +340,7 @@ app.post('/api/courses/batch', (req, res) => {
           storeId: store.id,
           classroomId: classroom.id,
           teacherId: teacher.id,
-          date: dateStr,
-          students: []
+          date: dateStr
         };
         console.log('创建新课程:', newCourse);
 
@@ -397,8 +391,8 @@ app.post('/api/courses/batch', (req, res) => {
 app.put('/api/courses/:courseId', (req, res) => {
   const { courseId } = req.params;
   console.log(`更新课程 ${courseId}`);
-  const updatedCourse = req.body;
-  console.log('更新内容:', updatedCourse);
+  const updatedCourseData = req.body;
+  console.log('更新内容:', updatedCourseData);
   
   const courses = readJSONFile(coursesFile);
   
@@ -410,14 +404,17 @@ app.put('/api/courses/:courseId', (req, res) => {
   }
   
   // 保持原ID
-  updatedCourse.id = courseId;
+  updatedCourseData.id = courseId;
+  
+  // 移除所有与学生相关的字段
+  const { students, studentsList, ...cleanedCourseData } = updatedCourseData;
   
   // 更新课程
-  courses[index] = updatedCourse;
+  courses[index] = cleanedCourseData;
   
   if (writeJSONFile(coursesFile, courses)) {
     console.log(`课程 ${courseId} 更新成功`);
-    res.json(updatedCourse);
+    res.json(cleanedCourseData);
   } else {
     console.error(`课程 ${courseId} 更新失败`);
     res.status(500).json({ error: '无法保存课程数据' });

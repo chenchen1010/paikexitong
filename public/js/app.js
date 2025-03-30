@@ -228,11 +228,13 @@ courseForm.addEventListener('submit', async (e) => {
     let response;
     
     if (currentCourse) {
-      // 更新课程
+      // 更新课程 - 创建更新对象，但不包含studentsList字段
+      const { studentsList, ...courseWithoutStudents } = currentCourse;
+      
       response = await fetch(`/api/courses/${currentCourse.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...currentCourse, ...course })
+        body: JSON.stringify({ ...courseWithoutStudents, ...course })
       });
     } else {
       // 添加新课程
@@ -282,9 +284,16 @@ deleteCourseBtn.addEventListener('click', async () => {
 
 // 添加学生按钮
 addStudentsBtn.addEventListener('click', async () => {
-  if (!currentCourse) return;
+  console.log('添加学员按钮被点击');
+  
+  if (!currentCourse) {
+    console.error('当前没有选中的课程');
+    alert('请先选择一个课程');
+    return;
+  }
   
   const namesText = studentsBatchText.value.trim();
+  console.log('输入的学员名单:', namesText);
   
   if (!namesText) {
     alert('请输入学员姓名');
@@ -292,17 +301,22 @@ addStudentsBtn.addEventListener('click', async () => {
   }
   
   try {
+    console.log(`准备向课程 ${currentCourse.id} 添加学员`);
     const response = await fetch(`/api/courses/${currentCourse.id}/students/batch`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ namesText })
     });
     
+    console.log('服务器响应状态:', response.status, response.statusText);
+    
     if (response.ok) {
       studentsBatchText.value = '';
-      fetchCourseStudents(currentCourse.id);
+      showToast('学员添加成功', 'success-toast');
+      await fetchCourseStudents(currentCourse.id);
     } else {
       const error = await response.json();
+      console.error('添加学员失败:', error);
       alert(`添加学员失败: ${error.error}`);
     }
   } catch (error) {
@@ -1228,9 +1242,7 @@ function generateDateHeaders(dateStr) {
 function generateStudentRows(course) {
   let rows = '';
   
-  if (!course.studentsList || course.studentsList.length === 0) {
-    rows = `<tr><td colspan="7" style="text-align: center;">暂无学员</td></tr>`;
-  } else {
+  if (course.studentsList && course.studentsList.length > 0) {
     rows = course.studentsList.map(student => `
       <tr style="height: 35px;">
         <td style="white-space: nowrap; height: 35px;">${student.name}</td>
@@ -1244,8 +1256,10 @@ function generateStudentRows(course) {
     `).join('');
   }
   
-  // 固定添加10行空白行
-  for (let i = 0; i < 10; i++) {
+  // 固定添加15行空白行（确保空白课程至少有15行）
+  const emptyRowsCount = (!course.studentsList || course.studentsList.length === 0) ? 15 : 10;
+  
+  for (let i = 0; i < emptyRowsCount; i++) {
     rows += `
       <tr style="height: 35px;">
         <td style="white-space: nowrap; height: 35px;"></td>

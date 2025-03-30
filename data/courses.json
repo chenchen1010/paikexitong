@@ -5,114 +5,7 @@
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "date": "2025-03-26",
-    "studentsList": [
-      {
-        "id": "stu1743072329001-sr7tg",
-        "name": "夏建华",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-gw82b",
-        "name": "朱莹萍",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-pozqo",
-        "name": "杨俊",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-y732k",
-        "name": "顾佳",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-9o4mg",
-        "name": "王明明",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-dp638",
-        "name": "文凡",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-ncvm1",
-        "name": "曹晶蓉",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-5bf3d",
-        "name": "方晓丽",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-wgual",
-        "name": "李小露",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-vp80l",
-        "name": "金玲娟",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-w3vpd",
-        "name": "裘乐珈",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-bsn2d",
-        "name": "戴瑭晔",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-mgf1b",
-        "name": "刘梦梦",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-fmgkw",
-        "name": "姚晶晶",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      },
-      {
-        "id": "stu1743072329001-8july",
-        "name": "付晓丹",
-        "courses": [
-          "course1743028076959-0"
-        ]
-      }
-    ]
+    "date": "2025-03-26"
   },
   {
     "id": "course1743028076959-1",
@@ -120,102 +13,7 @@
     "storeId": "s1",
     "classroomId": "c2",
     "teacherId": "t1",
-    "date": "2025-03-26",
-    "studentsList": [
-      {
-        "id": "stu1743031837933-ew1w2",
-        "name": "顾国芳",
-        "courses": [
-          "course1743030668272-3",
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-75huo",
-        "name": "李香玉",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-ygfb0",
-        "name": "周琳",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-op39o",
-        "name": "王娅楠",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-dwjvp",
-        "name": "许灵娟",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-t8ssi",
-        "name": "常瑞",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-gggys",
-        "name": "方艳",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-rk17d",
-        "name": "裘伟月",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-cygv8",
-        "name": "吴君",
-        "courses": [
-          "course1743028076959-1",
-          "course1743055930943-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-bu7f5",
-        "name": "崔慧乐",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072712839-cxaw0",
-        "name": "王娅妮",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072721554-607tt",
-        "name": "胡华英",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      },
-      {
-        "id": "stu1743072721554-uviy1",
-        "name": "廖欢欢",
-        "courses": [
-          "course1743028076959-1"
-        ]
-      }
-    ]
+    "date": "2025-03-26"
   },
   {
     "id": "course1743028076959-2",
@@ -223,114 +21,7 @@
     "storeId": "s1",
     "classroomId": "c3",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743032144428-60vda",
-        "name": "王蕾",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-nbxcn",
-        "name": "马云霞",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-v5a19",
-        "name": "李桑桑",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-f1c9p",
-        "name": "周昕怡",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-fdk1x",
-        "name": "王云泽",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-z8f5a",
-        "name": "马庆祝",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-h14zf",
-        "name": "刘佳瑜",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-9lcaj",
-        "name": "祁元会",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-jmrrg",
-        "name": "应梦珊",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-ic64u",
-        "name": "欧阳天骄",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-f1bp5",
-        "name": "刘娟娟",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-8sugi",
-        "name": "江利平",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-22gr4",
-        "name": "马燕燕",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-0oyji",
-        "name": "李国玉",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      },
-      {
-        "id": "stu1743032144428-szqrm",
-        "name": "郭洁霖",
-        "courses": [
-          "course1743028076959-2"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668272-2",
@@ -338,152 +29,7 @@
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1742972363062-7yjye",
-        "name": "1",
-        "courses": [
-          "course1743026609180",
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1742972363062-zfm3f",
-        "name": "2",
-        "courses": [
-          "course1743026609180",
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1742972363062-ev86w",
-        "name": "3",
-        "courses": [
-          "course1743026609180",
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-t3p9z",
-        "name": "章倩琳",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-yqsz7",
-        "name": "李爱琴",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-xoojs",
-        "name": "彭舒然",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-kod46",
-        "name": "郑水倩",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-mt70j",
-        "name": "梁孟婷",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-jyoro",
-        "name": "宣翡",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-vmxfy",
-        "name": "徐黎媛",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-9sxbb",
-        "name": "蒋尚宏",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-9n6za",
-        "name": "吴宁",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-c8j50",
-        "name": "付瑶",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-n3gzx",
-        "name": "王欣鑫",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-zbo38",
-        "name": "涂祎薇",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-bw3jk",
-        "name": "汪乐～",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-wz9yj",
-        "name": "黄滟媚",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-bk9zv",
-        "name": "祁晓怡",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-54az4",
-        "name": "刘嫱",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      },
-      {
-        "id": "stu1743031139195-x3l8w",
-        "name": "小白",
-        "courses": [
-          "course1743030668272-2"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668272-3",
@@ -491,93 +37,7 @@
     "storeId": "s2",
     "classroomId": "c9",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743031837933-pat5g",
-        "name": "戴红霞",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-dk7pl",
-        "name": "闫娜娜",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-z3hxq",
-        "name": "林光辉",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-pnzp2",
-        "name": "胡珍珍",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-94s80",
-        "name": "陈红",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-y73d4",
-        "name": "王琰",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-sbone",
-        "name": "邱丹萍",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-75liq",
-        "name": "全虔敬",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-ew1w2",
-        "name": "顾国芳",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-s9nfn",
-        "name": "周梦宇",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-y2l0e",
-        "name": "佳佳",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      },
-      {
-        "id": "stu1743031837933-sdg62",
-        "name": "吴情燕",
-        "courses": [
-          "course1743030668272-3"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668272-5",
@@ -585,65 +45,7 @@
     "storeId": "s3",
     "classroomId": "c14",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743032350148-sv1vn",
-        "name": "夏华",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-jp709",
-        "name": "李怡君",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-yyjaf",
-        "name": "姚菊梅",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-b9pq2",
-        "name": "陈雪芳",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-h0je4",
-        "name": "王莹莹",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-r8kii",
-        "name": "施佳成",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-se965",
-        "name": "韩洁",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      },
-      {
-        "id": "stu1743032350148-63p2k",
-        "name": "陈振",
-        "courses": [
-          "course1743030668272-5"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668279-6",
@@ -651,114 +53,7 @@
     "storeId": "s3",
     "classroomId": "c20",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743032249256-p0pw9",
-        "name": "陈有余",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-eu02v",
-        "name": "罗楠丹妮",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-iz2kx",
-        "name": "孙庆雨",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-cf2xn",
-        "name": "丁文青",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-nwjpd",
-        "name": "胡昳",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-j9emg",
-        "name": "宫珏",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-k0bg8",
-        "name": "冯成园",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-7coix",
-        "name": "包永洁",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-sounu",
-        "name": "祝怡",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-91avn",
-        "name": "张学芬",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-m12pv",
-        "name": "沈圆媛",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-jhm41",
-        "name": "张俊杰",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-by4rl",
-        "name": "郝宁宁",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-swnor",
-        "name": "吕可馨",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      },
-      {
-        "id": "stu1743032249256-gazm7",
-        "name": "宋冬雪",
-        "courses": [
-          "course1743030668279-6"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668279-7",
@@ -766,86 +61,7 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743032237206-n1hqd",
-        "name": "陈晓敏",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-x3zso",
-        "name": "孙其乐",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-zou78",
-        "name": "周瑶瑶",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-wtm80",
-        "name": "刘庆玲",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-54vjo",
-        "name": "叶程怡",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-9mk83",
-        "name": "高娅",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-nk24s",
-        "name": "周绮帅",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-jdqqz",
-        "name": "万靖",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-jd1ot",
-        "name": "顾燕燕",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-qaz2y",
-        "name": "钱藏",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      },
-      {
-        "id": "stu1743032237206-940n5",
-        "name": "徐永康",
-        "courses": [
-          "course1743030668279-7"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668279-8",
@@ -853,8 +69,7 @@
     "storeId": "s3",
     "classroomId": "c17",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": []
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668279-9",
@@ -862,79 +77,7 @@
     "storeId": "s4",
     "classroomId": "c11",
     "teacherId": "t1",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743032299591-dbcww",
-        "name": "朱心心",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-f0r25",
-        "name": "徐晓敏",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-6tw8f",
-        "name": "尹虹又",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-el69p",
-        "name": "叶小琴",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-skin4",
-        "name": "祖兴旺",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-ygmsq",
-        "name": "陈丽婷",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-2smtj",
-        "name": "何学斌",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-kwkzc",
-        "name": "王志利",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-knw4l",
-        "name": "彭伊静",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      },
-      {
-        "id": "stu1743032299591-e1y6u",
-        "name": "彭敏",
-        "courses": [
-          "course1743030668279-9"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "id": "course1743030668279-10",
@@ -942,101 +85,7 @@
     "storeId": "s4",
     "classroomId": "c12",
     "teacherId": "teacher1743300545312",
-    "date": "2025-03-27",
-    "studentsList": [
-      {
-        "id": "stu1743032289690-p4yim",
-        "name": "廖祥瑞",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-5uf1j",
-        "name": "王瑛",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-yteg0",
-        "name": "陈璐",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-v6ie7",
-        "name": "翁王棪东",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-63d71",
-        "name": "杨易",
-        "courses": [
-          "course1743030668279-10",
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743032289690-8qfpz",
-        "name": "戎燕娜",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-djct9",
-        "name": "何燕飞",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-3re45",
-        "name": "潘子良",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-l4ofa",
-        "name": "戴超",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-t8gqo",
-        "name": "汪洋",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-sq4dx",
-        "name": "徐莺珂",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743032289690-m19zh",
-        "name": "陈琏妃",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      },
-      {
-        "id": "stu1743059334465-mkp94",
-        "name": "ssimssih5202",
-        "courses": [
-          "course1743030668279-10"
-        ]
-      }
-    ]
+    "date": "2025-03-27"
   },
   {
     "name": "八段锦(新班第一次不算课时)",
@@ -1044,158 +93,7 @@
     "classroomId": "c4",
     "teacherId": "t1",
     "date": "2025-03-26",
-    "id": "course1743044244687",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743031837933-94s80",
-        "name": "陈红",
-        "courses": [
-          "course1743030668272-3",
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-2lkf7",
-        "name": "詹梦婷",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-wr4tj",
-        "name": "王竹",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-6d57e",
-        "name": "徐晶丽",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-59371",
-        "name": "顾常肖",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-6jrsg",
-        "name": "韩雯",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-pggac",
-        "name": "廖伊曦",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-ctizk",
-        "name": "温玉宝",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-xicxk",
-        "name": "钱丽文",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-ts5oh",
-        "name": "熊玉婷",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-diuy4",
-        "name": "林娟",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-o12sj",
-        "name": "许璐婧",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-vymjj",
-        "name": "倪泽红",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-otmq8",
-        "name": "陈君毅",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-m61ev",
-        "name": "金安娜",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-vybn0",
-        "name": "许蕴蕊",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-rzjqp",
-        "name": "石苏东",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-9qspn",
-        "name": "宋姝妹",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-palla",
-        "name": "小Q",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-dlxcn",
-        "name": "丰收的黎明",
-        "courses": [
-          "course1743044244687"
-        ]
-      },
-      {
-        "id": "stu1743044247842-0d26g",
-        "name": "夏夏",
-        "courses": [
-          "course1743044244687"
-        ]
-      }
-    ]
+    "id": "course1743044244687"
   },
   {
     "id": "course1743055930943-1",
@@ -1203,8 +101,7 @@
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": []
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930943-2",
@@ -1212,123 +109,7 @@
     "storeId": "s1",
     "classroomId": "c2",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743031139195-bw3jk",
-        "name": "汪乐～",
-        "courses": [
-          "course1743030668272-2",
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-ojadb",
-        "name": "尹楠",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-5ioqh",
-        "name": "刘亚琳",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-s9ki9",
-        "name": "赵世奇",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-gb6nf",
-        "name": "韩越",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-hkh7n",
-        "name": "李家伟",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-2se1k",
-        "name": "吕玉华",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-jwgtg",
-        "name": "汪思琪",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-lyacz",
-        "name": "张鑫",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-5ad1a",
-        "name": "李波",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-zr7ds",
-        "name": "徐勤荣",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-b3nhp",
-        "name": "王景饴",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-sh3jb",
-        "name": "李璐瑶",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-q5ntw",
-        "name": "程明",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-p1lpn",
-        "name": "刘丽丽",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      },
-      {
-        "id": "stu1743056222020-f6s2x",
-        "name": "王琦",
-        "courses": [
-          "course1743055930943-2"
-        ]
-      }
-    ]
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930944-3",
@@ -1336,8 +117,7 @@
     "storeId": "s1",
     "classroomId": "c3",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": []
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930944-4",
@@ -1345,114 +125,7 @@
     "storeId": "s2",
     "classroomId": "c9",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074193094-on4pz",
-        "name": "何颖瑄",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193094-qg2pc",
-        "name": "林清纯",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193094-eirsu",
-        "name": "张旭",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-a6cht",
-        "name": "王莹",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-ul6c7",
-        "name": "李楚云",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-j29h5",
-        "name": "陆星语",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-22ao2",
-        "name": "华湘奇",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-dxvbz",
-        "name": "曹婷洁",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-acfot",
-        "name": "曹君",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-ek43r",
-        "name": "杨闪",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-ixs1i",
-        "name": "陈解义",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-rk0sa",
-        "name": "卢陈颍",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      },
-      {
-        "id": "stu1743074193095-6wcxx",
-        "name": "刘婷婷",
-        "courses": [
-          "course1743062779834-5",
-          "course1743055930944-4"
-        ]
-      }
-    ]
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930944-5",
@@ -1460,87 +133,7 @@
     "storeId": "s2",
     "classroomId": "c10",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074136194-39g5d",
-        "name": "朱圣艳",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-lvmom",
-        "name": "王梓潼",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-qhh2c",
-        "name": "羊咩咩",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-0fpts",
-        "name": "吴冰彬",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-0q24f",
-        "name": "张丽丽",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-k2ujw",
-        "name": "张云霞",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-nkgau",
-        "name": "王同学",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-2acn0",
-        "name": "陈晓清",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-9o8f7",
-        "name": "周寒辛",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-bszzn",
-        "name": "高凯霞",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      },
-      {
-        "id": "stu1743074136194-gjk78",
-        "name": "淡墨",
-        "courses": [
-          "course1743055930944-5"
-        ]
-      }
-    ]
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930945-6",
@@ -1548,8 +141,7 @@
     "storeId": "s2",
     "classroomId": "c6",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": []
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930945-7",
@@ -1557,165 +149,7 @@
     "storeId": "s3",
     "classroomId": "c14",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743032237206-940n5",
-        "name": "徐永康",
-        "courses": [
-          "course1743030668279-7",
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-ct29b",
-        "name": "王亚茹",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-4owc9",
-        "name": "陈晓丹",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-a47nm",
-        "name": "沈晓勤",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-6isy2",
-        "name": "陈婷婷",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-862vj",
-        "name": "许女士",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-8pdba",
-        "name": "金婷婷",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-tgsvr",
-        "name": "朱李莎",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-ew4a5",
-        "name": "张仲康",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-82dyk",
-        "name": "马超",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-c66ew",
-        "name": "曹美双",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-la55o",
-        "name": "李洪艳",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-9ysny",
-        "name": "曹艳明",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-59qhq",
-        "name": "金良娟",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-8f2eo",
-        "name": "景彩子",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-y7cwa",
-        "name": "朱莹莹",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-sqtmf",
-        "name": "赵雯姬",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-cqnyx",
-        "name": "孙湾",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-ajq0f",
-        "name": "陈文华",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-06t1y",
-        "name": "户新冉",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-im8g2",
-        "name": "许馨心",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      },
-      {
-        "id": "stu1743076044702-owgqf",
-        "name": "叶瑞",
-        "courses": [
-          "course1743055930945-7"
-        ]
-      }
-    ]
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930946-8",
@@ -1723,8 +157,7 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": []
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930948-9",
@@ -1732,8 +165,7 @@
     "storeId": "s3",
     "classroomId": "c17",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": []
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930948-10",
@@ -1741,108 +173,7 @@
     "storeId": "s4",
     "classroomId": "c11",
     "teacherId": "t1",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743144395707-87xo0",
-        "name": "谭琦鹏",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-bh0xr",
-        "name": "胡程冉",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-0srrc",
-        "name": "杨艳",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-uxvd3",
-        "name": "李莉",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-rd5t2",
-        "name": "姜美玲",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-yi0ph",
-        "name": "邱伟玲",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-7c0mx",
-        "name": "朱苗苗",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-6fjn1",
-        "name": "宣芬阳",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-ju9ek",
-        "name": "朱语恬",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-fd75z",
-        "name": "华晨俏",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-td59p",
-        "name": "孟娅妮",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-n6mk7",
-        "name": "张婷婷",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-3quj7",
-        "name": "南京珠海",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      },
-      {
-        "id": "stu1743144395708-i3vmb",
-        "name": "南京嘉嘉",
-        "courses": [
-          "course1743055930948-10"
-        ]
-      }
-    ]
+    "date": "2025-03-28"
   },
   {
     "id": "course1743055930948-11",
@@ -1850,9 +181,7 @@
     "storeId": "s2",
     "classroomId": "c5",
     "teacherId": "teacher1743300545312",
-    "date": "2025-03-28",
-    "students": [],
-    "studentsList": []
+    "date": "2025-03-28"
   },
   {
     "id": "course1743062779832-0",
@@ -1861,8 +190,21 @@
     "classroomId": "c1",
     "teacherId": "t1",
     "date": "2025-03-24",
-    "students": [],
-    "studentsList": []
+    "studentsList": [
+      {
+        "id": "stu1742972363062-7yjye",
+        "name": "1",
+        "courses": [
+          "course1743026609180",
+          "course1743030668272-2",
+          "course1743231859941",
+          "course1743231874845",
+          "course1743231874849",
+          "course1743231874852",
+          "course1743062779832-0"
+        ]
+      }
+    ]
   },
   {
     "id": "course1743062779833-1",
@@ -1871,126 +213,8 @@
     "classroomId": "c2",
     "teacherId": "t1",
     "date": "2025-03-24",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743032289690-63d71",
-        "name": "杨易",
-        "courses": [
-          "course1743030668279-10",
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072146841-jxw25",
-        "name": "盛熠澜",
-        "courses": [
-          "course1743062791514-0",
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-tagi7",
-        "name": "郝丹慧",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-8ks3h",
-        "name": "凌俊杰",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-zjxjq",
-        "name": "吴云逍",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-rl3i8",
-        "name": "苏元沁",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-fl2x0",
-        "name": "杨雪花",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-n7n53",
-        "name": "余金城",
-        "courses": [
-          "course1743055930944-3",
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-mxbi2",
-        "name": "谭",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479734-pdjwi",
-        "name": "徐筱明",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743072479735-j1xs6",
-        "name": "陈鹏程",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743165669583-p3fgu",
-        "name": "陈雪彤",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743165669584-ua71w",
-        "name": "马雪莹",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743165669584-ybpks",
-        "name": "陈龙",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743165669584-ct68l",
-        "name": "涂祎航（补）",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      },
-      {
-        "id": "stu1743165669584-hm6cc",
-        "name": "朱小 min（补）",
-        "courses": [
-          "course1743062779833-1"
-        ]
-      }
-    ],
     "currentWeek": 1,
-    "totalWeeks": 5
+    "totalWeeks": 5 
   },
   {
     "id": "course1743062779834-4",
@@ -1998,136 +222,7 @@
     "storeId": "s2",
     "classroomId": "c5",
     "teacherId": "t1",
-    "date": "2025-03-24",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074055878-enl6j",
-        "name": "朱晓",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-78h77",
-        "name": "刘瑶",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-tdo16",
-        "name": "张巧儿",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-acs9f",
-        "name": "王梦",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-4z9pz",
-        "name": "刘素琴",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-v7xvm",
-        "name": "邵子晨",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-pbu6p",
-        "name": "赵蓉",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-47zn9",
-        "name": "陈艳茹",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-1ujk7",
-        "name": "胡于蓝",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-wnj73",
-        "name": "陈晓丽",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-mp34e",
-        "name": "姬庆捷",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-5s1cr",
-        "name": "朱珍丽",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-ms6dp",
-        "name": "叶子",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-xhvn5",
-        "name": "汪丽丽",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-3cip1",
-        "name": "李琴",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-28w81",
-        "name": "唐雯静",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-ctqds",
-        "name": "陈媛媛",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      },
-      {
-        "id": "stu1743074055878-86ulo",
-        "name": "李研掩",
-        "courses": [
-          "course1743062779834-4"
-        ]
-      }
-    ]
+    "date": "2025-03-24"
   },
   {
     "id": "course1743062779834-5",
@@ -2135,73 +230,7 @@
     "storeId": "s2",
     "classroomId": "c9",
     "teacherId": "t1",
-    "date": "2025-03-24",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074276864-397vo",
-        "name": "胡琼珺",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-10mbc",
-        "name": "陈祎祯",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-sipw5",
-        "name": "段雪娟",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-pmoes",
-        "name": "余佳琦",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-5h632",
-        "name": "朱玉燕",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-7i6uv",
-        "name": "张虹",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-kd7hu",
-        "name": "欧阳",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-lxbh7",
-        "name": "戴慧",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      },
-      {
-        "id": "stu1743074276864-re20p",
-        "name": "文君",
-        "courses": [
-          "course1743062779834-5"
-        ]
-      }
-    ]
+    "date": "2025-03-24"
   },
   {
     "id": "course1743062779835-6",
@@ -2209,123 +238,7 @@
     "storeId": "s3",
     "classroomId": "c14",
     "teacherId": "t1",
-    "date": "2025-03-24",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743032350148-yyjaf",
-        "name": "姚菊梅",
-        "courses": [
-          "course1743030668272-5",
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-un9os",
-        "name": "牛月涵",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-zn8x2",
-        "name": "翁莹",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-4nqks",
-        "name": "艾梦慧",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-l55zh",
-        "name": "胡宝丹",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-bl93o",
-        "name": "王恺琪",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-18voy",
-        "name": "张维",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-aajhs",
-        "name": "徐于晴",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-yyfuc",
-        "name": "包婕",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-xvi9n",
-        "name": "尹肖肖",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-xrgx2",
-        "name": "王晓亮",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-hns21",
-        "name": "王琼妹",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-t6et2",
-        "name": "田苏苏",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-r6duf",
-        "name": "杜彬俊",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743155841249-yx816",
-        "name": "严俊燕",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      },
-      {
-        "id": "stu1743156270641-nbbbm",
-        "name": "徐梦怡",
-        "courses": [
-          "course1743062779835-6"
-        ]
-      }
-    ]
+    "date": "2025-03-24"
   },
   {
     "id": "course1743062779835-7",
@@ -2333,8 +246,7 @@
     "storeId": "s3",
     "classroomId": "c15",
     "teacherId": "t1",
-    "date": "2025-03-24",
-    "students": []
+    "date": "2025-03-24"
   },
   {
     "id": "course1743062779836-8",
@@ -2342,8 +254,7 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-03-24",
-    "students": []
+    "date": "2025-03-24"
   },
   {
     "id": "course1743062791514-0",
@@ -2351,8 +262,7 @@
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791514-1",
@@ -2360,8 +270,7 @@
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791514-2",
@@ -2369,8 +278,7 @@
     "storeId": "s2",
     "classroomId": "c5",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791515-3",
@@ -2378,8 +286,7 @@
     "storeId": "s3",
     "classroomId": "c14",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791515-4",
@@ -2387,8 +294,7 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791516-5",
@@ -2396,8 +302,7 @@
     "storeId": "s3",
     "classroomId": "c15",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791516-6",
@@ -2405,8 +310,7 @@
     "storeId": "s3",
     "classroomId": "c17",
     "teacherId": "t1",
-    "date": "2025-03-25",
-    "students": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062791517-7",
@@ -2414,9 +318,7 @@
     "storeId": "s3",
     "classroomId": "c16",
     "teacherId": "teacher1743300545312",
-    "date": "2025-03-25",
-    "students": [],
-    "studentsList": []
+    "date": "2025-03-25"
   },
   {
     "id": "course1743062801234-3",
@@ -2424,108 +326,7 @@
     "storeId": "s2",
     "classroomId": "c8",
     "teacherId": "t1",
-    "date": "2025-03-26",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074162090-ft0az",
-        "name": "陈怡",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162090-9hgry",
-        "name": "王琬琦",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-rj4oc",
-        "name": "王英英",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-y9rjb",
-        "name": "万丽培",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-83bg1",
-        "name": "朱家辉",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-yoagp",
-        "name": "谢素洁",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-0xtrs",
-        "name": "季思雨",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-p3r0a",
-        "name": "董小凤",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-956qr",
-        "name": "翟雅婷",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-air5d",
-        "name": "杨娟",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-sdawt",
-        "name": "周滢琳",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-k7wie",
-        "name": "王江华",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-uc1ul",
-        "name": "衿橙",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      },
-      {
-        "id": "stu1743074162091-bgosu",
-        "name": "小小",
-        "courses": [
-          "course1743062801234-3"
-        ]
-      }
-    ]
+    "date": "2025-03-26"
   },
   {
     "id": "course1743062801234-4",
@@ -2533,9 +334,7 @@
     "storeId": "s2",
     "classroomId": "c5",
     "teacherId": "teacher1743300545312",
-    "date": "2025-03-26",
-    "students": [],
-    "studentsList": []
+    "date": "2025-03-26"
   },
   {
     "id": "course1743062801235-5",
@@ -2543,8 +342,7 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-03-26",
-    "students": []
+    "date": "2025-03-26"
   },
   {
     "id": "course1743062801235-6",
@@ -2552,8 +350,7 @@
     "storeId": "s3",
     "classroomId": "c17",
     "teacherId": "t1",
-    "date": "2025-03-26",
-    "students": []
+    "date": "2025-03-26"
   },
   {
     "name": "【其他安排】",
@@ -2561,8 +358,7 @@
     "classroomId": "c12",
     "teacherId": "t1",
     "date": "2025-03-25",
-    "id": "course1743066142989",
-    "students": []
+    "id": "course1743066142989"
   },
   {
     "id": "course1743066231970-0",
@@ -2570,59 +366,7 @@
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "date": "2025-03-29",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743113281180-ncbc3",
-        "name": "金慧",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      },
-      {
-        "id": "stu1743113281180-5cuvy",
-        "name": "李心宇",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      },
-      {
-        "id": "stu1743113281180-85qxb",
-        "name": "薛竹",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      },
-      {
-        "id": "stu1743113281180-4m0f4",
-        "name": "严红波",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      },
-      {
-        "id": "stu1743113281180-ctu84",
-        "name": "范燕文",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      },
-      {
-        "id": "stu1743113281180-z48uo",
-        "name": "张晔",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      },
-      {
-        "id": "stu1743113281180-p2zc4",
-        "name": "芒果",
-        "courses": [
-          "course1743066231970-0"
-        ]
-      }
-    ]
+    "date": "2025-03-29"
   },
   {
     "id": "course1743066231970-1",
@@ -2630,82 +374,7 @@
     "storeId": "s2",
     "classroomId": "c9",
     "teacherId": "t1",
-    "date": "2025-03-29",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074162091-rj4oc",
-        "name": "王英英",
-        "courses": [
-          "course1743062801234-3",
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743074276864-sipw5",
-        "name": "段雪娟",
-        "courses": [
-          "course1743062779834-5",
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249766-fck4q",
-        "name": "谭秋",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249766-6qcxs",
-        "name": "韩佳丽",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249766-xtz6w",
-        "name": "鲍春肖",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249766-f2ow0",
-        "name": "柳宇婧",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249767-cf46i",
-        "name": "王艳洁",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249767-caz8z",
-        "name": "耿婷婷",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249767-ozzl3",
-        "name": "丁锐",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      },
-      {
-        "id": "stu1743113249767-qzbbo",
-        "name": "李娆",
-        "courses": [
-          "course1743066231970-1"
-        ]
-      }
-    ]
+    "date": "2025-03-29"
   },
   {
     "id": "course1743066231970-2",
@@ -2713,59 +382,7 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-03-29",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743113324598-da4bh",
-        "name": "陈智敏",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      },
-      {
-        "id": "stu1743113324598-bvszk",
-        "name": "金天娇",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      },
-      {
-        "id": "stu1743113324598-8y2r1",
-        "name": "叶奕",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      },
-      {
-        "id": "stu1743113324598-uew3r",
-        "name": "郑泽源",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      },
-      {
-        "id": "stu1743113324598-jplt4",
-        "name": "冷雪",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      },
-      {
-        "id": "stu1743113324598-5yclm",
-        "name": "杨林丹妮",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      },
-      {
-        "id": "stu1743113324598-s88m5",
-        "name": "刘春香",
-        "courses": [
-          "course1743066231970-2"
-        ]
-      }
-    ]
+    "date": "2025-03-29"
   },
   {
     "id": "course1743066231970-3",
@@ -2773,59 +390,7 @@
     "storeId": "s4",
     "classroomId": "c11",
     "teacherId": "t1",
-    "date": "2025-03-29",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743113225836-rd57z",
-        "name": "洪赛赛",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      },
-      {
-        "id": "stu1743113225836-pdwjm",
-        "name": "洪哲哲",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      },
-      {
-        "id": "stu1743113225836-8zv9n",
-        "name": "姜海利",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      },
-      {
-        "id": "stu1743113225836-fhd83",
-        "name": "于佳琳",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      },
-      {
-        "id": "stu1743113225836-xecxv",
-        "name": "赵倩",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      },
-      {
-        "id": "stu1743113225836-g9o0a",
-        "name": "荣玉娇",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      },
-      {
-        "id": "stu1743113225836-zxgwu",
-        "name": "鲍妍妍",
-        "courses": [
-          "course1743066231970-3"
-        ]
-      }
-    ]
+    "date": "2025-03-29"
   },
   {
     "id": "course1743066240265-0",
@@ -2833,32 +398,7 @@
     "storeId": "s1",
     "classroomId": "c4",
     "teacherId": "t1",
-    "date": "2025-03-30",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743113281180-ncbc3",
-        "name": "金慧",
-        "courses": [
-          "course1743066231970-0",
-          "course1743066240265-0"
-        ]
-      },
-      {
-        "id": "stu1743113403118-k1s33",
-        "name": "施建辉",
-        "courses": [
-          "course1743066240265-0"
-        ]
-      },
-      {
-        "id": "stu1743113403118-l62df",
-        "name": "郑维维",
-        "courses": [
-          "course1743066240265-0"
-        ]
-      }
-    ]
+    "date": "2025-03-30"
   },
   {
     "name": "Deepseek应用与变现（延期）",
@@ -2866,39 +406,7 @@
     "classroomId": "c25",
     "teacherId": "t1",
     "date": "2025-03-28",
-    "id": "course1743115464512",
-    "students": [],
-    "studentsList": [
-      {
-        "id": "stu1743074276864-kd7hu",
-        "name": "欧阳",
-        "courses": [
-          "course1743062779834-5",
-          "course1743115464512"
-        ]
-      },
-      {
-        "id": "stu1743115467976-bcuiw",
-        "name": "陈英杰",
-        "courses": [
-          "course1743115464512"
-        ]
-      },
-      {
-        "id": "stu1743115467976-juj7h",
-        "name": "陈慧增",
-        "courses": [
-          "course1743115464512"
-        ]
-      },
-      {
-        "id": "stu1743115467976-3sar6",
-        "name": "宋晴",
-        "courses": [
-          "course1743115464512"
-        ]
-      }
-    ]
+    "id": "course1743115464512"
   },
   {
     "name": "化妆3班",
@@ -2907,10 +415,8 @@
     "teacherId": "teacher1743300363196",
     "date": "2025-03-28",
     "id": "course1743297844082",
-    "students": [],
     "currentWeek": 1,
-    "totalWeeks": 5,
-    "studentsList": []
+    "totalWeeks": 5
   },
   {
     "id": "course1743297892964-placeholder-1-4p3ik",
@@ -3007,5 +513,17 @@
     "parentCourseId": "course1743062779833-1",
     "currentWeek": 5,
     "totalWeeks": 5
+  },
+  {
+    "id": "course1743351402718-placeholder-1-mye3v",
+    "name": "化妆3班",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "teacher1743300363196",
+    "date": "2025-04-04",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743297844082",
+    "currentWeek": 2,
+    "totalWeeks": 2
   }
 ]
