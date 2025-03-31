@@ -174,10 +174,17 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  position: relative;
+  z-index: 5;
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .course-item:hover {
   background-color: #bbdefb;
+}
+
+.course-item:active {
+  cursor: grabbing;
 }
 
 /* 已确认开课的课程样式 */
@@ -1035,4 +1042,45 @@ textarea {
     width: 100%;
     height: 150px;
   }
+}
+
+/* 拖拽相关样式 */
+.dragging {
+  opacity: 0.7;
+  transform: scale(0.95);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  cursor: grabbing !important;
+  z-index: 100;
+  border: 2px dashed #2196F3;
+  background-color: #bbdefb !important;
+  transition: all 0.2s ease !important;
+}
+
+.drag-over {
+  background-color: rgba(33, 150, 243, 0.15);
+  border: 2px dashed #2196F3;
+  box-shadow: inset 0 0 10px rgba(33, 150, 243, 0.2);
+  transition: all 0.3s ease;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { background-color: rgba(33, 150, 243, 0.1); }
+  50% { background-color: rgba(33, 150, 243, 0.2); }
+  100% { background-color: rgba(33, 150, 243, 0.1); }
+}
+
+/* 显示拖拽时的视觉提示 */
+.day-cell.drag-over::before {
+  content: "放置于此";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #2196F3;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 0 3px white;
+  opacity: 0.9;
+  pointer-events: none;
 } 

@@ -634,28 +634,43 @@ function updateSchedule() {
       for (let day = 1; day <= 7; day++) {
         const dayCell = document.createElement('div');
         dayCell.className = 'day-cell';
+        dayCell.dataset.storeId = store.id;
+        dayCell.dataset.classroomId = classroom.id;
         
-        // 计算当前星期几对应的日期
+        // 获取当前日期
         const currentDate = new Date(currentWeekStart);
         currentDate.setDate(currentDate.getDate() + day - 1);
-        const dateStr = formatDate(currentDate);
+        const formattedDate = formatDate(currentDate);
+        dayCell.dataset.date = formattedDate;
         
-        // 给单元格添加日期标识，方便调试
-        dayCell.dataset.date = dateStr;
+        // 允许放置拖拽的课程
+        dayCell.addEventListener('dragover', handleDragOver);
+        dayCell.addEventListener('drop', handleDrop);
         
         // 获取该单元格对应的所有课程（不进行搜索过滤）
         let dayCourses = courses.filter(course => 
           course.storeId === store.id && 
           course.classroomId === classroom.id && 
-          course.date === dateStr
+          course.date === formattedDate
         );
         
-        console.log(`检查 ${store.name} ${classroom.name} ${dateStr} 的课程: 找到 ${dayCourses.length} 个`);
+        console.log(`检查 ${store.name} ${classroom.name} ${formattedDate} 的课程: 找到 ${dayCourses.length} 个`);
         
         // 添加课程项
         dayCourses.forEach(course => {
           const courseItem = document.createElement('div');
           courseItem.className = 'course-item';
+          
+          // 设置为可拖拽
+          courseItem.draggable = true;
+          courseItem.dataset.courseId = course.id;
+          courseItem.dataset.date = course.date;
+          courseItem.dataset.storeId = course.storeId;
+          courseItem.dataset.classroomId = course.classroomId;
+          
+          // 添加拖拽事件处理
+          courseItem.addEventListener('dragstart', handleDragStart);
+          courseItem.addEventListener('dragend', handleDragEnd);
           
           // 如果匹配搜索文本，添加高亮样式
           const isMatching = courseSearchText && course.name && 
@@ -770,6 +785,181 @@ function updateSchedule() {
       scheduleGrid.appendChild(row);
     });
   });
+}
+
+// 拖拽开始处理函数
+function handleDragStart(e) {
+  // 设置拖拽数据
+  e.dataTransfer.setData('text/plain', JSON.stringify({
+    courseId: this.dataset.courseId,
+    storeId: this.dataset.storeId,
+    classroomId: this.dataset.classroomId,
+    date: this.dataset.date
+  }));
+  
+  // 添加拖拽样式
+  this.classList.add('dragging');
+  
+  // 显示拖拽提示
+  showToast('拖动课程到目标位置...', 'info-toast');
+}
+
+// 拖拽结束处理函数
+function handleDragEnd(e) {
+  this.classList.remove('dragging');
+}
+
+// 拖拽经过目标区域处理函数
+function handleDragOver(e) {
+  // 阻止默认行为，允许放置
+  e.preventDefault();
+  
+  // 添加拖拽目标样式
+  this.classList.add('drag-over');
+  
+  // 如果用户在一个区域停留超过500ms，显示提示
+  clearTimeout(this.dragoverTimeout);
+  this.dragoverTimeout = setTimeout(() => {
+    const storeObj = stores.find(s => s.id === this.dataset.storeId);
+    const classroomObj = classrooms.find(c => c.id === this.dataset.classroomId);
+    if (storeObj && classroomObj) {
+      showToast(`放置于: ${storeObj.name} - ${classroomObj.name} - ${this.dataset.date}`, 'info-toast', 1000);
+    }
+  }, 500);
+  
+  // 移除样式的事件
+  this.addEventListener('dragleave', function() {
+    this.classList.remove('drag-over');
+    clearTimeout(this.dragoverTimeout);
+  }, { once: true });
+}
+
+// 放置处理函数
+function handleDrop(e) {
+  e.preventDefault();
+  
+  // 移除拖拽目标样式
+  this.classList.remove('drag-over');
+  clearTimeout(this.dragoverTimeout);
+  
+  try {
+    // 获取拖拽数据
+    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+    const courseId = data.courseId;
+    
+    // 获取目标单元格数据
+    const targetStoreId = this.dataset.storeId;
+    const targetClassroomId = this.dataset.classroomId;
+    const targetDate = this.dataset.date;
+    
+    // 如果拖拽到相同位置，不做任何处理
+    if (data.storeId === targetStoreId && 
+        data.classroomId === targetClassroomId && 
+        data.date === targetDate) {
+      showToast('课程位置未变更', 'info-toast');
+      return;
+    }
+    
+    // 获取目标位置信息用于显示提示
+    const storeName = stores.find(s => s.id === targetStoreId)?.name || '未知门店';
+    const classroomName = classrooms.find(c => c.id === targetClassroomId)?.name || '未知教室';
+    
+    // 直接调用API更新课程
+    updateCoursePosition(courseId, targetStoreId, targetClassroomId, targetDate);
+    
+    // 显示移动成功提示
+    showToast(`课程已移至: ${storeName} - ${classroomName} - ${targetDate}`, 'info-toast');
+  } catch (error) {
+    console.error('放置处理错误:', error);
+    showToast('拖拽操作失败', 'error-toast');
+  }
+}
+
+// 更新课程位置的API调用
+async function updateCoursePosition(courseId, storeId, classroomId, date) {
+  try {
+    // 首先获取课程当前数据
+    const response = await fetch(`/api/courses/${courseId}`);
+    const course = await response.json();
+    
+    // 准备更新数据
+    const updatedCourse = {
+      ...course,
+      storeId,
+      classroomId,
+      date
+    };
+    
+    // 发送更新请求
+    const updateResponse = await fetch(`/api/courses/${courseId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedCourse)
+    });
+    
+    if (updateResponse.ok) {
+      // 如果是占位课程，可能需要更新其余的占位课程
+      if (course.isPlaceholder) {
+        await updateRelatedPlaceholders(course, storeId, classroomId);
+      }
+      
+      // 重新加载数据
+      fetchData();
+    } else {
+      const error = await updateResponse.json();
+      showToast(`移动失败: ${error.error}`, 'error-toast');
+    }
+  } catch (error) {
+    console.error('更新课程位置错误:', error);
+    showToast('移动课程失败', 'error-toast');
+  }
+}
+
+// 更新相关的占位课程
+async function updateRelatedPlaceholders(course, storeId, classroomId) {
+  try {
+    // 如果是占位课程，更新同系列的其他占位课程
+    if (course.isPlaceholder && course.parentCourseId) {
+      // 获取所有课程
+      const response = await fetch('/api/courses');
+      const allCourses = await response.json();
+      
+      // 筛选出同一系列的占位课程（排除当前课程）
+      const relatedPlaceholders = allCourses.filter(c => 
+        c.parentCourseId === course.parentCourseId && 
+        c.id !== course.id && 
+        c.isPlaceholder
+      );
+      
+      // 更新每个相关占位课程
+      for (const placeholder of relatedPlaceholders) {
+        const updatedPlaceholder = {
+          ...placeholder,
+          storeId,
+          classroomId
+        };
+        
+        await fetch(`/api/courses/${placeholder.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedPlaceholder)
+        });
+      }
+      
+      // 只有在数量大于0时才显示提示
+      if (relatedPlaceholders.length > 0) {
+        showToast(`已同步更新 ${relatedPlaceholders.length} 个关联课程`, 'info-toast', 3000);
+      }
+    }
+  } catch (error) {
+    console.error('更新相关占位课程错误:', error);
+    // 减少用户可见的错误提示
+    console.warn('无法更新相关占位课程，但主课程已成功移动');
+  }
 }
 
 // 打开课程模态框
@@ -1788,22 +1978,33 @@ function createUploadQRCode(courseId) {
 
 // 显示Toast通知
 function showToast(message, className, duration = 3000) {
-  // 移除可能存在的旧Toast
+  // 移除现有的提示
   const existingToasts = document.querySelectorAll('.toast');
   existingToasts.forEach(toast => {
     document.body.removeChild(toast);
   });
   
-  // 创建新Toast
+  // 创建新提示
   const toast = document.createElement('div');
-  toast.className = `toast ${className}`;
+  toast.className = `toast ${className || ''}`;
   toast.textContent = message;
+  
+  // 如果是拖拽相关的提示，增加持续时间
+  if (message.includes('课程已移至')) {
+    duration = 5000;  // 延长拖拽操作后的提示显示时间
+  }
+  
   document.body.appendChild(toast);
   
-  // 设置自动消失
+  // 自动消失
   setTimeout(() => {
     if (document.body.contains(toast)) {
-      document.body.removeChild(toast);
+      toast.style.opacity = 0;
+      setTimeout(() => {
+        if (document.body.contains(toast)) {
+          document.body.removeChild(toast);
+        }
+      }, 500);
     }
   }, duration);
   

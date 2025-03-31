@@ -192,9 +192,13 @@ app.get('/api/teachers', (req, res) => {
 
 // 获取所有课程
 app.get('/api/courses', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  const courses = readJSONFile(coursesFile);
-  res.json(courses);
+  try {
+    const courses = readJSONFile(coursesFile);
+    res.json(courses);
+  } catch (error) {
+    console.error('获取所有课程失败:', error);
+    res.status(500).json({ error: '服务器内部错误' });
+  }
 });
 
 // 获取单个课程

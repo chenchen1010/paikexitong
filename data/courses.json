@@ -204,7 +204,9 @@
           "course1743062779832-0"
         ]
       }
-    ]
+    ],
+    "currentWeek": 1,
+    "totalWeeks": 5
   },
   {
     "id": "course1743062779833-1",
@@ -214,15 +216,17 @@
     "teacherId": "t1",
     "date": "2025-03-24",
     "currentWeek": 1,
-    "totalWeeks": 5 
+    "totalWeeks": 5
   },
   {
     "id": "course1743062779834-4",
     "name": "化妆",
     "storeId": "s2",
-    "classroomId": "c5",
+    "classroomId": "c6",
     "teacherId": "t1",
-    "date": "2025-03-24"
+    "date": "2025-03-24",
+    "currentWeek": 1,
+    "totalWeeks": 5
   },
   {
     "id": "course1743062779834-5",
@@ -230,7 +234,9 @@
     "storeId": "s2",
     "classroomId": "c9",
     "teacherId": "t1",
-    "date": "2025-03-24"
+    "date": "2025-03-24",
+    "currentWeek": 1,
+    "totalWeeks": 5
   },
   {
     "id": "course1743062779835-6",
@@ -238,7 +244,9 @@
     "storeId": "s3",
     "classroomId": "c14",
     "teacherId": "t1",
-    "date": "2025-03-24"
+    "date": "2025-03-24",
+    "currentWeek": 1,
+    "totalWeeks": 5
   },
   {
     "id": "course1743062779835-7",
@@ -424,7 +432,7 @@
     "storeId": "s1",
     "classroomId": "c1",
     "teacherId": "t1",
-    "date": "2025-04-04",
+    "date": "2025-04-05",
     "isPlaceholder": true,
     "parentCourseId": "course1743297844082",
     "currentWeek": 2,
@@ -515,15 +523,203 @@
     "totalWeeks": 5
   },
   {
-    "id": "course1743351402718-placeholder-1-mye3v",
-    "name": "化妆3班",
+    "id": "course1743355524874-placeholder-1-3jbz5",
+    "name": "花艺",
     "storeId": "s1",
     "classroomId": "c1",
-    "teacherId": "teacher1743300363196",
-    "date": "2025-04-04",
+    "teacherId": "t1",
+    "date": "2025-03-31",
     "isPlaceholder": true,
-    "parentCourseId": "course1743297844082",
+    "parentCourseId": "course1743062779832-0",
     "currentWeek": 2,
-    "totalWeeks": 2
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355524875-placeholder-2-f1jfv",
+    "name": "花艺",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-07",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779832-0",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355524875-placeholder-3-c0z8i",
+    "name": "花艺",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-14",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779832-0",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355524875-placeholder-4-iklto",
+    "name": "花艺",
+    "storeId": "s1",
+    "classroomId": "c1",
+    "teacherId": "t1",
+    "date": "2025-04-21",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779832-0",
+    "currentWeek": 5,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355618484-placeholder-1-pfn4w",
+    "name": "花艺",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "t1",
+    "date": "2025-03-31",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-6",
+    "currentWeek": 2,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355618484-placeholder-2-u157i",
+    "name": "花艺",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "t1",
+    "date": "2025-04-07",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-6",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355618484-placeholder-3-l4ptr",
+    "name": "花艺",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "t1",
+    "date": "2025-04-14",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-6",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355618484-placeholder-4-j99q4",
+    "name": "花艺",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "t1",
+    "date": "2025-04-21",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-6",
+    "currentWeek": 5,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355647557-placeholder-1-fdew1",
+    "name": "化妆",
+    "storeId": "s2",
+    "classroomId": "c6",
+    "teacherId": "t1",
+    "date": "2025-03-31",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-4",
+    "currentWeek": 2,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355647557-placeholder-2-juroh",
+    "name": "化妆",
+    "storeId": "s2",
+    "classroomId": "c5",
+    "teacherId": "t1",
+    "date": "2025-04-07",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-4",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355647557-placeholder-3-y8gnq",
+    "name": "化妆",
+    "storeId": "s2",
+    "classroomId": "c5",
+    "teacherId": "t1",
+    "date": "2025-04-14",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-4",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355647557-placeholder-4-sy4mu",
+    "name": "化妆",
+    "storeId": "s2",
+    "classroomId": "c5",
+    "teacherId": "t1",
+    "date": "2025-04-21",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-4",
+    "currentWeek": 5,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355663062-placeholder-1-jggae",
+    "name": "瑜伽",
+    "storeId": "s2",
+    "classroomId": "c9",
+    "teacherId": "t1",
+    "date": "2025-03-31",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-5",
+    "currentWeek": 2,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355663062-placeholder-2-8yma9",
+    "name": "瑜伽",
+    "storeId": "s2",
+    "classroomId": "c9",
+    "teacherId": "t1",
+    "date": "2025-04-07",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-5",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355663062-placeholder-3-6ihf9",
+    "name": "瑜伽",
+    "storeId": "s2",
+    "classroomId": "c9",
+    "teacherId": "t1",
+    "date": "2025-04-14",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-5",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743355663062-placeholder-4-vdzni",
+    "name": "瑜伽",
+    "storeId": "s2",
+    "classroomId": "c9",
+    "teacherId": "t1",
+    "date": "2025-04-21",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779834-5",
+    "currentWeek": 5,
+    "totalWeeks": 5
+  },
+  {
+    "name": "Deepseek应用与变现",
+    "storeId": "s2",
+    "classroomId": "c5",
+    "teacherId": "teacher1743300545312",
+    "date": "2025-03-24",
+    "id": "course1743355861427"
   }
 ]
