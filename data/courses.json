@@ -254,7 +254,9 @@
     "storeId": "s3",
     "classroomId": "c15",
     "teacherId": "t1",
-    "date": "2025-03-24"
+    "date": "2025-03-24",
+    "currentWeek": 1,
+    "totalWeeks": 5
   },
   {
     "id": "course1743062779836-8",
@@ -721,5 +723,53 @@
     "teacherId": "teacher1743300545312",
     "date": "2025-03-24",
     "id": "course1743355861427"
+  },
+  {
+    "id": "course1743402464966-placeholder-1-kbc7f",
+    "name": "声乐",
+    "storeId": "s3",
+    "classroomId": "c15",
+    "teacherId": "t1",
+    "date": "2025-03-31",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-7",
+    "currentWeek": 2,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743402464966-placeholder-2-j10j5",
+    "name": "声乐",
+    "storeId": "s3",
+    "classroomId": "c15",
+    "teacherId": "t1",
+    "date": "2025-04-07",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-7",
+    "currentWeek": 3,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743402464966-placeholder-3-iu2to",
+    "name": "声乐",
+    "storeId": "s3",
+    "classroomId": "c15",
+    "teacherId": "t1",
+    "date": "2025-04-14",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-7",
+    "currentWeek": 4,
+    "totalWeeks": 5
+  },
+  {
+    "id": "course1743402464966-placeholder-4-9zbta",
+    "name": "声乐",
+    "storeId": "s3",
+    "classroomId": "c15",
+    "teacherId": "t1",
+    "date": "2025-04-21",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062779835-7",
+    "currentWeek": 5,
+    "totalWeeks": 5
   }
 ]

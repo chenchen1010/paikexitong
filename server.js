@@ -458,9 +458,27 @@ app.get('/api/courses/:courseId/students', (req, res) => {
   }
   
   // 查找课程中的学生
-  const courseStudents = students.filter(student => 
+  let courseStudents = students.filter(student => 
     student.courses.includes(courseId)
   );
+  
+  // 按照添加顺序排序
+  courseStudents.sort((a, b) => {
+    // 优先使用专门为课程记录的顺序
+    if (a.courseOrders && b.courseOrders && 
+        a.courseOrders[courseId] !== undefined && 
+        b.courseOrders[courseId] !== undefined) {
+      return a.courseOrders[courseId] - b.courseOrders[courseId];
+    }
+    
+    // 其次使用通用order字段
+    if (a.order !== undefined && b.order !== undefined) {
+      return a.order - b.order;
+    }
+    
+    // 最后按名称排序
+    return a.name.localeCompare(b.name, 'zh-CN');
+  });
   
   res.json(courseStudents);
 });
@@ -482,7 +500,10 @@ app.post('/api/courses/:courseId/students/batch', (req, res) => {
   const names = namesText.split('\n').filter(name => name.trim() !== '');
   const newStudents = [];
   
-  names.forEach(name => {
+  // 记录学生的添加顺序
+  const studentPositions = {};
+  
+  names.forEach((name, index) => {
     name = name.trim();
     let student = students.find(s => s.name === name);
     
@@ -491,18 +512,36 @@ app.post('/api/courses/:courseId/students/batch', (req, res) => {
       student = {
         id: `stu${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
         name,
-        courses: [courseId]
+        courses: [courseId],
+        order: index  // 添加顺序信息
       };
       students.push(student);
     } else if (!student.courses.includes(courseId)) {
       // 如果学生存在但没有加入该课程
       student.courses.push(courseId);
+      // 记录此学生在本课程中的顺序
+      student.order = index;
     }
     
+    // 保存学生ID和对应的顺序信息
+    studentPositions[student.id] = index;
     newStudents.push(student);
   });
   
+  // 在学生对象中记录在该课程中的顺序
+  students.forEach(student => {
+    if (student.courses.includes(courseId) && studentPositions[student.id] !== undefined) {
+      // 确保每个学生都有顺序信息
+      if (!student.courseOrders) {
+        student.courseOrders = {};
+      }
+      student.courseOrders[courseId] = studentPositions[student.id];
+    }
+  });
+  
   if (writeJSONFile(studentsFile, students)) {
+    // 返回新添加的学生，并按输入顺序排序
+    newStudents.sort((a, b) => studentPositions[a.id] - studentPositions[b.id]);
     res.status(201).json(newStudents);
   } else {
     res.status(500).json({ error: '无法保存学生数据' });
@@ -819,6 +858,63 @@ app.use((req, res) => {
   console.log(`路径未找到: ${req.method} ${req.url}`);
   res.status(404).json({ error: '请求的资源不存在' });
 });
+
+// 辅助函数：保证学生数据具有顺序信息
+const migrateStudentOrderData = () => {
+  console.log('正在迁移学员顺序数据...');
+  const students = readJSONFile(studentsFile);
+  const courses = readJSONFile(coursesFile);
+  let hasChanges = false;
+  
+  // 为每个课程整理学员顺序
+  courses.forEach(course => {
+    // 找到该课程的所有学员
+    const courseStudents = students.filter(student => 
+      student.courses.includes(course.id)
+    );
+    
+    // 检查是否需要迁移
+    let needsMigration = false;
+    courseStudents.forEach(student => {
+      if (!student.courseOrders || student.courseOrders[course.id] === undefined) {
+        needsMigration = true;
+      }
+    });
+    
+    if (needsMigration && courseStudents.length > 0) {
+      console.log(`正在为课程 ${course.id} 的 ${courseStudents.length} 名学员添加顺序信息`);
+      
+      // 为此课程的学员按姓名排序并分配顺序
+      const sortedStudents = [...courseStudents].sort((a, b) => 
+        a.name.localeCompare(b.name, 'zh-CN')
+      );
+      
+      sortedStudents.forEach((student, index) => {
+        // 查找原始学生对象
+        const originalStudent = students.find(s => s.id === student.id);
+        if (originalStudent) {
+          if (!originalStudent.courseOrders) {
+            originalStudent.courseOrders = {};
+          }
+          originalStudent.courseOrders[course.id] = index;
+          hasChanges = true;
+        }
+      });
+    }
+  });
+  
+  // 保存更新后的学生数据
+  if (hasChanges) {
+    console.log('学员顺序数据迁移完成，保存更新...');
+    return writeJSONFile(studentsFile, students);
+  }
+  
+  console.log('学员顺序数据无需迁移');
+  return true;
+};
+
+// 在服务器启动时进行数据迁移
+migrateStudentOrderData();
 
 // 启动服务器
 app.listen(PORT, '0.0.0.0', () => {
