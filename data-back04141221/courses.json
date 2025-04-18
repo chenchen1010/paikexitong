@@ -584,13 +584,12 @@
     "name": "花艺",
     "storeId": "s3",
     "classroomId": "c14",
-    "teacherId": "teacher1743403869737",
-    "date": "2025-04-28",
+    "teacherId": "t1",
+    "date": "2025-04-07",
     "isPlaceholder": true,
     "parentCourseId": "course1743062779835-6",
     "currentWeek": 3,
-    "totalWeeks": 5,
-    "status": "未开课"
+    "totalWeeks": 5
   },
   {
     "id": "course1743355618484-placeholder-3-l4ptr",
@@ -703,13 +702,12 @@
     "name": "声乐",
     "storeId": "s3",
     "classroomId": "c15",
-    "teacherId": "teacher1744350853987",
-    "date": "2025-04-28",
+    "teacherId": "t1",
+    "date": "2025-04-07",
     "isPlaceholder": true,
     "parentCourseId": "course1743062779835-7",
     "currentWeek": 3,
-    "totalWeeks": 5,
-    "status": "未开课"
+    "totalWeeks": 5
   },
   {
     "id": "course1743402566038-placeholder-3-krn6a",
@@ -752,13 +750,12 @@
     "name": "八段锦",
     "storeId": "s3",
     "classroomId": "c19",
-    "teacherId": "teacher1744350891680",
-    "date": "2025-04-28",
+    "teacherId": "t1",
+    "date": "2025-04-07",
     "isPlaceholder": true,
     "parentCourseId": "course1743062779836-8",
     "currentWeek": 3,
-    "totalWeeks": 5,
-    "status": "未开课"
+    "totalWeeks": 5
   },
   {
     "id": "course1743402642180-placeholder-3-wy41g",
@@ -1017,8 +1014,8 @@
     "name": "太极",
     "storeId": "s3",
     "classroomId": "c19",
-    "teacherId": "teacher1744350891680",
-    "date": "2025-05-06",
+    "teacherId": "t1",
+    "date": "2025-05-03",
     "isPlaceholder": true,
     "parentCourseId": "course1743066231970-2",
     "currentWeek": 4,
@@ -1161,8 +1158,8 @@
     "name": "钢琴",
     "storeId": "s3",
     "classroomId": "c17",
-    "teacherId": "teacher1743405563485",
-    "date": "2025-05-09",
+    "teacherId": "t1",
+    "date": "2025-05-02",
     "isPlaceholder": true,
     "parentCourseId": "course1743055930948-9",
     "currentWeek": 6,
@@ -1221,8 +1218,8 @@
     "name": "英语口语",
     "storeId": "s3",
     "classroomId": "c14",
-    "teacherId": "teacher1743488141156",
-    "date": "2025-05-09",
+    "teacherId": "t1",
+    "date": "2025-05-02",
     "isPlaceholder": true,
     "parentCourseId": "course1743055930945-7",
     "currentWeek": 6,
@@ -1521,8 +1518,8 @@
     "name": "瑜伽",
     "storeId": "s3",
     "classroomId": "c19",
-    "teacherId": "teacher1743408026589",
-    "date": "2025-05-09",
+    "teacherId": "t1",
+    "date": "2025-05-02",
     "isPlaceholder": true,
     "parentCourseId": "course1743055930946-8",
     "currentWeek": 6,
@@ -1785,8 +1782,8 @@
     "name": "形体",
     "storeId": "s3",
     "classroomId": "c20",
-    "teacherId": "teacher1744351694126",
-    "date": "2025-05-08",
+    "teacherId": "t1",
+    "date": "2025-05-01",
     "isPlaceholder": true,
     "parentCourseId": "course1743030668279-6",
     "currentWeek": 6,
@@ -1809,8 +1806,8 @@
     "name": "国画",
     "storeId": "s3",
     "classroomId": "c14",
-    "teacherId": "teacher1743487513078",
-    "date": "2025-05-08",
+    "teacherId": "t1",
+    "date": "2025-04-10",
     "isPlaceholder": true,
     "parentCourseId": "course1743030668272-5",
     "currentWeek": 3,
@@ -2107,8 +2104,8 @@
     "name": "书法",
     "storeId": "s3",
     "classroomId": "c14",
-    "teacherId": "teacher1743487513078",
-    "date": "2025-04-29",
+    "teacherId": "t1",
+    "date": "2025-04-08",
     "isPlaceholder": true,
     "parentCourseId": "course1743062791515-3",
     "currentWeek": 3,
@@ -2155,8 +2152,8 @@
     "name": "钢琴",
     "storeId": "s3",
     "classroomId": "c17",
-    "teacherId": "teacher1743405563485",
-    "date": "2025-05-07",
+    "teacherId": "t1",
+    "date": "2025-04-09",
     "isPlaceholder": true,
     "parentCourseId": "course1743062801235-6",
     "currentWeek": 3,
@@ -2203,8 +2200,8 @@
     "name": "八段锦",
     "storeId": "s3",
     "classroomId": "c19",
-    "teacherId": "teacher1744350891680",
-    "date": "2025-05-07",
+    "teacherId": "t1",
+    "date": "2025-04-09",
     "isPlaceholder": true,
     "parentCourseId": "course1743062801235-5",
     "currentWeek": 3,
@@ -2261,8 +2258,8 @@
     "name": "钢琴2班",
     "storeId": "s3",
     "classroomId": "c18",
-    "teacherId": "teacher1744351441851",
-    "date": "2025-05-07",
+    "teacherId": "t1",
+    "date": "2025-04-09",
     "isPlaceholder": true,
     "parentCourseId": "course1743411409704",
     "currentWeek": 3,
@@ -2513,8 +2510,8 @@
     "name": "非洲鼓",
     "storeId": "s3",
     "classroomId": "c15",
-    "teacherId": "teacher1744350853987",
-    "date": "2025-04-29",
+    "teacherId": "t1",
+    "date": "2025-04-08",
     "isPlaceholder": true,
     "parentCourseId": "course1743062791516-5",
     "currentWeek": 3,
@@ -2562,7 +2559,7 @@
     "storeId": "s3",
     "classroomId": "c16",
     "teacherId": "teacher1743300545312",
-    "date": "2025-04-29",
+    "date": "2025-04-08",
     "isPlaceholder": true,
     "parentCourseId": "course1743062791517-7",
     "currentWeek": 3,
@@ -2657,8 +2654,8 @@
     "name": "钢琴",
     "storeId": "s3",
     "classroomId": "c17",
-    "teacherId": "teacher1744351070263",
-    "date": "2025-04-29",
+    "teacherId": "t1",
+    "date": "2025-04-08",
     "isPlaceholder": true,
     "parentCourseId": "course1743062791516-6",
     "currentWeek": 3,
@@ -2715,8 +2712,8 @@
     "name": "形体",
     "storeId": "s3",
     "classroomId": "c20",
-    "teacherId": "teacher1744351406147",
-    "date": "2025-04-29",
+    "teacherId": "t1",
+    "date": "2025-04-08",
     "isPlaceholder": true,
     "parentCourseId": "course1743413324766",
     "currentWeek": 3,
@@ -2859,8 +2856,8 @@
     "name": "古典舞",
     "storeId": "s3",
     "classroomId": "c19",
-    "teacherId": "teacher1744351369041",
-    "date": "2025-04-29",
+    "teacherId": "t1",
+    "date": "2025-04-08",
     "isPlaceholder": true,
     "parentCourseId": "course1743062791515-4",
     "currentWeek": 3,
@@ -2888,6 +2885,18 @@
     "isPlaceholder": true,
     "parentCourseId": "course1743062791515-4",
     "currentWeek": 5,
+    "totalWeeks": 6
+  },
+  {
+    "id": "course1743413608788-placeholder-5-fykot",
+    "name": "古典舞",
+    "storeId": "s3",
+    "classroomId": "c19",
+    "teacherId": "t1",
+    "date": "2025-04-29",
+    "isPlaceholder": true,
+    "parentCourseId": "course1743062791515-4",
+    "currentWeek": 6,
     "totalWeeks": 6
   },
   {
@@ -3283,6 +3292,14 @@
     "date": "2025-04-28"
   },
   {
+    "id": "course1744208371576-3",
+    "name": "化妆1班",
+    "storeId": "s1",
+    "classroomId": "c2",
+    "teacherId": "teacher1743300363196",
+    "date": "2025-04-28"
+  },
+  {
     "id": "course1744208413011-0",
     "name": "八段锦",
     "storeId": "s1",
@@ -3391,7 +3408,7 @@
     "name": "化妆",
     "storeId": "s2",
     "classroomId": "c6",
-    "teacherId": "teacher1743300363196",
+    "teacherId": "teacher1744208359132",
     "date": "2025-04-28"
   },
   {
@@ -3483,22 +3500,100 @@
     "date": "2025-05-10"
   },
   {
+    "id": "course1744267258910-0",
+    "name": "花艺",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "teacher1743403869737",
+    "date": "2025-04-28"
+  },
+  {
+    "id": "course1744267258910-1",
+    "name": "声乐",
+    "storeId": "s3",
+    "classroomId": "c15",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-04-28"
+  },
+  {
+    "id": "course1744267258911-2",
+    "name": "八段锦",
+    "storeId": "s3",
+    "classroomId": "c19",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-04-28"
+  },
+  {
     "id": "course1744267273549-0",
     "name": "书法",
     "storeId": "s3",
     "classroomId": "c15",
     "teacherId": "teacher1744208359132",
-    "date": "2025-05-09",
-    "status": "未开课"
+    "date": "2025-05-09"
+  },
+  {
+    "id": "course1744267273550-1",
+    "name": "非洲鼓",
+    "storeId": "s3",
+    "classroomId": "c15",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-04-29"
+  },
+  {
+    "id": "course1744267273550-2",
+    "name": "Deepseek应用与变现1班",
+    "storeId": "s3",
+    "classroomId": "c16",
+    "teacherId": "teacher1743300545312",
+    "date": "2025-04-29"
+  },
+  {
+    "id": "course1744267273550-3",
+    "name": "钢琴",
+    "storeId": "s3",
+    "classroomId": "c17",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-04-29"
+  },
+  {
+    "id": "course1744267273551-5",
+    "name": "形体",
+    "storeId": "s3",
+    "classroomId": "c20",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-04-29"
   },
   {
     "name": "古典舞",
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "t1",
-    "date": "2025-05-11",
-    "id": "course1744267503279",
-    "status": "未开课"
+    "date": "2025-05-04",
+    "id": "course1744267503279"
+  },
+  {
+    "id": "course1744269559296-0",
+    "name": "国画",
+    "storeId": "s3",
+    "classroomId": "c14",
+    "teacherId": "teacher1743487513078",
+    "date": "2025-05-08"
+  },
+  {
+    "id": "course1744269559297-1",
+    "name": "钢琴",
+    "storeId": "s3",
+    "classroomId": "c17",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-07"
+  },
+  {
+    "id": "course1744269559297-2",
+    "name": "钢琴2班",
+    "storeId": "s3",
+    "classroomId": "c18",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-07"
   },
   {
     "id": "course1744269559297-3",
@@ -3506,35 +3601,39 @@
     "storeId": "s3",
     "classroomId": "c19",
     "teacherId": "teacher1744208359132",
-    "date": "2025-05-09",
-    "status": "未开课"
+    "date": "2025-05-09"
   },
   {
     "id": "course1744269597424-0",
     "name": "钢琴1班",
     "storeId": "s3",
     "classroomId": "c17",
-    "teacherId": "teacher1743405563485",
-    "date": "2025-05-08",
-    "status": "未开课"
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-08"
   },
   {
     "id": "course1744269597425-1",
     "name": "钢琴2班",
     "storeId": "s3",
     "classroomId": "c18",
-    "teacherId": "teacher1744351441851",
-    "date": "2025-05-08",
-    "status": "未开课"
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-08"
+  },
+  {
+    "id": "course1744269597425-2",
+    "name": "形体",
+    "storeId": "s3",
+    "classroomId": "c20",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-08"
   },
   {
     "name": "声乐",
     "storeId": "s3",
     "classroomId": "c19",
-    "teacherId": "teacher1744352315532",
+    "teacherId": "teacher1744208359132",
     "date": "2025-05-08",
-    "id": "course1744269614860",
-    "status": "未开课"
+    "id": "course1744269614860"
   },
   {
     "id": "course1744269660310-0",
@@ -3542,8 +3641,23 @@
     "storeId": "s3",
     "classroomId": "c15",
     "teacherId": "teacher1744208359132",
-    "date": "2025-05-10",
-    "status": "未开课"
+    "date": "2025-05-10"
+  },
+  {
+    "id": "course1744269660311-1",
+    "name": "钢琴",
+    "storeId": "s3",
+    "classroomId": "c17",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-09"
+  },
+  {
+    "id": "course1744269660311-2",
+    "name": "瑜伽",
+    "storeId": "s3",
+    "classroomId": "c19",
+    "teacherId": "teacher1744208359132",
+    "date": "2025-05-07"
   },
   {
     "id": "course1744270801137-0",
@@ -3583,7 +3697,7 @@
     "storeId": "s5",
     "classroomId": "c22",
     "teacherId": "teacher1744208359132",
-    "date": "2025-05-02"
+    "date": "2025-04-28"
   },
   {
     "id": "course1744270872287-1",
@@ -3595,7 +3709,7 @@
   },
   {
     "id": "course1744270872287-2",
-    "name": "Deepseek创作与应用（700）",
+    "name": "Deepseek创作与应用",
     "storeId": "s5",
     "classroomId": "c22",
     "teacherId": "teacher1744208359132",
@@ -3622,7 +3736,7 @@
     "storeId": "s5",
     "classroomId": "c24",
     "teacherId": "t1",
-    "date": "2025-05-08",
+    "date": "2025-05-07",
     "id": "course1744271278492"
   },
   {
@@ -3680,99 +3794,5 @@
     "teacherId": "teacher1744208359132",
     "date": "2025-05-07",
     "id": "course1744273087922"
-  },
-  {
-    "name": "花艺",
-    "storeId": "s4",
-    "classroomId": "c11",
-    "teacherId": "teacher1743403823062",
-    "date": "2025-05-09",
-    "id": "course1744278148233"
-  },
-  {
-    "name": "视觉化演讲",
-    "storeId": "s1",
-    "classroomId": "c1",
-    "teacherId": "teacher1744208359132",
-    "date": "2025-05-10",
-    "id": "course1744278493467"
-  },
-  {
-    "name": "手机摄影",
-    "storeId": "s2",
-    "classroomId": "c7",
-    "teacherId": "teacher1743404740396",
-    "date": "2025-04-28",
-    "id": "course1744279060661"
-  },
-  {
-    "name": "相机摄影",
-    "storeId": "s3",
-    "classroomId": "c15",
-    "teacherId": "teacher1743404740396",
-    "date": "2025-05-08",
-    "id": "course1744279325350",
-    "status": "未开课"
-  },
-  {
-    "name": "手机摄影",
-    "storeId": "s5",
-    "classroomId": "c22",
-    "teacherId": "teacher1743404740396",
-    "date": "2025-04-28",
-    "id": "course1744279482591"
-  },
-  {
-    "name": "乒乓球",
-    "storeId": "s1",
-    "classroomId": "c31",
-    "teacherId": "teacher1744208359132",
-    "date": "2025-04-28",
-    "id": "course1744284974251"
-  },
-  {
-    "id": "course1744267273550-1",
-    "name": "非洲鼓",
-    "storeId": "s3",
-    "classroomId": "c15",
-    "teacherId": "teacher1744208359132",
-    "date": "2025-04-29",
-    "status": "未开课"
-  },
-  {
-    "id": "course1744267273550-2",
-    "name": "Deepseek应用与变现1班",
-    "storeId": "s3",
-    "classroomId": "c16",
-    "teacherId": "teacher1743300545312",
-    "date": "2025-04-29",
-    "status": "未开课"
-  },
-  {
-    "id": "course1744267273550-3",
-    "name": "钢琴",
-    "storeId": "s3",
-    "classroomId": "c17",
-    "teacherId": "teacher1744208359132",
-    "date": "2025-04-29",
-    "status": "未开课"
-  },
-  {
-    "id": "course1744267273551-5",
-    "name": "形体",
-    "storeId": "s3",
-    "classroomId": "c20",
-    "teacherId": "teacher1744208359132",
-    "date": "2025-04-29",
-    "status": "未开课"
-  },
-  {
-    "id": "course1744269660311-2",
-    "name": "瑜伽",
-    "storeId": "s3",
-    "classroomId": "c19",
-    "teacherId": "teacher1744208359132",
-    "date": "2025-05-07",
-    "status": "未开课"
   }
 ]

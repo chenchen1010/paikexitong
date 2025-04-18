@@ -33,8 +33,7 @@
     "id": "stu1743031139195-kod46",
     "name": "郑水倩",
     "courses": [
-      "course1743030668272-2",
-      "course1743062779832-0"
+      "course1743030668272-2"
     ],
     "courseOrders": {
       "course1743030668272-2": 13,
@@ -96,8 +95,7 @@
     "id": "stu1743031139195-c8j50",
     "name": "付瑶",
     "courses": [
-      "course1743030668272-2",
-      "course1743062779832-0"
+      "course1743030668272-2"
     ],
     "courseOrders": {
       "course1743030668272-2": 17,
@@ -1158,8 +1156,7 @@
     "id": "stu1743044247842-vymjj",
     "name": "倪泽红",
     "courses": [
-      "course1743044244687",
-      "course1743062779832-0"
+      "course1743044244687"
     ],
     "courseOrders": {
       "course1743044244687": 8,
@@ -1513,9 +1510,7 @@
   {
     "id": "stu1743072099115-96vh2",
     "name": "叶灵",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 0
     },
@@ -1524,9 +1519,7 @@
   {
     "id": "stu1743072099115-pf5q1",
     "name": "周巍巍",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 1
     },
@@ -1535,9 +1528,7 @@
   {
     "id": "stu1743072099115-rvogc",
     "name": "王敬虔",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 2
     },
@@ -1546,9 +1537,7 @@
   {
     "id": "stu1743072099115-14751",
     "name": "胡斯琼",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 3
     },
@@ -1557,9 +1546,7 @@
   {
     "id": "stu1743072099115-42bhg",
     "name": "陈梓蓝",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 4
     },
@@ -1568,9 +1555,7 @@
   {
     "id": "stu1743072099115-t0q4o",
     "name": "游增惠",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 8
     },
@@ -1579,9 +1564,7 @@
   {
     "id": "stu1743072099115-i7yfh",
     "name": "许婕",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 9
     },
@@ -1590,9 +1573,7 @@
   {
     "id": "stu1743072099115-hky3u",
     "name": "郑嘉雯",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 10
     },
@@ -1601,9 +1582,7 @@
   {
     "id": "stu1743072099115-yierh",
     "name": "王雨楠",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 11
     },
@@ -5085,9 +5064,7 @@
   {
     "id": "stu1743403707145-8w6i0",
     "name": "毕明",
-    "courses": [
-      "course1743062779832-0"
-    ],
+    "courses": [],
     "courseOrders": {
       "course1743062779832-0": 6
     },
@@ -6999,127 +6976,6 @@
     "order": 1,
     "courseOrders": {
       "course1743504208353": 1
-    }
-  },
-  {
-    "id": "stu1743567168723-tvhpg",
-    "name": "洛洛",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 0,
-    "courseOrders": {
-      "course1743567140584": 0
-    }
-  },
-  {
-    "id": "stu1743567168723-qr97t",
-    "name": "周琪鑫",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 1,
-    "courseOrders": {
-      "course1743567140584": 1
-    }
-  },
-  {
-    "id": "stu1743567168723-4q768",
-    "name": "王丽婷",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 2,
-    "courseOrders": {
-      "course1743567140584": 2
-    }
-  },
-  {
-    "id": "stu1743567168723-7bqb8",
-    "name": "李满",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 3,
-    "courseOrders": {
-      "course1743567140584": 3
-    }
-  },
-  {
-    "id": "stu1743567168723-hkj39",
-    "name": "张瑞林",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 4,
-    "courseOrders": {
-      "course1743567140584": 4
-    }
-  },
-  {
-    "id": "stu1743567168723-t67qf",
-    "name": "孙娇璐",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 5,
-    "courseOrders": {
-      "course1743567140584": 5
-    }
-  },
-  {
-    "id": "stu1743567168723-9wn0a",
-    "name": "李国英",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 6,
-    "courseOrders": {
-      "course1743567140584": 6
-    }
-  },
-  {
-    "id": "stu1743567168723-a3t4y",
-    "name": "赵周艳",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 7,
-    "courseOrders": {
-      "course1743567140584": 7
-    }
-  },
-  {
-    "id": "stu1743567168723-gh5x4",
-    "name": "金雅琪",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 8,
-    "courseOrders": {
-      "course1743567140584": 8
-    }
-  },
-  {
-    "id": "stu1743567168723-y6hfl",
-    "name": "柳红平",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 9,
-    "courseOrders": {
-      "course1743567140584": 9
-    }
-  },
-  {
-    "id": "stu1743567168723-upg04",
-    "name": "Aurora",
-    "courses": [
-      "course1743567140584"
-    ],
-    "order": 10,
-    "courseOrders": {
-      "course1743567140584": 10
     }
   }
 ]

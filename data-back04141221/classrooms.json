@@ -24,12 +24,6 @@
     "capacity": 20
   },
   {
-    "id": "c31",
-    "name": "乒乓球教室",
-    "storeId": "s1",
-    "capacity": 20
-  },
-  {
     "id": "c28",
     "name": "动态教室",
     "storeId": "s8",
@@ -96,63 +90,51 @@
   },
   {
     "id": "c14",
-    "name": "非洲鼓教室",
+    "name": "静态教室1",
     "storeId": "s3",
-    "capacity": 10
+    "capacity": 20
   },
   {
     "id": "c15",
-    "name": "静态教室2（一楼教室）",
+    "name": "静态教室2",
     "storeId": "s3",
-    "capacity": 20
+    "capacity": 40
   },
   {
     "id": "c16",
     "name": "静态教室3",
     "storeId": "s3",
-    "capacity": 20
+    "capacity": 15
   },
   {
     "id": "c17",
     "name": "钢琴教室1",
     "storeId": "s3",
-    "capacity": 6
+    "capacity": 4
   },
   {
     "id": "c18",
     "name": "钢琴教室2",
     "storeId": "s3",
-    "capacity": 6
+    "capacity": 4
   },
   {
     "id": "c19",
-    "name": "动态教室1（BZ瑜伽）",
+    "name": "动态教室1",
     "storeId": "s3",
-    "capacity": 18
+    "capacity": 20
   },
   {
     "id": "c20",
-    "name": "动态教室2（满分体育）",
+    "name": "动态教室2",
     "storeId": "s3",
-    "capacity": 20
+    "capacity": 12
   },
   {
     "id": "c21",
-    "name": "动态教室3（满分体育）",
+    "name": "动态教室3",
     "storeId": "s3",
-    "capacity": 20
-  },
-  {
-    "id": "c21-1",
-    "name": "动态教室4（昔羽艺术）",
-    "storeId": "s3",
-    "capacity": 20
-  },
-  {
-    "id": "c21-2",
-    "name": "动态教室5（昔羽艺术）",
-    "storeId": "s3",
-    "capacity": 20
+    "capacity": 12
   },
   {
     "id": "c22",
@@ -191,16 +173,15 @@
     "capacity": 10
   },
   {
+    "id": "c1743558173580-0",
+    "name": "教室1",
+    "storeId": "s1",
+    "capacity": 20
+  },
+  {
     "id": "c1743558367581-0",
     "name": "静态教室1",
     "storeId": "s1743558367581-0",
     "capacity": 20
-  },
-  {
-    "id": "c30",
-    "name": "动态教室1",
-    "storeId": "s9",
-    "capacity": 20
   }
-  
 ]
